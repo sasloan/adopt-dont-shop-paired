@@ -29,7 +29,7 @@ describe 'As a Visitor' do
 			expect(page).not_to have_content(@acph.address)
 		end
 
-		it 'I should see a button to update the shelters Information' do
+		it 'I should see a link to update the shelters Information' do
 
 			expect(current_path).to eq("/shelters/#{@ddfl.id}")
 
@@ -38,6 +38,22 @@ describe 'As a Visitor' do
 			click_on "Update Shelter"
 
 			expect(current_path).to eq("/shelters/#{@ddfl.id}/edit")
+		end
+
+		it 'I should see a link to delete the shelter completely' do
+
+			expect(current_path).to eq("/shelters/#{@ddfl.id}")
+
+			expect(page).to have_link("Delete Shelter")
+
+			click_on "Delete Shelter"
+
+			expect(current_path).to eq("/shelters")
+
+			expect(page).not_to have_content(@ddfl.name)
+			expect(page).not_to have_content(@ddfl.address)
+			expect(page).not_to have_content(@ddfl.city)
+			expect(page).not_to have_content(@ddfl.zip)
 		end
 	end
 end
