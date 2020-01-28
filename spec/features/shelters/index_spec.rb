@@ -32,7 +32,7 @@ describe 'As a Visitor' do
 			expect(page).to have_content(@aps.zip)
 		end
 
-		it 'There is a button that I can click on to Create a new Shelter' do
+		it 'There is a link that I can click on to Create a new Shelter' do
 
 			expect(current_path).to eq("/shelters")
 
@@ -40,7 +40,7 @@ describe 'As a Visitor' do
 
 			click_on "New Shelter"
 
-			expect(current_path).to eq("/shelters/new")
+			expect(current_path).to eq("/shelters/:shelter_id/new")
 		end
 	end
 end
