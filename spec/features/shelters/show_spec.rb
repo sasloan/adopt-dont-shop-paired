@@ -28,5 +28,16 @@ describe 'As a Visitor' do
 			expect(page).not_to have_content(@acph.name)
 			expect(page).not_to have_content(@acph.address)
 		end
+
+		it 'I should see a button to update the shelters Information' do
+
+			expect(current_path).to eq("/shelters/#{@ddfl.id}")
+
+			expect(page).to have_link("Update Shelter")
+
+			click_on "Update Shelter"
+
+			expect(current_path).to eq("/shelters/#{@ddfl.id}/edit")
+		end
 	end
 end
