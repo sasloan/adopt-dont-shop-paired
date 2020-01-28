@@ -27,5 +27,6 @@ module AdoptDontShop
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+		config.i18n.fallbacks = true
   end
 end
