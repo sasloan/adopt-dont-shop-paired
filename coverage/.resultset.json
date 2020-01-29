@@ -343,6 +343,34 @@
         null,
         null
       ],
+      "/Users/sebastiansloan/turing/2mod/projects/adopt_dont_shop/spec/models/pet_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        2,
+        2,
+        2,
+        null,
+        null,
+        1,
+        2,
+        null,
+        null
+      ],
+      "/Users/sebastiansloan/turing/2mod/projects/adopt_dont_shop/app/models/pet.rb": [
+        1,
+        1,
+        null,
+        null,
+        1,
+        null
+      ],
+      "/Users/sebastiansloan/turing/2mod/projects/adopt_dont_shop/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ],
       "/Users/sebastiansloan/turing/2mod/projects/adopt_dont_shop/spec/models/shelter_spec.rb": [
         1,
         null,
@@ -354,6 +382,10 @@
         2,
         2,
         null,
+        null,
+        1,
+        2,
+        null,
         null
       ],
       "/Users/sebastiansloan/turing/2mod/projects/adopt_dont_shop/app/models/shelter.rb": [
@@ -363,11 +395,6 @@
         null,
         null,
         null,
-        null,
-        null
-      ],
-      "/Users/sebastiansloan/turing/2mod/projects/adopt_dont_shop/app/models/application_record.rb": [
-        1,
         1,
         null
       ],
@@ -421,6 +448,6 @@
         null
       ]
     },
-    "timestamp": 1580236042
+    "timestamp": 1580266103
   }
 }
