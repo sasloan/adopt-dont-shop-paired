@@ -19,26 +19,31 @@ describe 'As a Visitor' do
 
 			expect(current_path).to eq('/pets')
 
+			expect(page).to have_content(@jona.image)
 			expect(page).to have_content(@jona.name)
 			expect(page).to have_content(@jona.approximate_age)
 			expect(page).to have_content(@jona.sex)
 			expect(page).to have_content(@jona.shelter.name)
 
+			expect(page).to have_content(@ozzy.image)
 			expect(page).to have_content(@ozzy.name)
 			expect(page).to have_content(@ozzy.approximate_age)
 			expect(page).to have_content(@ozzy.sex)
 			expect(page).to have_content(@ozzy.shelter.name)
 
+			expect(page).to have_content(@twitch.image)
 			expect(page).to have_content(@twitch.name)
 			expect(page).to have_content(@twitch.approximate_age)
 			expect(page).to have_content(@twitch.sex)
 			expect(page).to have_content(@twitch.shelter.name)
 
+			expect(page).to have_content(@freja.image)
 			expect(page).to have_content(@freja.name)
 			expect(page).to have_content(@freja.approximate_age)
 			expect(page).to have_content(@freja.sex)
 			expect(page).to have_content(@freja.shelter.name)
 
+			expect(page).to have_content(@ciri.image)
 			expect(page).to have_content(@ciri.name)
 			expect(page).to have_content(@ciri.approximate_age)
 			expect(page).to have_content(@ciri.sex)
