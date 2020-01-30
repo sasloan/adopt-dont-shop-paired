@@ -14,5 +14,18 @@ describe 'As a Visitor' do
 
 			expect(current_path).to eq("/pets")
 		end
+
+		it 'I should be able to click a link to go to the shelters index page' do
+
+			visit "/pets"
+
+			expect(current_path).to eq("/pets")
+
+			expect(page).to have_link("Shelters")
+
+			click_on "Shelters"
+
+			expect(current_path).to eq("/shelters")
+		end
 	end
 end
