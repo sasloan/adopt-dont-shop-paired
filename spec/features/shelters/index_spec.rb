@@ -56,7 +56,7 @@ describe 'As a Visitor' do
 			end
 		end
 
-		it 'There is a link next to each shelter that allows me to update the shelters information' do
+		it 'There is a link next to each shelter that allows me to delete the shelters information' do
 
 			expect(current_path).to eq("/shelters")
 

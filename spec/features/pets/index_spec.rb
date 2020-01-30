@@ -64,5 +64,23 @@ describe 'As a Visitor' do
 				expect(current_path).to eq("/pets/#{@jona.id}/edit")
 			end
 		end
+
+		it 'I see a Delete option next to each of the pets' do
+
+			visit "/pets"
+
+			expect(current_path).to eq("/pets")
+
+			within "#pet-#{@jona.id}" do
+				expect(page).to have_link("Delete Pet")
+
+				click_on "Delete Pet"
+
+				expect(current_path).to eq("/pets")
+			end
+
+			expect(page).not_to have_css("img[src*='#{@jona.image}']")
+			expect(page).not_to have_content(@jona.name)
+		end
 	end
 end

@@ -75,5 +75,23 @@ describe 'As a User' do
 				expect(current_path).to eq("/pets/#{@jona.id}/edit")
 			end
 		end
+
+		it 'I see an Delete Pet link next to each of my pets' do
+
+			visit "/shelters/#{@aps.id}/pets"
+
+			expect(current_path).to eq("/shelters/#{@aps.id}/pets")
+
+			within "#pet-#{@jona.id}" do
+				expect(page).to have_link("Delete Pet")
+
+				click_on "Delete Pet"
+
+				expect(current_path).to eq("/pets")
+			end
+
+			expect(page).not_to have_css("img[src*='#{@jona.image}']")
+			expect(page).not_to have_content(@jona.name)
+		end
 	end
 end
