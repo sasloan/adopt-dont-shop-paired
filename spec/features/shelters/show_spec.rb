@@ -55,5 +55,16 @@ describe 'As a Visitor' do
 			expect(page).not_to have_content(@ddfl.city)
 			expect(page).not_to have_content(@ddfl.zip)
 		end
+
+		it 'I should see a link that takes me to the pet index page for this shelter' do
+
+			expect(current_path).to eq("/shelters/#{@ddfl.id}")
+
+			expect(page).to have_link("Shelter Pets")
+
+			click_on "Shelter Pets"
+
+			expect(current_path).to eq("/shelters/#{@ddfl.id}/pets")
+		end
 	end
 end
