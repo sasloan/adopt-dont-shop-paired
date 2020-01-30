@@ -577,6 +577,26 @@
         null,
         null
       ],
+      "/Users/sebastiansloan/turing/2mod/projects/adopt_dont_shop/spec/features/shelters/nav_bar/nav_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null
+      ],
       "/Users/sebastiansloan/turing/2mod/projects/adopt_dont_shop/spec/features/shelters/new_spec.rb": [
         1,
         null,
@@ -851,7 +871,7 @@
         1,
         null,
         1,
-        10,
+        11,
         null,
         null,
         1,
@@ -903,7 +923,7 @@
         1,
         null,
         1,
-        9,
+        10,
         null,
         null,
         1,
@@ -949,6 +969,6 @@
         null
       ]
     },
-    "timestamp": 1580398361
+    "timestamp": 1580398653
   }
 }
