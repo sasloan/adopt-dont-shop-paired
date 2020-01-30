@@ -10,5 +10,7 @@
 	<%= shelter.state %>
 	<%= shelter.zip %>
 	<p><%= link_to "Update Shelter", "/shelters/#{shelter.id}/edit" %></p>
+	<p><%= link_to "Delete Shelter", "/shelters/#{shelter.id}", method: :delete %></p>
+
 </section>
 <% end %>
