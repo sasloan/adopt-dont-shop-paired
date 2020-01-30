@@ -2,8 +2,14 @@
 
 <%= form_tag "/shelters/#{@shelter.id}/pets", method: :post do %>
 
+	<%= label_tag :image %>
+	<%= text_field_tag :image %>
+
 	<%= label_tag :name %>
 	<%= text_field_tag :name %>
+
+	<%= label_tag :description %>
+	<%= text_field_tag :description %>
 
 	<%= label_tag :approximate_age %>
 	<%= number_field_tag :approximate_age %>

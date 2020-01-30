@@ -2,6 +2,7 @@
 
 <%= image_tag "#{@pet.image}" %>
 
+	<p> Description: <%= @pet.description %></p>
 	<p> The approximate age of this pet is: <%= @pet.approximate_age %></p>
 	<p> This pet is a: <%= @pet.sex %></p>
 	<% if @pet.adoptable %>
