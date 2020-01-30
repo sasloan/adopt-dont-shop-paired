@@ -19,3 +19,4 @@
 @twitch = @acph.pets.create!(image: "https://i.pinimg.com/originals/6e/3c/c1/6e3cc15c678002f4ece659442ae9aefd.jpg", name: "Twitch", description: "Doxine Mini", approximate_age: 7, sex: "Male")
 @freja = @ddfl.pets.create!(image: "https://thehappypuppysite.com/wp-content/uploads/2018/08/great-pyrenees-long.jpg", name: "Freja", description: "Great Perinnes", approximate_age: 3, sex: "Female")
 @ciri = @ddfl.pets.create!(image: "https://www.thelabradordog.com/wp-content/uploads/2018/11/Albino-Labrador.png", name: "Ciri", description: "White Lab", approximate_age: 2, sex: "Female")
+@maggie = @acph.pets.create!(name: "Maggie", description: "Black Lab", approximate_age: 14, sex: "Female")

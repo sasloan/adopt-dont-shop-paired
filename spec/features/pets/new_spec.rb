@@ -32,7 +32,7 @@ describe 'As a Visitor' do
 			fill_in :approximate_age, with: 8
 			fill_in :sex, with: "Male"
 
-			click_on "Submit"
+			click_on "Create Pet"
 
 			expect(current_path).to eq("/shelters/#{@aps.id}/pets")
 
