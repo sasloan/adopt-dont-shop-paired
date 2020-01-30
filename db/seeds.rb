@@ -8,7 +8,7 @@
 
 # Shelters
 @mikes = Shelter.create!(name: "Mike's Shelter", address: "1331 17th Street", city: "Denver", state: "CO", zip: 80202)
-@megs = Shelter.create!(name: "Meg's Shelter", address: "150 Main Street Hershey", state: "PA", zip: 17033)
+@megs = Shelter.create!(name: "Meg's Shelter", address: "150 Main Street ", city: "Hershey", state: "PA", zip: 17033)
 # @ddfl = Shelter.create!(name: "Denver Dumb Friends League", address: "1267 Quebec Dr.", city: "Denver", state: "Co.", zip: 80230)
 # @acph = Shelter.create!(name: "Adams County Pet Hospital", address: "7834 Pecos St.", city: "Thornton", state: "Co.", zip: 80221)
 # @aps = Shelter.create!(name: "Arvada Pet Shelter", address: "9876 Lamar Blvd.", city: "Arvada", state: "Co.", zip: 80003)
