@@ -39,18 +39,6 @@ class SheltersController < ApplicationController
 		@pets = @shelter.pets.all
 	end
 
-
-		def pets_new
-			@shelter = Shelter.find(params[:shelter_id])
-		end
-
-		def pets_create
-			@shelter = Shelter.find(params[:shelter_id])
-			@pet = @shelter.pets.create(pet_params)
-
-			redirect_to "/shelters/#{@shelter.id}/pets"
-		end
-
 	private
 
 	def shelter_params

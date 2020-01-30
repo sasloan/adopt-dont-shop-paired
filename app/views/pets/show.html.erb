@@ -1,6 +1,7 @@
 <h2><%= @pet.name %></h2>
 
 <%= image_tag "#{@pet.image}" %>
+<%= link_to "Update Pet", "/pets/#{@pet.id}/edit" %>
 
 	<p> Description: <%= @pet.description %></p>
 	<p> The approximate age of this pet is: <%= @pet.approximate_age %></p>
