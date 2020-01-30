@@ -13,10 +13,10 @@ class PetsController < ApplicationController
 	end
 
 	def create
-		@shelter = Shelter.find(params[:shelter_id])
-		@pet = @shelter.pets.create(pet_params)
+		shelter = Shelter.find(params[:shelter_id])
+		pet = shelter.pets.create(pet_params)
 
-		redirect_to "/shelters/#{@shelter.id}/pets"
+		redirect_to "/shelters/#{shelter.id}/pets"
 	end
 
 	def edit
@@ -24,15 +24,15 @@ class PetsController < ApplicationController
 	end
 
 	def update
-		@pet = Pet.find(params[:pet_id])
-		@pet.update(pet_params)
+		pet = Pet.find(params[:pet_id])
+		pet.update(pet_params)
 
-		redirect_to "/pets/#{@pet.id}"
+		redirect_to "/pets/#{pet.id}"
 	end
 
 	def destroy
-		@pet = Pet.find(params[:pet_id])
-		@pet.delete
+		pet = Pet.find(params[:pet_id])
+		pet.delete
 
 		redirect_to "/pets"
 	end
