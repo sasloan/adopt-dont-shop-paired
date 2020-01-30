@@ -95,5 +95,18 @@ describe 'As a Visitor' do
 				expect(current_path).to eq("/shelters/#{@aps.id}")
 			end
 		end
+
+		it 'I should see that the pets name is a link to the pets show page' do
+
+			expect(current_path).to eq("/pets")
+
+			within "#pet-#{@jona.id}" do
+				expect(page).to have_link(@jona.name)
+
+				click_on "#{@jona.name}"
+
+				expect(current_path).to eq("/pets/#{@jona.id}")
+			end
+		end
 	end
 end

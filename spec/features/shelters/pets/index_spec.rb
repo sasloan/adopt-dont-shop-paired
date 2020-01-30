@@ -93,5 +93,20 @@ describe 'As a User' do
 			expect(page).not_to have_css("img[src*='#{@jona.image}']")
 			expect(page).not_to have_content(@jona.name)
 		end
+
+		it 'I can see the pets name is a link to that pets show page' do
+
+			visit "/shelters/#{@aps.id}/pets"
+
+			expect(current_path).to eq("/shelters/#{@aps.id}/pets")
+
+			within"#pet-#{@jona.id}" do
+				expect(page).to have_link(@jona.name)
+
+				click_on "#{@jona.name}"
+
+				expect(current_path).to eq("/pets/#{@jona.id}")
+			end
+		end
 	end
 end

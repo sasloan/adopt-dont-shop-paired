@@ -5,7 +5,7 @@
 <% @pets.each do |pet| %>
 <section id='pet-<%= pet.id %>'>
 	<p><%= image_tag "#{pet.image}" %></p>
-	<p>Name: <%= pet.name %></p>
+	<p>Name: <%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
 	<p>Description: <%= pet.description %></p>
 	<p>Approximate Age: <%= pet.approximate_age %></p>
 	<p>Gender: <%= pet.sex %></p>
