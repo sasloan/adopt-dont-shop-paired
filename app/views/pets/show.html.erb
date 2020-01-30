@@ -2,6 +2,7 @@
 
 <%= image_tag "#{@pet.image}" %>
 <%= link_to "Update Pet", "/pets/#{@pet.id}/edit" %>
+<%= link_to "Delete Pet", "/pets/#{@pet.id}", method: :delete %>
 
 	<p> Description: <%= @pet.description %></p>
 	<p> The approximate age of this pet is: <%= @pet.approximate_age %></p>

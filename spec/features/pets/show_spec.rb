@@ -39,5 +39,27 @@ describe 'As a Visitor' do
 
 			expect(current_path).to eq("/pets/#{@jona.id}/edit")
 		end
+
+		it 'I can see a button to Delete this Pet' do
+
+			visit "/pets/#{@jona.id}"
+
+			expect(current_path).to eq("/pets/#{@jona.id}")
+
+			expect(page).to have_css("img[src*='#{@jona.image}']")
+			expect(page).to have_content(@jona.name)
+			expect(page).to have_content(@jona.approximate_age)
+			expect(page).to have_content(@jona.sex)
+			expect(page).to have_content("This pet is available to adopt")
+
+			expect(page).to have_link("Delete Pet")
+
+			click_on "Delete Pet"
+
+			expect(current_path).to eq("/pets")
+
+			expect(page).not_to have_css("img[src*='#{@jona.image}']")
+			expect(page).not_to have_content(@jona.name)
+		end
 	end
 end
