@@ -71,5 +71,18 @@ describe 'As a Visitor' do
 			expect(page).not_to have_content(@ddfl.name)
 			expect(page).not_to have_content(@ddfl.address)
 		end
+
+		it 'The name of the shelter is a link to its show page' do
+
+			expect(current_path).to eq("/shelters")
+
+			within"#shelter-#{@ddfl.id}" do
+				expect(page).to have_link(@ddfl.name)
+
+				click_on "#{@ddfl.name}"
+
+				expect(current_path).to eq("/shelters/#{@ddfl.id}")
+			end
+		end
 	end
 end
