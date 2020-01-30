@@ -46,5 +46,18 @@ describe 'As a User' do
 			expect(page).not_to have_css("img[src*='#{@twitch.image}']")
 			expect(page).not_to have_content(@twitch.name)
 		end
+
+		it 'I see a button to add a new pet to the shelter' do
+
+			visit "/shelters/#{@aps.id}/pets"
+
+			expect(current_path).to eq("/shelters/#{@aps.id}/pets")
+
+			expect(page).to have_link("Create Pet")
+
+			click_on "Create Pet"
+
+			expect(current_path).to eq("/shelters/#{@aps.id}/pets/new")
+		end
 	end
 end

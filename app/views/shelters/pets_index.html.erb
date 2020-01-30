@@ -1,5 +1,7 @@
 <h2> All Pets at <%= @shelter.name %></h2>
 
+<%= link_to "Create Pet", "/shelters/#{@shelter.id}/pets/new" %>
+
 <% @pets.each do |pet| %>
 	<p><%= image_tag "#{pet.image}" %></p>
 	<p>Name: <%= pet.name %></p>
