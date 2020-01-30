@@ -16,7 +16,7 @@ describe 'As a Visitor' do
 			expect(page).to have_content(@jona.name)
 			expect(page).to have_content(@jona.age)
 			expect(page).to have_content(@jona.sex)
-			expect(page).to have_content("This pet is available to adopt")
+			expect(page).to have_content("Status: Adoptable")
 
 			expect(current_path).to eq("/pets/#{@jona.id}")
 
@@ -46,7 +46,7 @@ describe 'As a Visitor' do
 			expect(page).to have_content("New Jona")
 			expect(page).to have_content("Pretty Shepherd")
 			expect(page).to have_content(9)
-			expect(page).to have_content("This pet is available to adopt")
+			expect(page).to have_content("Status: Adoptable")
 		end
 	end
 end

@@ -40,7 +40,7 @@ describe 'As a Visitor' do
 
 			click_on "New Shelter"
 
-			expect(current_path).to eq("/shelters/:shelter_id/new")
+			expect(current_path).to eq("/shelters/new")
 		end
 
 		it 'There is a link next to each shelter that allows me to update the shelters information' do

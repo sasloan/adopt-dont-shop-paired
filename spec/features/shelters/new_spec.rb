@@ -8,7 +8,7 @@ describe 'As a Visitor' do
 
 			click_on 'New Shelter'
 
-			expect(current_path).to eq("/shelters/:shelter_id/new")
+			expect(current_path).to eq("/shelters/new")
 
 			expect(page).to have_content("Name")
 			expect(page).to have_content("Address")

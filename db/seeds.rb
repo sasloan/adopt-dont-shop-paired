@@ -15,8 +15,8 @@
 
 # Pets
 
-@athena = @mikes.pets.create!(name: "Athena", description: "butthead", age: 1, sex: "Female")
-@odell = @megs.pets.create!(name: "Odell", description: "good dog", age: 4, sex: "Male")
+@athena = @mikes.pets.create!(name: "Athena", description: "butthead", age: 1, sex: "F")
+@odell = @megs.pets.create!(name: "Odell", description: "good dog", age: 4, sex: "M")
 # @jona = @aps.pets.create!(image: "https://www.allthingsdogs.com/wp-content/uploads/2018/08/How-to-Care-for-a-Black-German-Shepherd.jpg", name: "Jona Bark", description: "Black Shepard", age: 6, sex: "Female")
 # @ozzy = @aps.pets.create!(image: "https://www.insidedogsworld.com/wp-content/uploads/2017/06/German-Shepherd-Standard-Coat-GSC-1000x575-1-1-1-1.jpg", name: "Ozzy Paws Born", description: "German Shepard", age: 4, sex: "Male")
 # @twitch = @acph.pets.create!(image: "https://i.pinimg.com/originals/6e/3c/c1/6e3cc15c678002f4ece659442ae9aefd.jpg", name: "Twitch", description: "Doxine Mini", age: 7, sex: "Male")

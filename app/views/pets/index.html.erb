@@ -5,9 +5,9 @@
 	<p><%= image_tag "#{pet.image}" %></p>
 	<p>Name: <%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
 	<p>Description <%= pet.description %></p>
-	<p>Approximate Age: <%= pet.age %></p>
-	<p>Gender: <%= pet.sex %></p>
-	<p>Shelter Name: <%= link_to "#{pet.shelter.name}", "/shelters/#{pet.shelter.id}" %></p>
+	<p>Age: <%= pet.age %></p>
+	<p>Sex: <%= pet.sex %></p>
+	<p>Shelter: <%= link_to "#{pet.shelter.name}", "/shelters/#{pet.shelter.id}" %></p>
 	<p><%= link_to "Update Pet", "/pets/#{pet.id}/edit" %></p>
 	<p><%= link_to "Delete Pet", "/pets/#{pet.id}", method: :delete %></p>
 

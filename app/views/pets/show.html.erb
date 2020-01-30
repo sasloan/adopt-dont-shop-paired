@@ -5,10 +5,10 @@
 <%= link_to "Delete Pet", "/pets/#{@pet.id}", method: :delete %>
 
 	<p> Description: <%= @pet.description %></p>
-	<p> The approximate age of this pet is: <%= @pet.age %></p>
-	<p> This pet is a: <%= @pet.sex %></p>
+	<p> Age: <%= @pet.age %></p>
+	<p> Sex: <%= @pet.sex %></p>
 	<% if @pet.adoptable %>
-		<p> This pet is available to adopt </p>
+		<p>Status: Adoptable</p>
 	<% else %>
 		<p> This pet is Pending </p>
 	<% end %>
