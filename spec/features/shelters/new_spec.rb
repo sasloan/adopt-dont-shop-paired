@@ -20,7 +20,7 @@ describe 'As a Visitor' do
 			fill_in :address, with: "5478 Alameda ave."
 			fill_in :city, with: "Aurora"
 			fill_in :state, with: "Colorado"
-			fill_in :zip, with: 80230
+			fill_in :zip, with: "80230"
 
 			click_on 'Create Shelter'
 
@@ -30,7 +30,7 @@ describe 'As a Visitor' do
 			expect(page).to have_content("5478 Alameda ave.")
 			expect(page).to have_content("Aurora")
 			expect(page).to have_content("Colorado")
-			expect(page).to have_content(80230)
+			expect(page).to have_content("80230")
 		end
 	end
 end
