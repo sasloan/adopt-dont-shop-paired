@@ -38,7 +38,7 @@ describe 'As a Visitor' do
 			fill_in :age, with: 9
 			fill_in :sex, with: "Female"
 
-			click_on "Submit"
+			click_on "Update Pet"
 
 			expect(current_path).to eq("/pets/#{@jona.id}")
 

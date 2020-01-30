@@ -30,7 +30,7 @@ describe 'As a Visitor' do
 			fill_in :state, with: "Colorado"
 			fill_in :zip, with: 80233
 
-			click_on "Submit"
+			click_on "Update Shelter"
 
 			expect(current_path).to eq("/shelters/#{@acph.id}")
 
