@@ -49,5 +49,20 @@ describe 'As a Visitor' do
 			expect(page).to have_content(@ciri.sex)
 			expect(page).to have_content(@ciri.shelter.name)
 		end
+
+		it 'I see a Update option next to each of the pets' do
+
+			visit "/pets"
+
+			expect(current_path).to eq("/pets")
+
+			within "#pet-#{@jona.id}" do
+				expect(page).to have_link("Update Pet")
+
+				click_on "Update Pet"
+
+				expect(current_path).to eq("/pets/#{@jona.id}/edit")
+			end
+		end
 	end
 end

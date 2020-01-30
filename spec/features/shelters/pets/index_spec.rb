@@ -60,5 +60,20 @@ describe 'As a User' do
 
 			expect(current_path).to eq("/shelters/#{@aps.id}/pets/new")
 		end
+
+		it 'I see an Update Pet link next to each of my pets' do
+
+			visit "/shelters/#{@aps.id}/pets"
+
+			expect(current_path).to eq("/shelters/#{@aps.id}/pets")
+
+			within "#pet-#{@jona.id}" do
+				expect(page).to have_link("Update Pet")
+
+				click_on "Update Pet"
+
+				expect(current_path).to eq("/pets/#{@jona.id}/edit")
+			end
+		end
 	end
 end

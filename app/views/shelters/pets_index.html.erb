@@ -3,10 +3,13 @@
 <%= link_to "Create Pet", "/shelters/#{@shelter.id}/pets/new" %>
 
 <% @pets.each do |pet| %>
+<section id='pet-<%= pet.id %>'>
 	<p><%= image_tag "#{pet.image}" %></p>
 	<p>Name: <%= pet.name %></p>
 	<p>Description: <%= pet.description %></p>
 	<p>Approximate Age: <%= pet.approximate_age %></p>
 	<p>Gender: <%= pet.sex %></p>
 	<p>Shelter Name: <%= pet.shelter.name %></p>
+	<p><%= link_to "Update Pet", "/pets/#{pet.id}/edit" %></p>
+</section>
 <% end %>
