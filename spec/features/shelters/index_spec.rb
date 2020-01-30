@@ -42,5 +42,18 @@ describe 'As a Visitor' do
 
 			expect(current_path).to eq("/shelters/:shelter_id/new")
 		end
+
+		it 'There is a link next to each shelter that allows me to update the shelters information' do
+
+			expect(current_path).to eq("/shelters")
+
+			within"#shelter-#{@ddfl.id}" do
+			expect(page).to have_link("Update Shelter")
+
+			click_on "Update Shelter"
+
+			expect(current_path).to eq("/shelters/#{@ddfl.id}/edit")
+			end
+		end
 	end
 end

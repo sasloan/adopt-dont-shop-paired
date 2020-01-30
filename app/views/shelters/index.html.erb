@@ -3,9 +3,12 @@
 <p><%= link_to 'New Shelter', "/shelters/:shelter_id/new" %></p>
 
 <% @shelters.each do |shelter| %>
+<section id='shelter-<%= shelter.id%>'>
 	<%= shelter.name %>
 	<%= shelter.address %>
 	<%= shelter.city %>
 	<%= shelter.state %>
 	<%= shelter.zip %>
+	<p><%= link_to "Update Shelter", "/shelters/#{shelter.id}/edit" %></p>
+</section>
 <% end %>
