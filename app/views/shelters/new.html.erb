@@ -1,21 +1,23 @@
-<h3> Create New Shelter </h3>
+<h2> Create New Shelter </h2>
 
+<div class='form'>
 <%= form_tag "/shelters" do %>
 
-	<%= label_tag :name %>
-	<%= text_field_tag :name %>
+	<p><%= label_tag :name %>
+	<%= text_field_tag :name %></p>
 
-	<%= label_tag :address %>
-	<%= text_field_tag :address %>
+	<p><%= label_tag :address %>
+	<%= text_field_tag :address %></p>
 
-	<%= label_tag :city %>
-	<%= text_field_tag :city %>
+	<p><%= label_tag :city %>
+	<%= text_field_tag :city %></p>
 
-	<%= label_tag :state %>
-	<%= text_field_tag :state %>
+	<p><%= label_tag :state %>
+	<%= text_field_tag :state %></p>
 
-	<%= label_tag :zip %>
-	<%= text_field_tag :zip %>
+	<p><%= label_tag :zip %>
+	<%= text_field_tag :zip %></p>
 
 	<%= submit_tag 'Create Shelter' %>
 <% end %>
+</div>

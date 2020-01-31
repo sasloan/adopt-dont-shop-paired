@@ -10,9 +10,54 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  */
 
- @import "bootstrap-sprackets";
- @import "boostrap"
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+nav {
+	background-color: lightgrey;
+}
+
+.header {
+	background-color: blue;
+	text-align: center;
+	padding: 40px;
+	font-size: 70px;
+}
+
+h1 {
+	margin: 0;
+	background-size: auto;
+}
+
+h2 {
+	text-align: center;
+}
+
+h4 {
+	text-align: left;
+}
+
+.index {
+	text-align: center;
+	margin-bottom: 50px;
+	background-color: lightblue;
+	margin: 50px;
+	padding: 50px;
+}
+
+.show {
+	text-align: center;
+	margin: 50px;
+
+}
+
+.form {
+	text-align: center;
+	margin: 50px;
+	font-size: 30px;
+	background-color: lightgreen;
+	padding: 50px;
+}
