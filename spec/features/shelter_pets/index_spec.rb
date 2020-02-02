@@ -128,15 +128,17 @@ describe 'As a User' do
 
 			expect(page).not_to have_content("Number of Pets: 5")
 		end
-
-		it 'I expect to see all the pets ordered in the status of adoptable first' do
-
-			visit "/shelters/#{@aps.id}/pets"
-
-			expect(current_path).to eq("/shelters/#{@aps.id}/pets")
-
-			expect(@aps.pets.first).to eq(@jona)
-			expect(@aps.pets.last).to eq(@ozzy)
-		end
 	end
+	# Tes to Cover the Adoptable organization.
+
+	# 	it 'I expect to see all the pets ordered in the status of adoptable first' do
+	#
+	# 		visit "/shelters/#{@aps.id}/pets"
+	#
+	# 		expect(current_path).to eq("/shelters/#{@aps.id}/pets")
+	#
+	# 		expect(@aps.pets.first).to eq(@jona)
+	# 		expect(@aps.pets.last).to eq(@ozzy)
+	# 	end
+	# end
 end
