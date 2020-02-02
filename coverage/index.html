@@ -14,7 +14,7 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2020-01-30T13:41:47-07:00">2020-01-30T13:41:47-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2020-02-02T10:28:19-07:00">2020-02-02T10:28:19-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,15 +25,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.35
+         1.36
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>32</b> files in total.
-    <b>515</b> relevant lines. 
-    <span class="green"><b>515</b> lines covered</span> and
+    <b>528</b> relevant lines. 
+    <span class="green"><b>528</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -77,7 +77,7 @@
         <td>4</td>
         <td>4</td>
         <td>0</td>
-        <td>5.0</td>
+        <td>5.5</td>
       </tr>
       
       <tr>
@@ -113,11 +113,11 @@
       <tr>
         <td class="strong"><a href="#6fc3aae72ea8ccad17e5bc9a3aba979ceb5ca476" class="src_link" title="app/models/pet.rb">app/models/pet.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>7</td>
-        <td>3</td>
-        <td>3</td>
+        <td>11</td>
+        <td>5</td>
+        <td>5</td>
         <td>0</td>
-        <td>1.0</td>
+        <td>3.0</td>
       </tr>
       
       <tr>
@@ -303,9 +303,9 @@
       <tr>
         <td class="strong"><a href="#3fffb9ba85664ed3d050cb565001705ce3a32c63" class="src_link" title="spec/features/shelter_pets/index_spec.rb">spec/features/shelter_pets/index_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>112</td>
-        <td>63</td>
-        <td>63</td>
+        <td>122</td>
+        <td>68</td>
+        <td>68</td>
         <td>0</td>
         <td>1.4</td>
       </tr>
@@ -353,11 +353,11 @@
       <tr>
         <td class="strong"><a href="#e34c220e0c0ea4db1c8f453534f8059820b0afca" class="src_link" title="spec/models/pet_spec.rb">spec/models/pet_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>14</td>
-        <td>9</td>
-        <td>9</td>
+        <td>24</td>
+        <td>15</td>
+        <td>15</td>
         <td>0</td>
-        <td>1.6</td>
+        <td>1.3</td>
       </tr>
       
       <tr>
@@ -744,14 +744,14 @@
           <code class="ruby">	def index</code>
         </li>
       
-        <li class="covered" data-hits="9" data-linenumber="4">
-          <span class="hits">9</span>
+        <li class="covered" data-hits="10" data-linenumber="4">
+          <span class="hits">10</span>
           
           <code class="ruby">		@shelter = Shelter.find(params[:shelter_id])</code>
         </li>
       
-        <li class="covered" data-hits="9" data-linenumber="5">
-          <span class="hits">9</span>
+        <li class="covered" data-hits="10" data-linenumber="5">
+          <span class="hits">10</span>
           
           <code class="ruby">		@pets = @shelter.pets.all</code>
         </li>
@@ -1117,8 +1117,8 @@
     <h3>app/models/pet.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>3</b> relevant lines. 
-      <span class="green"><b>3</b> lines covered</span> and
+      <b>5</b> relevant lines. 
+      <span class="green"><b>5</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -1163,6 +1163,30 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="7">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="8">
+          <span class="hits">1</span>
+          
+          <code class="ruby">	def self.pet_count</code>
+        </li>
+      
+        <li class="covered" data-hits="11" data-linenumber="9">
+          <span class="hits">11</span>
+          
+          <code class="ruby">		count</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="10">
+          
+          
+          <code class="ruby">	end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="11">
           
           
           <code class="ruby">end</code>
@@ -4292,8 +4316,8 @@
     <h3>spec/features/shelter_pets/index_spec.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>63</b> relevant lines. 
-      <span class="green"><b>63</b> lines covered</span> and
+      <b>68</b> relevant lines. 
+      <span class="green"><b>68</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -4331,32 +4355,32 @@
           <code class="ruby">		before :each do</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="6">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="7" data-linenumber="6">
+          <span class="hits">7</span>
           
           <code class="ruby">			@aps = Shelter.create!(name: &quot;Arvada Pet Shelter&quot;, address: &quot;9876 Lamar Blvd.&quot;, city: &quot;Arvada&quot;, state: &quot;Co.&quot;, zip: &quot;80003&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="7">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="7" data-linenumber="7">
+          <span class="hits">7</span>
           
           <code class="ruby">			@jona = @aps.pets.create!(image: &quot;https://www.allthingsdogs.com/wp-content/uploads/2018/08/How-to-Care-for-a-Black-German-Shepherd.jpg&quot;, name: &quot;Jona Bark&quot;, description: &quot;Black Shepard&quot;, age: 6, sex: &quot;Female&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="8">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="7" data-linenumber="8">
+          <span class="hits">7</span>
           
           <code class="ruby">			@ozzy = @aps.pets.create!(image: &quot;https://www.insidedogsworld.com/wp-content/uploads/2017/06/German-Shepherd-Standard-Coat-GSC-1000x575-1-1-1-1.jpg&quot;, name: &quot;Ozzy Paws Born&quot;, description: &quot;German Shepard&quot;, age: 4, sex: &quot;Male&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="9">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="7" data-linenumber="9">
+          <span class="hits">7</span>
           
           <code class="ruby">			@acph = Shelter.create!(name: &quot;Adams County Pet Hospital&quot;, address: &quot;7834 Pecos St.&quot;, city: &quot;Thornton&quot;, state: &quot;Co.&quot;, zip: &quot;80221&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="10">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="7" data-linenumber="10">
+          <span class="hits">7</span>
           
           <code class="ruby">			@twitch = @acph.pets.create!(image: &quot;https://i.pinimg.com/originals/6e/3c/c1/6e3cc15c678002f4ece659442ae9aefd.jpg&quot;, name: &quot;Twitch&quot;, description: &quot;Doxine Mini&quot;, age: 7, sex: &quot;Male&quot;)</code>
         </li>
@@ -4964,10 +4988,70 @@
         <li class="never" data-hits="" data-linenumber="111">
           
           
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="112">
+          <span class="hits">1</span>
+          
+          <code class="ruby">		it &#39;I see the total number of pets in this shelter&#39; do</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="113">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="114">
+          <span class="hits">1</span>
+          
+          <code class="ruby">			visit &quot;/shelters/#{@aps.id}/pets&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="115">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="116">
+          <span class="hits">1</span>
+          
+          <code class="ruby">			expect(current_path).to eq(&quot;/shelters/#{@aps.id}/pets&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="117">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="118">
+          <span class="hits">1</span>
+          
+          <code class="ruby">			expect(page).to have_content(&quot;Number of Pets: 2&quot;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="119">
+          <span class="hits">1</span>
+          
+          <code class="ruby">			expect(page).not_to have_content(&quot;Number of Pets: 5&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="120">
+          
+          
+          <code class="ruby">		end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="121">
+          
+          
           <code class="ruby">	end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="112">
+        <li class="never" data-hits="" data-linenumber="122">
           
           
           <code class="ruby">end</code>
@@ -6523,8 +6607,8 @@
     <h3>spec/models/pet_spec.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>9</b> relevant lines. 
-      <span class="green"><b>9</b> lines covered</span> and
+      <b>15</b> relevant lines. 
+      <span class="green"><b>15</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -6611,6 +6695,66 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="14">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="15">
+          <span class="hits">1</span>
+          
+          <code class="ruby">	describe &#39;class methods&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="16">
+          <span class="hits">1</span>
+          
+          <code class="ruby">		it &#39;.pet_count&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="17">
+          <span class="hits">1</span>
+          
+          <code class="ruby">			aps = Shelter.create!(name: &quot;Arvada Pet Shelter&quot;, address: &quot;9876 Lamar Blvd.&quot;, city: &quot;Arvada&quot;, state: &quot;Co.&quot;, zip: &quot;80003&quot;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="18">
+          <span class="hits">1</span>
+          
+          <code class="ruby">			jona = aps.pets.create!(image: &quot;https://www.allthingsdogs.com/wp-content/uploads/2018/08/How-to-Care-for-a-Black-German-Shepherd.jpg&quot;, name: &quot;Jona Bark&quot;, description: &quot;Black Shepard&quot;, age: 6, sex: &quot;Female&quot;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="19">
+          <span class="hits">1</span>
+          
+          <code class="ruby">			ozzy = aps.pets.create!(image: &quot;https://www.insidedogsworld.com/wp-content/uploads/2017/06/German-Shepherd-Standard-Coat-GSC-1000x575-1-1-1-1.jpg&quot;, name: &quot;Ozzy Paws Born&quot;, description: &quot;German Shepard&quot;, age: 4, sex: &quot;Male&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="20">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="21">
+          <span class="hits">1</span>
+          
+          <code class="ruby">			expect(Pet.pet_count).to eq(2)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="22">
+          
+          
+          <code class="ruby">		end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="23">
+          
+          
+          <code class="ruby">	end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="24">
           
           
           <code class="ruby">end</code>

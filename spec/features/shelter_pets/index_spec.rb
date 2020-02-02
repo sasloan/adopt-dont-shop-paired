@@ -108,5 +108,15 @@ describe 'As a User' do
 				expect(current_path).to eq("/pets/#{@jona.id}")
 			end
 		end
+
+		it 'I see the total number of pets in this shelter' do
+
+			visit "/shelters/#{@aps.id}/pets"
+
+			expect(current_path).to eq("/shelters/#{@aps.id}/pets")
+
+			expect(page).to have_content("Number of Pets: 2")
+			expect(page).not_to have_content("Number of Pets: 5")
+		end
 	end
 end
