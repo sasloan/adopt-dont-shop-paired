@@ -14,9 +14,14 @@
 			<h1>Adopt Don't Shop</h1>
 		</header>
 		<nav class="navbar">
-			<h4><%= link_to "Pets", "/pets" %> | 
+			<h4><%= link_to "Pets", "/pets" %> |
 					<%= link_to "Shelters", "/shelters" %></h4>
 		</nav>
+			<% flash.each do |type, message| %>
+    	<section class=<%= type %>>
+      	<p><%= message %></p>
+    	</section>
+	<% end %>
     <%= yield %>
   </body>
 </html>

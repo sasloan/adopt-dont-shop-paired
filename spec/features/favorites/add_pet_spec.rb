@@ -14,7 +14,7 @@ describe 'As a Visitor' do
 
 	    click_button "Add Pet To Favorites"
 
-			expect(current_path).to eq("/pets/#{@pet.id}")
+			expect(current_path).to eq("/pets/#{@jona.id}")
 	    expect(page).to have_content("#{@jona.name} has been added to your favorites")
 	  end
 	end
