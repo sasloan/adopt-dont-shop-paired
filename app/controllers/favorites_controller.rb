@@ -1,5 +1,6 @@
 class FavoritesController < ApplicationController
-
+	include ActionView::Helpers::TextHelper
+	
 	def update
 		pet = Pet.find(params[:pet_id])
 		pet_id_str = pet.id.to_s
