@@ -2,7 +2,7 @@ class FavoritesController < ApplicationController
 	include ActionView::Helpers::TextHelper
 
 	def index
-		session[:favorites] = favorites.contents
+		
 	end
 
 	def update

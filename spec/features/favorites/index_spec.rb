@@ -44,25 +44,17 @@ describe 'As a Visitor' do
 
 			expect(current_path).to eq("/favorites")
 
-			expect(page).to have_content(@jona.name)
-			expect(page).to have_content(@jona.age)
-			expect(page).to have_content(@jona.sex)
-			expect(page).to have_content(@jona.description)
+			expect(page).to have_css("img[src*='#{@jona.image}']")
+			expect(page).to have_link(@jona.name)
 
-			expect(page).to have_content(@cricket.name)
-			expect(page).to have_content(@cricket.age)
-			expect(page).to have_content(@cricket.sex)
-			expect(page).to have_content(@cricket.description)
+			expect(page).to have_css("img[src*='#{@cricket.image}']")
+			expect(page).to have_link(@cricket.name)
 
-			expect(page).to have_content(@athena.name)
-			expect(page).to have_content(@athena.age)
-			expect(page).to have_content(@athena.sex)
-			expect(page).to have_content(@athena.description)
+			expect(page).to have_css("img[src*='#{@athena.image}']")
+			expect(page).to have_link(@athena.name)
 
-			expect(page).to have_content(@ozzy.name)
-			expect(page).to have_content(@ozzy.age)
-			expect(page).to have_content(@ozzy.sex)
-			expect(page).to have_content(@ozzy.description)
+			expect(page).to have_css("img[src*='#{@ozzy.image}']")
+			expect(page).to have_link(@ozzy.name)
 		end
 	end
 end
