@@ -27,5 +27,18 @@ describe 'As a Visitor' do
 
 			expect(current_path).to eq("/shelters")
 		end
+
+		it 'I should be able to see a link to favorites and see how many pets are favorited' do
+
+			visit "/pets"
+
+			expect(current_path).to eq("/pets")
+
+			expect(page).to have_link("Favorites: 0")
+
+			click_on "Favorites: 0"
+
+			expect(current_path).to eq("/favorites")
+		end
 	end
 end

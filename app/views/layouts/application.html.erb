@@ -15,13 +15,14 @@
 		</header>
 		<nav class="navbar">
 			<h4><%= link_to "Pets", "/pets" %> |
-					<%= link_to "Shelters", "/shelters" %></h4>
+					<%= link_to "Shelters", "/shelters" %> |
+					<%= link_to "Favorites #{@favorites.total_count}" %></h4>
 		</nav>
 			<% flash.each do |type, message| %>
     	<section class=<%= type %>>
       	<p><%= message %></p>
     	</section>
-	<% end %>
+			<% end %>
     <%= yield %>
   </body>
 </html>

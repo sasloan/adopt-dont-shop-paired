@@ -36,6 +36,31 @@ describe 'As a Visitor' do
 				expect(current_path).to eq("/pets/#{@ozzy.id}")
 				expect(page).to have_content("#{@ozzy.name} has been added to your favorites")
 			end
+
+			it 'I can see the number of pets displayed on the nav bar' do
+
+				visit "/pets/#{@jona.id}"
+
+				expect(page).to have_content("Favorites: 0")
+
+				visit "/pets/#{@jona.id}"
+
+				click_button "Add Pet To Favorites"
+
+				expect(current_path).to eq("/pets/#{@jona.id}")
+				expect(page).to have_content("#{@jona.name} has been added to your favorites")
+
+				expect(page).to have_content("Favorites: 1")
+
+				visit "/pets/#{@ozzy.id}"
+
+				click_button "Add Pet To Favorites"
+
+				expect(current_path).to eq("/pets/#{@ozzy.id}")
+				expect(page).to have_content("#{@ozzy.name} has been added to your favorites")
+
+				expect(page).to have_content("Favorites: 2")
+			end
 		end
 	end
 end
