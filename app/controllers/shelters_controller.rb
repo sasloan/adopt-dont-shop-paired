@@ -15,7 +15,7 @@ class SheltersController < ApplicationController
 		shelter = Shelter.new(shelter_params)
 		if shelter.save
 			redirect_to "/shelters"
-		else
+		else 
 			flash[:notice] = "Shelter not Created: Required information missing."
 			render :new
 		end

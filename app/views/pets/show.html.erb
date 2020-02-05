@@ -11,8 +11,12 @@
 	<% else %>
 		<p> This pet is Pending </p>
 	<% end %>
+	<% unless favorites.favorited?(@pet.id) %>
+		<p><%= button_to "Add Pet To Favorites", "/favorites/#{@pet.id}", method: :patch %></p>
+	<% else !favorites.favorited?(@pet.id) %> 
+		<p><%= button_to "Remove Pet From Favorites", "/favorites/#{@pet.id}", method: :delete %></p>
+	<% end %>
 
-	<p><%= button_to "Add Pet To Favorites", "/favorites/#{@pet.id}", method: :patch %></p>
 
 	<p><%= link_to "Update Pet", "/pets/#{@pet.id}/edit" %> |
 	<%= link_to "Delete Pet", "/pets/#{@pet.id}", method: :delete %></p>

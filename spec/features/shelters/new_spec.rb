@@ -32,5 +32,24 @@ describe 'As a Visitor' do
 			expect(page).to have_content("Colorado")
 			expect(page).to have_content("80230")
 		end
+
+		it 'I am sent to a new form and if I do not fill in required info I get a flash message' do
+
+			visit '/shelters'
+
+			click_on 'New Shelter'
+
+			expect(current_path).to eq("/shelters/new")
+
+			expect(page).to have_content("Name")
+			expect(page).to have_content("Address")
+			expect(page).to have_content("City")
+			expect(page).to have_content("State")
+			expect(page).to have_content("Zip")
+
+			click_on "Create Shelter"
+
+			expect(page).to have_content("Shelter not Created: Required information missing.")
+		end
 	end
 end

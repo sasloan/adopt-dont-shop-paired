@@ -18,8 +18,8 @@ class PetsController < ApplicationController
 		if pet.save
 			redirect_to "/shelters/#{shelter.id}/pets"
 		else
-			flash[:notice] = "Pet not created: Required info missing."
-			render :new
+			flash[:notice] = "Pet not Created: Required information missing."
+			redirect_to "/shelters/#{shelter.id}/pets/new"
 		end
 	end
 

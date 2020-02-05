@@ -56,5 +56,21 @@ describe 'As a Visitor' do
 			expect(page).to have_css("img[src*='#{@ozzy.image}']")
 			expect(page).to have_link(@ozzy.name)
 		end
+
+		it 'I should see a remove from favorites option within each pet' do
+
+			expect(current_path).to eq("/favorites")
+
+			within"#pet-#{@jona.id}" do
+				expect(page).to have_button("Remove Pet")
+
+				click_on "Remove Pet"
+
+				expect(current_path).to eq("/favorites")
+			end
+
+			expect(page).not_to have_css("img[src*='#{@jona.image}']")
+			expect(page).not_to have_content(@jona.name)
+		end
 	end
 end

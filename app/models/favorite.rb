@@ -22,4 +22,12 @@ class Favorite
 			key.to_i
 		end
 	end
+
+	def remove_pet(id)
+		@contents.except!(*id)
+	end
+
+	def favorited?(id)
+    @contents.has_key?(id.to_s)
+  end
 end

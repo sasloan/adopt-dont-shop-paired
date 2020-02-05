@@ -40,4 +40,22 @@ describe Favorite, type: :model do
 	    expect(favorite.count_of(5)).to eq(0)
 	  end
 	end
+
+	describe "#remove_pet" do
+		it "removes a pet to its contents" do
+			favorite = Favorite.new({
+				'1' => 2,  # two copies of pet 1
+				'2' => 3   # three copies of pet 2
+			})
+			subject.add_pet(1)
+			subject.add_pet(2)
+
+			expect(subject.contents).to eq({'1' => 3, '2' => 4})
+
+			subject.remove_pet(1)
+			subject.remove_pet(2)
+
+			expect(subject.contents).to eq({"1"=>3, "2"=>4})
+		end
+	end
 end
