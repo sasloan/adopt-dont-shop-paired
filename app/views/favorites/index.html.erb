@@ -1,0 +1,8 @@
+<div class='index'>
+<% @pets.each do |pet| %>
+	<% if favorites.find_keys.include?(pet.id) %>
+		<p><%= image_tag "#{pet.image}", width: 200, height: 150 %></p>
+		<p>Name: <%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
+	<% end %>
+<% end %>
+</div>

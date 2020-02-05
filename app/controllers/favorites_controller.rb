@@ -2,8 +2,9 @@ class FavoritesController < ApplicationController
 	include ActionView::Helpers::TextHelper
 
 	def index
-		
+		@pets = Pet.all
 	end
+
 
 	def update
     pet = Pet.find(params[:pet_id])

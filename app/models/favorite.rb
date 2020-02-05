@@ -16,4 +16,10 @@ class Favorite
 	def count_of(id)
     @contents[id.to_s].to_i
   end
+
+	def find_keys
+		@contents.keys.map do |key|
+			key.to_i
+		end
+	end
 end
