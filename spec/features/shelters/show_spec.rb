@@ -6,6 +6,8 @@ describe 'As a Visitor' do
 			@ddfl = Shelter.create!(name: "Denver Dumb Friends League", address: "1267 Quebec Dr.", city: "Denver", state: "Co.", zip: "80230")
 			@acph = Shelter.create!(name: "Adams County Pet Hospital", address: "7834 Pecos St.", city: "Thornton", state: "Co.", zip: "80221")
 			@aps = Shelter.create!(name: "Arvada Pet Shelter", address: "9876 Lamar Blvd.", city: "Arvada", state: "Co.", zip: "80003")
+			@acph = Shelter.create!(name: "Adams County Pet Hospital", address: "7834 Pecos St.", city: "Thornton", state: "Co.", zip: "80221")
+			@twitch = @acph.pets.create!(image: "https://i.pinimg.com/originals/6e/3c/c1/6e3cc15c678002f4ece659442ae9aefd.jpg", name: "Twitch", description: "Doxine Mini", age: 7, sex: "Male", adoptable: false)
 
 			visit "/shelters/#{@ddfl.id}"
 		end
@@ -56,6 +58,14 @@ describe 'As a Visitor' do
 			expect(page).not_to have_content(@ddfl.zip)
 		end
 
+		it 'I should NOT see a link to delete the shelter if any of its pets have a pending status' do
+
+			visit "/shelters/#{@acph.id}"
+
+			expect(page).not_to have_link("Delete Shelter")
+
+		end
+
 		it 'I should see a link that takes me to the pet index page for this shelter' do
 
 			expect(current_path).to eq("/shelters/#{@ddfl.id}")
@@ -66,35 +76,35 @@ describe 'As a Visitor' do
 
 			expect(current_path).to eq("/shelters/#{@ddfl.id}/pets")
 		end
-		
+
 		it 'I see a list of reviews for that shelter' do
 			# Review creation moved out of the before :each because of an issue with deleting reviews when shelter is deleted.
 			# I'll deal with it when I get to user story 28, which is that specific requirement.
 			content = "The people at this shelter were so kind and helpful."
 			image = "https://www.humanesociety.org/sites/default/files/styles/1240x698/public/2018/06/kittens-in-shelter-69469.jpg?h=ece64c50&itok=tOiKeqHY"
-			
+
 			@review_1 = @ddfl.reviews.create!(title: "Wonderul experience", rating: "5", content: content, image: image)
-			
+
 			visit "/shelters/#{@ddfl.id}"
-			
+
 			expect(page).to have_content(@review_1.title)
 			expect(page).to have_content("#{@review_1.rating}/5 stars")
 			expect(page).to have_content(@review_1.content)
 			expect(page).to have_css("img[src*='#{@review_1.image}']")
 		end
-		
+
 		it "I see a link next to each review to delete the review" do
 			content = "The people at this shelter were so kind and helpful."
 			image = "https://www.humanesociety.org/sites/default/files/styles/1240x698/public/2018/06/kittens-in-shelter-69469.jpg?h=ece64c50&itok=tOiKeqHY"
-			
+
 			@review_1 = @ddfl.reviews.create!(title: "Wonderul experience", rating: "5", content: content, image: image)
-			
+
 			visit "/shelters/#{@ddfl.id}"
-			
+
 			within "#review-#{@review_1.id}" do
   			click_link 'Delete Review'
 			end
-			
+
 			expect(page).not_to have_content(@review_1.title)
 			expect(page).not_to have_content("#{@review_1.rating}/5 stars")
 			expect(page).not_to have_content(@review_1.content)
