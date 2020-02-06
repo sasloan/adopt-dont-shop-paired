@@ -1,4 +1,3 @@
-./coverage
 coverage
 /.coverage
 ../coverage
@@ -37,3 +36,4 @@ coverage
 /node_modules
 /yarn-error.log
 .byebug_history
+#master
