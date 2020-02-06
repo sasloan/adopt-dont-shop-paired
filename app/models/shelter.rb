@@ -5,4 +5,5 @@ class Shelter < ApplicationRecord
 												:state,
 												:zip
 	has_many :pets
+	has_many :reviews, dependent: :destroy
 end
