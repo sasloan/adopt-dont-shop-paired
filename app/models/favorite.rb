@@ -5,29 +5,29 @@ class Favorite
 		@contents = initial_contents || Hash.new(0)
 	end
 
-  def total_count
-    @contents.values.sum
-  end
-
-	def add_pet(id)
-  	@contents[id.to_s] = count_of(id) + 1
-	end
-
-	def count_of(id)
-    @contents[id.to_s].to_i
-  end
-
-	def find_keys
+	def ids
 		@contents.keys.map do |key|
 			key.to_i
 		end
 	end
 
-	def remove_pet(id)
-		@contents.except!(*id)
+  def total_count
+    @contents.keys.length
+  end
+
+	def favorited?(pet_id)
+		@contents.has_key?(pet_id.to_s)
 	end
 
-	def favorited?(id)
-    @contents.has_key?(id.to_s)
-  end
+	def add_pet(pet_id)
+  	@contents[pet_id.to_s] = true
+	end
+
+	def delete(pet_id)
+	  @contents.except!(*pet_id)
+	end
+
+	def delete_all
+		@contents = Hash.new
+	end
 end

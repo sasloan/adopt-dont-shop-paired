@@ -9,7 +9,7 @@ describe 'As a Visitor' do
 			@athena = @aps.pets.create!(name: "Athena", description: "Butthead", age: 1, sex: "female", adoptable: false)
 			@ozzy = @aps.pets.create!(image: "https://www.insidedogsworld.com/wp-content/uploads/2017/06/German-Shepherd-Standard-Coat-GSC-1000x575-1-1-1-1.jpg", name: "Ozzy Paws Born", description: "German Shepard", age: 4, sex: "Male")
 		end
-		
+
 		it 'I should be able to click a link to go to the pets index page' do
 
 			visit "/shelters"
@@ -61,7 +61,7 @@ describe 'As a Visitor' do
 
 			expect(current_path).to eq("/pets/#{@jona.id}")
 			expect(page).to have_content("#{@jona.name} has been added to your favorites")
-
+			
 			expect(page).to have_content("Favorites: 1")
 
 			visit "/pets/#{@ozzy.id}"

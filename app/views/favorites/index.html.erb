@@ -1,11 +1,14 @@
-<% @pets.each do |pet| %>
-<div class='index'>
-	<section id='pet-<%= pet.id %>'>
-	<% if favorites.find_keys.include?(pet.id) %>
-		<p><%= image_tag "#{pet.image}", width: 200, height: 150 %></p>
-		<p>Name: <%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
-		<p><%= button_to "Remove Pet From Favorites", "/favorites/#{pet.id}", method: :delete %></p>
-	</section>
-</div>
+<% if favorites.contents.empty? %>
+	<h1> You have no Favorites yet!! </h1>
+<% else !favorites.contents.empty? %>
+	<p><%= button_to "Remove All Pets", "/favorites", method: :delete %></p>
+	<% @pets.each do |pet| %>
+			<section id='pet-<%= pet.id %>'>
+			<% if favorites.ids.include?(pet.id) %>
+				<p><%= image_tag "#{pet.image}", width: 200, height: 150 %></p>
+				<p>Name: <%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
+				<p><%= button_to "Remove Pet", "/favorites/#{pet.id}", method: :delete %></p>
+			</section>
+			<% end %>
 	<% end %>
 <% end %>

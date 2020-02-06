@@ -70,7 +70,68 @@ describe 'As a Visitor' do
 			end
 
 			expect(page).not_to have_css("img[src*='#{@jona.image}']")
-			expect(page).not_to have_content(@jona.name)
+		end
+
+		it 'I see a message that I have no favorites if the favorites is empty' do
+
+			expect(current_path).to eq("/favorites")
+
+			within"#pet-#{@jona.id}" do
+				expect(page).to have_button("Remove Pet")
+
+				click_on "Remove Pet"
+
+				expect(current_path).to eq("/favorites")
+			end
+
+			within"#pet-#{@cricket.id}" do
+				expect(page).to have_button("Remove Pet")
+
+				click_on "Remove Pet"
+
+				expect(current_path).to eq("/favorites")
+			end
+
+			within"#pet-#{@athena.id}" do
+				expect(page).to have_button("Remove Pet")
+
+				click_on "Remove Pet"
+
+				expect(current_path).to eq("/favorites")
+			end
+
+			within"#pet-#{@ozzy.id}" do
+				expect(page).to have_button("Remove Pet")
+
+				click_on "Remove Pet"
+
+				expect(current_path).to eq("/favorites")
+			end
+
+			expect(current_path).to eq("/favorites")
+			expect(page).to have_content("You have no Favorites yet!!")
+		end
+
+		it 'I have a button that I can push to erase all of the pets in my favorites' do
+
+			expect(current_path).to eq("/favorites")
+
+			expect(page).to have_css("img[src*='#{@jona.image}']")
+			expect(page).to have_link(@jona.name)
+
+			expect(page).to have_css("img[src*='#{@cricket.image}']")
+			expect(page).to have_link(@cricket.name)
+
+			expect(page).to have_css("img[src*='#{@athena.image}']")
+			expect(page).to have_link(@athena.name)
+
+			expect(page).to have_css("img[src*='#{@ozzy.image}']")
+			expect(page).to have_link(@ozzy.name)
+
+			click_on "Remove All Pets"
+
+			expect(current_path).to eq("/favorites")
+			expect(page).to have_content("All pets have been removed from your favorites.")
 		end
 	end
 end

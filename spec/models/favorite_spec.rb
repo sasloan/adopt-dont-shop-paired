@@ -1,61 +1,64 @@
 require 'rails_helper'
 
 describe Favorite, type: :model do
+	before :each do
+		@favorite_hash = {'1' => true,
+											'2' => true,
+											'3' => true,
+											'4' => true
+										}
 
-	subject { Favorite.new({'1' => 2, '2' => 3}) }
+		@list_1 = Favorite.new(@favorite_hash)
+	end
+
+	describe "#ids" do
+		it "I can see all the ids as keys in the favorites contents." do
+			expect(@list_1.ids).to eq([1, 2, 3, 4])
+		end
+	end
 
   describe "#total_count" do
-    it "can calculate the total number of favorites it holds" do
-      favorite = Favorite.new({
-        1 => 2,  # two copies of pet 1
-        2 => 3   # three copies of pet 2
-      })
-      expect(favorite.total_count).to eq(5)
+    it "I can calculate the total number of favorites it holds" do
+      expect(@list_1.total_count).to eq(4)
     end
   end
 
 	describe "#add_pet" do
-    it "adds a pet to its contents" do
-      favorite = Favorite.new({
-        '1' => 2,  # two copies of pet 1
-        '2' => 3   # three copies of pet 2
-      })
-      subject.add_pet(1)
-      subject.add_pet(2)
+    it "I add a pet to its contents" do
 
-      expect(subject.contents).to eq({'1' => 3, '2' => 4})
+      @list_1.add_pet('5')
+      @list_1.add_pet('6')
+
+			expected_hash = {'1' => true,
+											 '2' => true,
+										 	 '3' => true,
+										 	 '4' => true,
+										 	 '5' => true,
+										 	 '6' => true
+										 	 }
+
+      expect(@list_1.contents).to eq(expected_hash)
     end
-
-		it "adds a pet that hasn't been added yet" do
-	 		subject.add_pet('3')
-
-	 		expect(subject.contents).to eq({'1' => 2, '2' => 3, '3' => 1})
- 		end
 	end
 
-	describe "#count_of" do
-	  it "returns the count of all pets in the favorites" do
-	    favorite = Favorite.new({})
-
-	    expect(favorite.count_of(5)).to eq(0)
+	describe "#favorited?" do
+	  it "I can tell if this id has been favorited" do
+			expect(@list_1.favorited?("1")).to eq(true)
+      expect(@list_1.favorited?("5")).to eq(false)
 	  end
 	end
 
-	describe "#remove_pet" do
-		it "removes a pet to its contents" do
-			favorite = Favorite.new({
-				'1' => 2,  # two copies of pet 1
-				'2' => 3   # three copies of pet 2
-			})
-			subject.add_pet(1)
-			subject.add_pet(2)
-
-			expect(subject.contents).to eq({'1' => 3, '2' => 4})
-
-			subject.remove_pet(1)
-			subject.remove_pet(2)
-
-			expect(subject.contents).to eq({"1"=>3, "2"=>4})
+	describe "#delete" do
+		it 'I can delete a pet from the favorites index' do
+			@list_1.delete("1")
+      expected_hash = {"2" => true, "3" => true, "4" => true}
 		end
+	end
+
+	describe "#delete_all" do
+		it 'I can delete all pets from its favorites list' do
+      @list_1.delete_all
+      expect(@list_1.total_count).to eq(0)
+    end
 	end
 end
