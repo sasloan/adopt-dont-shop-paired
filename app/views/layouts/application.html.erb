@@ -15,15 +15,14 @@
 		</header>
 		<nav class="navbar">
 			<h4><%= link_to "Pets", "/pets" %> |
-					<%= link_to "Shelters", "/shelters" %></h4>
+					<%= link_to "Shelters", "/shelters" %> |
+					<%= link_to "Favorites: #{favorites.total_count}", "/favorites" %></h4>
 		</nav>
-    
-    <% flash.each do |type, message| %>
-      <section class=<%= type %>>
-    	  <p class="show"><%= message %></p>
-      </section>
-    <% end %>
-    
+			<% flash.each do |type, message| %>
+    	<section class=<%= type %>>
+      	<p class="show"><%= message %></p>
+    	</section>
+			<% end %>
     <%= yield %>
   </body>
 </html>

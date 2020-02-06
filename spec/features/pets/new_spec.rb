@@ -42,5 +42,29 @@ describe 'As a Visitor' do
 			expect(page).to have_content(8)
 			expect(page).to have_content("Male")
 		end
+
+		it 'If I dont fill in the infromation then I see a flash message and stay on the new form' do
+
+			visit "/shelters/#{@aps.id}/pets"
+
+			expect(current_path).to eq("/shelters/#{@aps.id}/pets")
+
+			expect(page).to have_link("Create Pet")
+
+			click_on "Create Pet"
+
+			expect(current_path).to eq("/shelters/#{@aps.id}/pets/new")
+
+			expect(page).to have_content("Image")
+			expect(page).to have_content("Name")
+			expect(page).to have_content("Description")
+			expect(page).to have_content("Age")
+			expect(page).to have_content("Sex")
+
+			click_on "Create Pet"
+
+			expect(current_path).to eq("/shelters/#{@aps.id}/pets/new")
+			expect(page).to have_content("Pet not Created: Required information missing.")
+		end
 	end
 end
