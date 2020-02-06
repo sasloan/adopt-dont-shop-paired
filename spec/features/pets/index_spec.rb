@@ -21,35 +21,45 @@ describe 'As a Visitor' do
 
 			expect(current_path).to eq('/pets')
 
-			expect(page).to have_css("img[src*='#{@jona.image}']")
-			expect(page).to have_content(@jona.name)
-			expect(page).to have_content(@jona.age)
-			expect(page).to have_content(@jona.sex)
-			expect(page).to have_content(@jona.shelter.name)
+			within "#pet-#{@jona.id}" do
+				expect(page).to have_css("img[src*='#{@jona.image}']")
+				expect(page).to have_content(@jona.name)
+				expect(page).to have_content(@jona.age)
+				expect(page).to have_content(@jona.sex)
+				expect(page).to have_content(@jona.shelter.name)
+			end
 
-			expect(page).to have_css("img[src*='#{@ozzy.image}']")
-			expect(page).to have_content(@ozzy.name)
-			expect(page).to have_content(@ozzy.age)
-			expect(page).to have_content(@ozzy.sex)
-			expect(page).to have_content(@ozzy.shelter.name)
+			within "#pet-#{@ozzy.id}" do
+				expect(page).to have_css("img[src*='#{@ozzy.image}']")
+				expect(page).to have_content(@ozzy.name)
+				expect(page).to have_content(@ozzy.age)
+				expect(page).to have_content(@ozzy.sex)
+				expect(page).to have_content(@ozzy.shelter.name)
+			end
 
-			expect(page).to have_css("img[src*='#{@twitch.image}']")
-			expect(page).to have_content(@twitch.name)
-			expect(page).to have_content(@twitch.age)
-			expect(page).to have_content(@twitch.sex)
-			expect(page).to have_content(@twitch.shelter.name)
+			within "#pet-#{@twitch.id}" do
+				expect(page).to have_css("img[src*='#{@twitch.image}']")
+				expect(page).to have_content(@twitch.name)
+				expect(page).to have_content(@twitch.age)
+				expect(page).to have_content(@twitch.sex)
+				expect(page).to have_content(@twitch.shelter.name)
+			end
 
-			expect(page).to have_css("img[src*='#{@freja.image}']")
-			expect(page).to have_content(@freja.name)
-			expect(page).to have_content(@freja.age)
-			expect(page).to have_content(@freja.sex)
-			expect(page).to have_content(@freja.shelter.name)
+			within "#pet-#{@freja.id}" do
+				expect(page).to have_css("img[src*='#{@freja.image}']")
+				expect(page).to have_content(@freja.name)
+				expect(page).to have_content(@freja.age)
+				expect(page).to have_content(@freja.sex)
+				expect(page).to have_content(@freja.shelter.name)
+			end
 
-			expect(page).to have_css("img[src*='#{@ciri.image}']")
-			expect(page).to have_content(@ciri.name)
-			expect(page).to have_content(@ciri.age)
-			expect(page).to have_content(@ciri.sex)
-			expect(page).to have_content(@ciri.shelter.name)
+			within "#pet-#{@ciri.id}" do
+				expect(page).to have_css("img[src*='#{@ciri.image}']")
+				expect(page).to have_content(@ciri.name)
+				expect(page).to have_content(@ciri.age)
+				expect(page).to have_content(@ciri.sex)
+				expect(page).to have_content(@ciri.shelter.name)
+			end
 		end
 
 		it 'I see a Update option next to each of the pets' do

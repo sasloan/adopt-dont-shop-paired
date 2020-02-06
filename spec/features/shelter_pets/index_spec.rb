@@ -18,15 +18,19 @@ describe 'As a User' do
 
 			expect(current_path).to eq("/shelters/#{@aps.id}/pets")
 
-			expect(page).to have_css("img[src*='#{@jona.image}']")
-			expect(page).to have_content(@jona.name)
-			expect(page).to have_content(@jona.age)
-			expect(page).to have_content(@jona.sex)
+			within "#pet-#{@jona.id}" do
+				expect(page).to have_css("img[src*='#{@jona.image}']")
+				expect(page).to have_content(@jona.name)
+				expect(page).to have_content(@jona.age)
+				expect(page).to have_content(@jona.sex)
+			end
 
-			expect(page).to have_css("img[src*='#{@ozzy.image}']")
-			expect(page).to have_content(@ozzy.name)
-			expect(page).to have_content(@ozzy.age)
-			expect(page).to have_content(@ozzy.sex)
+			within "#pet-#{@ozzy.id}" do
+				expect(page).to have_css("img[src*='#{@ozzy.image}']")
+				expect(page).to have_content(@ozzy.name)
+				expect(page).to have_content(@ozzy.age)
+				expect(page).to have_content(@ozzy.sex)
+			end
 		end
 
 		it 'I do not see any pets that do not belong in this shelter' do
@@ -35,16 +39,20 @@ describe 'As a User' do
 
 			expect(current_path).to eq("/shelters/#{@aps.id}/pets")
 
-			expect(page).to have_css("img[src*='#{@jona.image}']")
-			expect(page).to have_content(@jona.name)
-			expect(page).to have_content(@jona.description)
-			expect(page).to have_content(@jona.age)
-			expect(page).to have_content(@jona.sex)
+			within "#pet-#{@jona.id}" do
+				expect(page).to have_css("img[src*='#{@jona.image}']")
+				expect(page).to have_content(@jona.name)
+				expect(page).to have_content(@jona.description)
+				expect(page).to have_content(@jona.age)
+				expect(page).to have_content(@jona.sex)
+			end
 
-			expect(page).to have_css("img[src*='#{@ozzy.image}']")
-			expect(page).to have_content(@ozzy.name)
-			expect(page).to have_content(@ozzy.age)
-			expect(page).to have_content(@ozzy.sex)
+			within "#pet-#{@ozzy.id}" do
+				expect(page).to have_css("img[src*='#{@ozzy.image}']")
+				expect(page).to have_content(@ozzy.name)
+				expect(page).to have_content(@ozzy.age)
+				expect(page).to have_content(@ozzy.sex)
+			end
 
 			expect(page).not_to have_css("img[src*='#{@twitch.image}']")
 			expect(page).not_to have_content(@twitch.name)
@@ -129,16 +137,4 @@ describe 'As a User' do
 			expect(page).not_to have_content("Number of Pets: 5")
 		end
 	end
-	# Tes to Cover the Adoptable organization.
-
-	# 	it 'I expect to see all the pets ordered in the status of adoptable first' do
-	#
-	# 		visit "/shelters/#{@aps.id}/pets"
-	#
-	# 		expect(current_path).to eq("/shelters/#{@aps.id}/pets")
-	#
-	# 		expect(@aps.pets.first).to eq(@jona)
-	# 		expect(@aps.pets.last).to eq(@ozzy)
-	# 	end
-	# end
 end
