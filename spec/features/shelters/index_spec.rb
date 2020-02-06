@@ -13,23 +13,29 @@ describe 'As a Visitor' do
 
 			expect(current_path).to eq('/shelters')
 
-			expect(page).to have_content(@ddfl.name)
-			expect(page).to have_content(@ddfl.address)
-			expect(page).to have_content(@ddfl.city)
-			expect(page).to have_content(@ddfl.state)
-			expect(page).to have_content(@ddfl.zip)
+			within "#shelter-#{@ddfl.id}" do
+				expect(page).to have_content(@ddfl.name)
+				expect(page).to have_content(@ddfl.address)
+				expect(page).to have_content(@ddfl.city)
+				expect(page).to have_content(@ddfl.state)
+				expect(page).to have_content(@ddfl.zip)
+			end
 
-			expect(page).to have_content(@acph.name)
-			expect(page).to have_content(@acph.address)
-			expect(page).to have_content(@acph.city)
-			expect(page).to have_content(@acph.state)
-			expect(page).to have_content(@acph.zip)
+			within "#shelter-#{@acph.id}" do
+				expect(page).to have_content(@acph.name)
+				expect(page).to have_content(@acph.address)
+				expect(page).to have_content(@acph.city)
+				expect(page).to have_content(@acph.state)
+				expect(page).to have_content(@acph.zip)
+			end
 
-			expect(page).to have_content(@aps.name)
-			expect(page).to have_content(@aps.address)
-			expect(page).to have_content(@aps.city)
-			expect(page).to have_content(@aps.state)
-			expect(page).to have_content(@aps.zip)
+			within "#shelter-#{@aps.id}" do
+				expect(page).to have_content(@aps.name)
+				expect(page).to have_content(@aps.address)
+				expect(page).to have_content(@aps.city)
+				expect(page).to have_content(@aps.state)
+				expect(page).to have_content(@aps.zip)
+			end
 		end
 
 		it 'There is a link that I can click on to Create a new Shelter' do
