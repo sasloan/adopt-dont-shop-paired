@@ -62,7 +62,7 @@ describe 'As a Visitor' do
 			expect(current_path).to eq("/favorites")
 
 			within"#pet-#{@jona.id}" do
-				expect(page).to have_button("Remove Pet")
+				expect(page).to have_link("Remove Pet")
 
 				click_on "Remove Pet"
 
@@ -77,7 +77,7 @@ describe 'As a Visitor' do
 			expect(current_path).to eq("/favorites")
 
 			within"#pet-#{@jona.id}" do
-				expect(page).to have_button("Remove Pet")
+				expect(page).to have_link("Remove Pet")
 
 				click_on "Remove Pet"
 
@@ -85,7 +85,7 @@ describe 'As a Visitor' do
 			end
 
 			within"#pet-#{@cricket.id}" do
-				expect(page).to have_button("Remove Pet")
+				expect(page).to have_link("Remove Pet")
 
 				click_on "Remove Pet"
 
@@ -93,7 +93,7 @@ describe 'As a Visitor' do
 			end
 
 			within"#pet-#{@athena.id}" do
-				expect(page).to have_button("Remove Pet")
+				expect(page).to have_link("Remove Pet")
 
 				click_on "Remove Pet"
 
@@ -101,7 +101,7 @@ describe 'As a Visitor' do
 			end
 
 			within"#pet-#{@ozzy.id}" do
-				expect(page).to have_button("Remove Pet")
+				expect(page).to have_link("Remove Pet")
 
 				click_on "Remove Pet"
 
