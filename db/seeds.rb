@@ -30,7 +30,8 @@ Shelter.delete_all
 
 # Reviews
 
-content = "The people at this shelter were so kind and helpful. They asked specific
-questions to narrow down what kind of pet would be good for me."
-image = "https://www.humanesociety.org/sites/default/files/styles/1240x698/public/2018/06/kittens-in-shelter-69469.jpg?h=ece64c50&itok=tOiKeqHY"
-@review_1 = @ddfl.reviews.create!(title: "Wonderul experience", rating: "5/5 stars", content: content, image: image)
+@review_1 = @aps.reviews.create!(title: "Lovely Experience",rating: 5, content: "Very Clean and a helpful staff", image:"https://airpetsamerica.com/wp-content/uploads/2017/02/images-5-1-250x166.jpg")
+@review_2 = @aps.reviews.create!(title: "It was Alright",rating: 3, content: "Some what Clean but I don't think they should be using newspaper", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRXF-XffXImF42qhSjwNZUDWeO5SUgCmSNjtF2gwpEBfSC7eC62")
+@review_3 = @acph.reviews.create!(title: "Horrible, Cold Puppies",rating: 1, content: "The poor animals where out in the snow!!", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRwTcGTpeMHLn2iEbHfMxo4zeTrTRWw7TlwoWABcxYFX3W4kDQY")
+@review_4 = @ddfl.reviews.create!(title: "Absolutley Filthy",rating: 1, content: "This place is the Deffinition of unsanitized", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQi0nRFEj6Lr0uFNzqwDzPp7I4GwBg9ARGvQxk2KSH8_NZA-paG")
+@review_5 = @ddfl.reviews.create!(title: "Wonderul experience", rating: "5/5 stars", content: "The people at this shelter were so kind and helpful. They asked specific questions to narrow down what kind of pet would be good for me." , image: "https://www.humanesociety.org/sites/default/files/styles/1240x698/public/2018/06/kittens-in-shelter-69469.jpg?h=ece64c50&itok=tOiKeqHY")
