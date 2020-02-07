@@ -67,6 +67,29 @@ describe 'As a Visitor' do
 
 		end
 
+		it 'I should not see any pets in the shelter that I have deleted in the pets index page' do
+
+			expect(current_path).to eq("/shelters/#{@ddfl.id}")
+
+			click_on "Delete Shelter"
+
+			expect(current_path).to eq("/shelters")
+
+			visit "/pets"
+
+			expect(page).not_to have_css("img[src*='#{@freja.image}']")
+			expect(page).not_to have_content(@freja.name)
+			expect(page).not_to have_content(@freja.age)
+			expect(page).not_to have_content(@freja.sex)
+			expect(page).not_to have_content(@freja.shelter.name)
+
+			expect(page).not_to have_css("img[src*='#{@ciri.image}']")
+			expect(page).not_to have_content(@ciri.name)
+			expect(page).not_to have_content(@ciri.age)
+			expect(page).not_to have_content(@ciri.sex)
+			expect(page).not_to have_content(@ciri.shelter.name)
+		end
+
 		it 'I should see a link that takes me to the pet index page for this shelter' do
 
 			expect(current_path).to eq("/shelters/#{@ddfl.id}")

@@ -9,7 +9,7 @@ describe 'As a Visitor' do
 			@athena = @aps.pets.create!(name: "Athena", description: "Butthead", age: 1, sex: "female", adoptable: false)
 			@ozzy = @aps.pets.create!(image: "https://www.insidedogsworld.com/wp-content/uploads/2017/06/German-Shepherd-Standard-Coat-GSC-1000x575-1-1-1-1.jpg", name: "Ozzy Paws Born", description: "German Shepard", age: 4, sex: "Male")
 			@acph = Shelter.create!(name: "Adams County Pet Hospital", address: "7834 Pecos St.", city: "Thornton", state: "Co.", zip: "80221")
-			@twitch = @acph.pets.create!(image: "https://i.pinimg.com/originals/6e/3c/c1/6e3cc15c678002f4ece659442ae9aefd.jpg", name: "Twitch", description: "Doxine Mini", age: 7, sex: "Male")
+			@twitch = @acph.pets.create!(image: "https://i.pinimg.com/originals/6e/3c/c1/6e3cc15c678002f4ece659442ae9aefd.jpg", name: "Twitch", description: "Doxine Mini", age: 7, sex: "Male", adoptable: false)
 			@ddfl = Shelter.create!(name: "Denver Dumb Friends League", address: "1267 Quebec Dr.", city: "Denver", state: "Co.", zip: "80230")
 			@freja = @ddfl.pets.create!(image: "https://thehappypuppysite.com/wp-content/uploads/2018/08/great-pyrenees-long.jpg", name: "Freja", description: "Great Perinnes", age: 3, sex: "Female")
 			@ciri = @ddfl.pets.create!(image: "https://www.thelabradordog.com/wp-content/uploads/2018/11/Albino-Labrador.png", name: "Ciri", description: "White Lab", age: 2, sex: "Female")
@@ -88,10 +88,28 @@ describe 'As a Visitor' do
 
 		it 'I should NOT see a link to delete the shelter if any of its pets have a pending status' do
 
-			visit "/shelters/#{@aps.id}"
+			within "#shelter-#{@acph.id}" do
+				expect(page).not_to have_link("Delete Shelter")
+			end
+		end
 
-			expect(page).not_to have_link("Delete Shelter")
+		it 'I should not see any pets in the shelter that I have deleted in the pets index page' do
 
+			expect(current_path).to eq("/shelters")
+
+			within "#shelter-#{@ddfl.id}" do
+				click_on "Delete Shelter"
+
+				expect(current_path).to eq("/shelters")
+			end
+
+			visit "/pets"
+
+			expect(page).not_to have_css("img[src*='#{@freja.image}']")
+			expect(page).not_to have_content(@freja.name)
+
+			expect(page).not_to have_css("img[src*='#{@ciri.image}']")
+			expect(page).not_to have_content(@ciri.name)
 		end
 
 		it 'The name of the shelter is a link to its show page' do
