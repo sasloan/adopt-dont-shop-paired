@@ -28,8 +28,12 @@ class SheltersController < ApplicationController
 	def update
 		shelter = Shelter.find(params[:shelter_id])
 		shelter.update(shelter_params)
-
-		redirect_to "/shelters/#{shelter.id}"
+		if shelter.save
+			redirect_to "/shelters/#{shelter.id}"
+		else
+			flash[:incomplete] = "You attempted to submit the form without completing required field(s): #{empty_params(shelter_params)}"
+			redirect_to "/shelters/#{shelter.id}/edit"
+		end
 	end
 
 	def destroy

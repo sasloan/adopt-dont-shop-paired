@@ -46,5 +46,29 @@ describe 'As a Visitor' do
 			expect(page).not_to have_content("Co.")
 			expect(page).not_to have_content("80221")
 		end
+
+		it 'If I fill out the wrong infromation or leave it blank I am redirected back to the form with a flash message' do
+
+			expect(current_path).to eq("/shelters/#{@acph.id}")
+
+			expect(page).to have_link("Update Shelter")
+
+			click_on "Update Shelter"
+
+			expect(current_path).to eq("/shelters/#{@acph.id}/edit")
+
+			expect(page).to have_content("Name")
+			expect(page).to have_content("Address")
+			expect(page).to have_content("City")
+			expect(page).to have_content("State")
+			expect(page).to have_content("Zip")
+
+
+			click_on "Update Shelter"
+
+			expect(current_path).to eq("/shelters/#{@acph.id}/edit")
+
+			expect(page).to have_content("You attempted to submit the form without completing required field(s): Name, Address, City, State, Zip\nUpdate Shelter Infromation\nName\nAddress\nCity\nState\nZip")
+		end
 	end
 end
