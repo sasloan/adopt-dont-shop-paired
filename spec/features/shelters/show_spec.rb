@@ -149,5 +149,29 @@ describe 'As a Visitor' do
 
 			expect(page).to have_content("Average Rating: 4.0/5 stars")
 		end
+
+		# it 'I can see the number of Applications submited for pets in this shelter' do
+		#
+		# 	expect(current_path).to eq("/shelters/#{@ddfl.id}")
+		#
+		# 	expect(page).to have_content("Current Application Count: 2")
+		# end
 	end
 end
+
+# application_count spec
+
+#  it "#application.count" do
+#    expect(Application.application_count).to eq(2)
+#  end
+
+# application_count model method
+
+#  def self.application_count
+#    count
+#  end
+
+# show page view
+
+# <h3>Current Application Count: <%= @shelter.pets.each {|pet| pet.application_count } %></h3>
+ 
