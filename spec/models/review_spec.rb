@@ -23,7 +23,7 @@ describe Review, type: :model do
 		end
 
 		it "#average_rating" do
-			expect(@aps.average_rating).to eq(4)
+			expect(Review.average_rating).to eq(4)
 		end
 	end
 end

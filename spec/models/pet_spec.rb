@@ -21,7 +21,7 @@ describe Pet, type: :model do
 			@ozzy = @aps.pets.create!(image: "https://www.insidedogsworld.com/wp-content/uploads/2017/06/German-Shepherd-Standard-Coat-GSC-1000x575-1-1-1-1.jpg", name: "Ozzy Paws Born", description: "German Shepard", age: 4, sex: "Male")
 		end
 
-		it '.pet_count' do
+		it '#pet_count' do
 			expect(Pet.pet_count).to eq(4)
 		end
 	end
