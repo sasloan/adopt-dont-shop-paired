@@ -6,6 +6,8 @@ describe 'As a Visitor' do
 			@ddfl = Shelter.create!(name: "Denver Dumb Friends League", address: "1267 Quebec Dr.", city: "Denver", state: "Co.", zip: "80230")
 			@freja = @ddfl.pets.create!(image: "https://thehappypuppysite.com/wp-content/uploads/2018/08/great-pyrenees-long.jpg", name: "Freja", description: "Great Perinnes", age: 3, sex: "Female", adoptable: true)
 			@ciri = @ddfl.pets.create!(image: "https://www.thelabradordog.com/wp-content/uploads/2018/11/Albino-Labrador.png", name: "Ciri", description: "White Lab", age: 2, sex: "Female", adoptable: true)
+			@review_1 = @ddfl.reviews.create!(title: "Lovely Experience",rating: 5, content: "Very Clean and a helpful staff", image:"https://airpetsamerica.com/wp-content/uploads/2017/02/images-5-1-250x166.jpg")
+			@review_2 = @ddfl.reviews.create!(title: "It was Alright",rating: 3, content: "Some what Clean but I don't think they should be using newspaper", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRXF-XffXImF42qhSjwNZUDWeO5SUgCmSNjtF2gwpEBfSC7eC62")
 			@aps = Shelter.create!(name: "Arvada Pet Shelter", address: "9876 Lamar Blvd.", city: "Arvada", state: "Co.", zip: "80003")
 			@acph = Shelter.create!(name: "Adams County Pet Hospital", address: "7834 Pecos St.", city: "Thornton", state: "Co.", zip: "80221")
 			@twitch = @acph.pets.create!(image: "https://i.pinimg.com/originals/6e/3c/c1/6e3cc15c678002f4ece659442ae9aefd.jpg", name: "Twitch", description: "Doxine Mini", age: 7, sex: "Male", adoptable: false)
@@ -130,7 +132,6 @@ describe 'As a Visitor' do
 			end
 
 			expect(page).not_to have_content(@review_1.title)
-			expect(page).not_to have_content("#{@review_1.rating}/5 stars")
 			expect(page).not_to have_content(@review_1.content)
 			expect(page).not_to have_css("img[src*='#{@review_1.image}']")
 		end
@@ -140,6 +141,13 @@ describe 'As a Visitor' do
 			expect(current_path).to eq("/shelters/#{@ddfl.id}")
 
 			expect(page).to have_content("Number of Pets: 2")
+		end
+
+		it 'I can see the average rating for the revies on this shelter' do
+
+			expect(current_path).to eq("/shelters/#{@ddfl.id}")
+
+			expect(page).to have_content("Average Rating: 4.0/5 stars")
 		end
 	end
 end
