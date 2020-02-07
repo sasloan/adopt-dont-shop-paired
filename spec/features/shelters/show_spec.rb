@@ -134,5 +134,12 @@ describe 'As a Visitor' do
 			expect(page).not_to have_content(@review_1.content)
 			expect(page).not_to have_css("img[src*='#{@review_1.image}']")
 		end
+
+		it 'I see a count of how many pets are in this shelter' do
+
+			expect(current_path).to eq("/shelters/#{@ddfl.id}")
+
+			expect(page).to have_content("Number of Pets: 2")
+		end
 	end
 end
