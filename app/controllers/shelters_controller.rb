@@ -16,7 +16,7 @@ class SheltersController < ApplicationController
 		if shelter.save
 			redirect_to "/shelters"
 		else
-			flash[:notice] = "Shelter not Created: Required information missing."
+			flash[:incomplete] = "You attempted to submit the form without completing required field(s): #{empty_params(shelter_params)}"
 			render :new
 		end
 	end
