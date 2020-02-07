@@ -1,5 +1,5 @@
 <div class='show'>
-<h2>Name: <%= @pet.name %></h2>
+<h2>Name: <%= link_to "#{@pet.name}", "/pets/#{@pet.id}" %></h2>
 
 <%= image_tag "#{@pet.image}", width: 200, height:150 %>
 
@@ -13,7 +13,7 @@
 	<% end %>
 	<% unless favorites.favorited?(@pet.id) %>
 		<p><%= button_to "Add Pet To Favorites", "/favorites/#{@pet.id}", method: :patch %></p>
-	<% else !favorites.favorited?(@pet.id) %> 
+	<% else !favorites.favorited?(@pet.id) %>
 		<p><%= button_to "Remove Pet From Favorites", "/favorites/#{@pet.id}", method: :delete %></p>
 	<% end %>
 

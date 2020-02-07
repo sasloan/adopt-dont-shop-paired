@@ -15,7 +15,7 @@ describe 'As a Visitor' do
 			expect(current_path).to eq("/pets/#{@jona.id}")
 
 			expect(page).to have_css("img[src*='#{@jona.image}']")
-			expect(page).to have_content(@jona.name)
+			expect(page).to have_link(@jona.name)
 			expect(page).to have_content(@jona.age)
 			expect(page).to have_content(@jona.sex)
 			expect(page).to have_content("Status: Adoptable")
