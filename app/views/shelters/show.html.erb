@@ -1,5 +1,5 @@
 <div class='show'>
-<h2><%= @shelter.name %></h2>
+<h2><%= link_to  "#{@shelter.name}", "/shelters/#{@shelter.id}" %></h2>
 	<p><%= @shelter.address %>
 	<%= @shelter.city %>
 	<%= @shelter.state %>
@@ -8,7 +8,7 @@
 
 <p><%= link_to "Shelter Pets", "/shelters/#{@shelter.id}/pets" %></p>
 
-	
+
 	<p><%= link_to "Update Shelter", "/shelters/#{@shelter.id}/edit" %> |
 		<%= link_to "Delete Shelter", "/shelters/#{@shelter.id}", method: :delete %></p>
 </div>
@@ -16,7 +16,7 @@
 <div class='show'>
 	<h2>Reviews</h2>
 	<p><%= link_to "Add Review", "/shelters/#{@shelter.id}/reviews/new" %></p>
-	
+
 	<% @shelter.reviews.each do |review| %>
 		<section id="review-<%= review.id %>">
 			<p><%= review.title %></p>
