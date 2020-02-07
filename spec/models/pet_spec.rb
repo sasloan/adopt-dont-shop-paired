@@ -12,7 +12,7 @@ describe Pet, type: :model do
 		it {should belong_to :shelter}
 	end
 
-	describe 'class methods' do
+	describe 'Methods' do
 		before :each do
 			@aps = Shelter.create!(name: "Arvada Pet Shelter", address: "9876 Lamar Blvd.", city: "Arvada", state: "Co.", zip: "80003")
 			@jona = @aps.pets.create!(image: "https://www.allthingsdogs.com/wp-content/uploads/2018/08/How-to-Care-for-a-Black-German-Shepherd.jpg", name: "Jona Bark", description: "Black Shepard", age: 6, sex: "Female")
