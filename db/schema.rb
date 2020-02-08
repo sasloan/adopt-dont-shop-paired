@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200205060359) do
+ActiveRecord::Schema.define(version: 20200206223821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20200205060359) do
     t.string "title"
     t.integer "rating"
     t.string "content"
-    t.string "image"
+    t.string "image", default: "https://www.galadarigroup.com/wp-content/themes/Galadari_brothers/images/thumbnail-default.jpg"
     t.bigint "shelter_id"
     t.index ["shelter_id"], name: "index_reviews_on_shelter_id"
   end

@@ -5,6 +5,6 @@ class Review < ApplicationRecord
   belongs_to :shelter
 
 	def self.average_rating
-		self.average(:rating)
+		self.average(:rating) || 0
 	end
 end

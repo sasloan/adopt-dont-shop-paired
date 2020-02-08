@@ -147,7 +147,7 @@ describe 'As a Visitor' do
 
 			expect(current_path).to eq("/shelters/#{@ddfl.id}")
 
-			expect(page).to have_content("Average Rating: 4.0/5 stars")
+			expect(page).to have_content("Average Rating: 4.3/5 stars")
 		end
 
 		# it 'I can see the number of Applications submited for pets in this shelter' do
