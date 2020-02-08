@@ -1,0 +1,17 @@
+<% if favorites.contents.empty? %>
+	<h2> You have no Favorites yet!! </h2>
+<% else !favorites.contents.empty? %>
+	<p><%= button_to "Remove All Pets", "/favorites", method: :delete %></p>
+	<p><%= link_to "Apply To Adopt", "/favorites/applications/new" %></p>
+<div class='fav'>
+	<% @pets.each do |pet| %>
+			<% if favorites.ids.include?(pet.id) %>
+			<section class='fav_pets' id='pet-<%= pet.id %>'>
+				<p><%= image_tag "#{pet.image}", width: 200, height: 150 %></p>
+				<p>Name: <%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
+				<p><%= link_to "Remove Pet", "/favorites/#{pet.id}", method: :delete %></p>
+			</section>
+			<% end %>
+	<% end %>
+<% end %>
+</div>

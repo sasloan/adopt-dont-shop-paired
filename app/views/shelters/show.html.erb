@@ -1,0 +1,31 @@
+<div class='show'>
+<h2><%= @shelter.name %></h2>
+	<p><%= @shelter.address %>
+	<%= @shelter.city %>
+	<%= @shelter.state %>
+	<%= @shelter.zip %></p>
+
+
+<p><%= link_to "Shelter Pets", "/shelters/#{@shelter.id}/pets" %></p>
+
+	
+	<p><%= link_to "Update Shelter", "/shelters/#{@shelter.id}/edit" %> |
+		<%= link_to "Delete Shelter", "/shelters/#{@shelter.id}", method: :delete %></p>
+</div>
+
+<div class='show'>
+	<h2>Reviews</h2>
+	<p><%= link_to "Add Review", "/shelters/#{@shelter.id}/reviews/new" %></p>
+	
+	<% @shelter.reviews.each do |review| %>
+		<section id="review-<%= review.id %>">
+			<p><%= review.title %></p>
+			<p><%= link_to "Edit Review", "/shelters/#{@shelter.id}/reviews/#{review.id}/edit" %> |
+				<%= link_to "Delete Review", "/shelters/#{@shelter.id}/reviews/#{review.id}", method: :delete %></p>
+			<p><%= review.rating %>/5 stars</p>
+			<p><%= review.content %></p>
+			<%= image_tag "#{review.image}", width: 200, height:150 %>
+			<br><br><br>
+		</section>
+	<% end %>
+</div>

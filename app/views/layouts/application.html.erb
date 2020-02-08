@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AdoptDontShop</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+
+		<header class="header">
+			<h1>Adopt Don't Shop</h1>
+		</header>
+		<nav class="navbar">
+			<h4><%= link_to "Pets", "/pets" %> |
+					<%= link_to "Shelters", "/shelters" %> |
+					<%= link_to "Favorites: #{favorites.total_count}", "/favorites" %></h4>
+		</nav>
+			<% flash.each do |type, message| %>
+    	<section class=<%= type %>>
+      	<p class="show"><%= message %></p>
+    	</section>
+			<% end %>
+    <%= yield %>
+  </body>
+</html>
