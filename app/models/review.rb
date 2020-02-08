@@ -3,4 +3,8 @@ class Review < ApplicationRecord
                         :rating,
                         :content
   belongs_to :shelter
+
+	def self.average_rating
+		self.average(:rating)
+	end
 end

@@ -23,14 +23,15 @@ Shelter.delete_all
 @jona = @aps.pets.create!(image: "https://www.allthingsdogs.com/wp-content/uploads/2018/08/How-to-Care-for-a-Black-German-Shepherd.jpg", name: "Jona Bark", description: "Black Shepard", age: 6, sex: "Female")
 @cricket = @aps.pets.create!(image: "https://www.allthingsdogs.com/wp-content/uploads/2018/08/Breed-Standard-for-a-Black-GSD.jpg", name: "Cricket", description: "Best girl", age: 20, sex: "Female", adoptable: false)
 @ozzy = @aps.pets.create!(image: "https://www.insidedogsworld.com/wp-content/uploads/2017/06/German-Shepherd-Standard-Coat-GSC-1000x575-1-1-1-1.jpg", name: "Ozzy Paws Born", description: "German Shepard", age: 4, sex: "Male")
-@twitch = @acph.pets.create!(image: "https://i.pinimg.com/originals/6e/3c/c1/6e3cc15c678002f4ece659442ae9aefd.jpg", name: "Twitch", description: "Doxine Mini", age: 7, sex: "Male")
+@twitch = @acph.pets.create!(image: "https://i.pinimg.com/originals/6e/3c/c1/6e3cc15c678002f4ece659442ae9aefd.jpg", name: "Twitch", description: "Doxine Mini", age: 7, sex: "Male", adoptable: false)
 @freja = @ddfl.pets.create!(image: "https://thehappypuppysite.com/wp-content/uploads/2018/08/great-pyrenees-long.jpg", name: "Freja", description: "Great Perinnes", age: 3, sex: "Female")
 @ciri = @ddfl.pets.create!(image: "https://www.thelabradordog.com/wp-content/uploads/2018/11/Albino-Labrador.png", name: "Ciri", description: "White Lab", age: 2, sex: "Female")
 @maggie = @acph.pets.create!(name: "Maggie", description: "Black Lab", age: 14, sex: "Female")
 
 # Reviews
 
-content = "The people at this shelter were so kind and helpful. They asked specific
-questions to narrow down what kind of pet would be good for me."
-image = "https://www.humanesociety.org/sites/default/files/styles/1240x698/public/2018/06/kittens-in-shelter-69469.jpg?h=ece64c50&itok=tOiKeqHY"
-@review_1 = @ddfl.reviews.create!(title: "Wonderul experience", rating: "5/5 stars", content: content, image: image)
+@review_1 = @aps.reviews.create!(title: "Lovely Experience",rating: 5, content: "Very Clean and a helpful staff", image:"https://airpetsamerica.com/wp-content/uploads/2017/02/images-5-1-250x166.jpg")
+@review_2 = @aps.reviews.create!(title: "It was Alright",rating: 3, content: "Some what Clean but I don't think they should be using newspaper", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRXF-XffXImF42qhSjwNZUDWeO5SUgCmSNjtF2gwpEBfSC7eC62")
+@review_3 = @acph.reviews.create!(title: "Horrible, Cold Puppies",rating: 1, content: "The poor animals where out in the snow!!", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRwTcGTpeMHLn2iEbHfMxo4zeTrTRWw7TlwoWABcxYFX3W4kDQY")
+@review_4 = @ddfl.reviews.create!(title: "Absolutley Filthy",rating: 1, content: "This place is the Deffinition of unsanitized", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQi0nRFEj6Lr0uFNzqwDzPp7I4GwBg9ARGvQxk2KSH8_NZA-paG")
+@review_5 = @ddfl.reviews.create!(title: "Wonderul experience", rating: "5/5 stars", content: "The people at this shelter were so kind and helpful. They asked specific questions to narrow down what kind of pet would be good for me." , image: "https://www.humanesociety.org/sites/default/files/styles/1240x698/public/2018/06/kittens-in-shelter-69469.jpg?h=ece64c50&itok=tOiKeqHY")
