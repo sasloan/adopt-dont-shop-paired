@@ -9,6 +9,8 @@ describe Pet, type: :model do
 	end
 
 	describe 'Relationships' do
+		it {should have_many :pet_applications}
+		it {should have_many(:applications).through(:pet_applications)}
 		it {should belong_to :shelter}
 	end
 

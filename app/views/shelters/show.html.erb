@@ -18,7 +18,7 @@
 <% end %>
 </div>
 
-<h3>Average Rating: <%= @shelter.reviews.average_rating %>/5 stars</h3>
+<h3>Average Rating: <%= @shelter.reviews.average_rating.round(1) %>/5 stars</h3>
 
 <div class='show'>
 	<h2>Reviews</h2>

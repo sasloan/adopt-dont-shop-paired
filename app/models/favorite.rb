@@ -15,6 +15,12 @@ class Favorite
     @contents.keys.length
   end
 
+  def fav_pets
+    ids.map do |id|
+      Pet.find(id)
+    end
+  end
+
 	def favorited?(pet_id)
 		@contents.has_key?(pet_id.to_s)
 	end

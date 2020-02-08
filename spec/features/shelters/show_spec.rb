@@ -12,6 +12,11 @@ describe 'As a Visitor' do
 			@acph = Shelter.create!(name: "Adams County Pet Hospital", address: "7834 Pecos St.", city: "Thornton", state: "Co.", zip: "80221")
 			@twitch = @acph.pets.create!(image: "https://i.pinimg.com/originals/6e/3c/c1/6e3cc15c678002f4ece659442ae9aefd.jpg", name: "Twitch", description: "Doxine Mini", age: 7, sex: "Male", adoptable: false)
 
+			content = "The people at this shelter were so kind and helpful."
+			image = "https://www.humanesociety.org/sites/default/files/styles/1240x698/public/2018/06/kittens-in-shelter-69469.jpg?h=ece64c50&itok=tOiKeqHY"
+			
+			@review_1 = @ddfl.reviews.create!(title: "Wonderul experience", rating: "5", content: content, image: image)
+
 			visit "/shelters/#{@ddfl.id}"
 		end
 
@@ -120,11 +125,6 @@ describe 'As a Visitor' do
 		end
 
 		it "I see a link next to each review to delete the review" do
-			content = "The people at this shelter were so kind and helpful."
-			image = "https://www.humanesociety.org/sites/default/files/styles/1240x698/public/2018/06/kittens-in-shelter-69469.jpg?h=ece64c50&itok=tOiKeqHY"
-
-			@review_1 = @ddfl.reviews.create!(title: "Wonderul experience", rating: "5", content: content, image: image)
-
 			visit "/shelters/#{@ddfl.id}"
 
 			within "#review-#{@review_1.id}" do
@@ -147,7 +147,7 @@ describe 'As a Visitor' do
 
 			expect(current_path).to eq("/shelters/#{@ddfl.id}")
 
-			expect(page).to have_content("Average Rating: 4.0/5 stars")
+			expect(page).to have_content("Average Rating: 4.3/5 stars")
 		end
 
 		# it 'I can see the number of Applications submited for pets in this shelter' do

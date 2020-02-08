@@ -1,0 +1,39 @@
+<h2> Apply To Adopt </h2>
+
+<div class='form'>
+<%= form_tag "/favorites/applications/:application_id" do %>
+  
+  <h3>Check which pets to apply for:</h3>
+  
+  <% @fav_pets.each do |favorite| %>
+    <section id="favorite-<%= favorite.id %>">
+      <%= check_box_tag "check_box[]", favorite.id %>
+      <%= label_tag favorite.name, favorite.name %><br>
+    </section>
+  <% end %>
+
+  <h3>Your Information:</h3>
+	<p><%= label_tag :name %>
+	<%= text_field_tag :name %></p>
+
+	<p><%= label_tag :address %>
+	<%= text_field_tag :address %></p>
+
+	<p><%= label_tag :city %>
+	<%= text_field_tag :city %></p>
+
+	<p><%= label_tag :state %>
+	<%= text_field_tag :state %></p>
+
+	<p><%= label_tag :zip %>
+	<%= text_field_tag :zip %></p>
+  
+  <p><%= label_tag :phone_number %>
+	<%= text_field_tag :phone_number %></p>
+  
+  <p><%= label_tag "Why my home would be great:" %><br>
+	 <textarea name="description" rows="8" cols="80"></textarea></p>
+
+	<%= submit_tag "Create Application" %>
+<% end %>
+</div>
