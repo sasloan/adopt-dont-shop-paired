@@ -15,11 +15,11 @@ class PetsController < ApplicationController
 	def create
 		shelter = Shelter.find(params[:shelter_id])
 		pet = shelter.pets.new(pet_params)
-		
+
 		if pet.image == nil || pet.image == ""
 			pet.image = "https://www.galadarigroup.com/wp-content/themes/Galadari_brothers/images/thumbnail-default.jpg"
 		end
-		
+
 		if pet.save
 			redirect_to "/shelters/#{shelter.id}/pets"
 		else

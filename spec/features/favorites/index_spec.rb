@@ -133,7 +133,7 @@ describe 'As a Visitor' do
 			expect(current_path).to eq("/favorites")
 			expect(page).to have_content("All pets have been removed from your favorites.")
 		end
-		
+
 		it "I can click a link for adopting favorited pets, and select which favorites I want, then apply for them" do
 			click_link "Apply To Adopt"
 			

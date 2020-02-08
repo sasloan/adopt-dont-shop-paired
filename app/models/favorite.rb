@@ -14,7 +14,7 @@ class Favorite
   def total_count
     @contents.keys.length
   end
-  
+
   def fav_pets
     ids.map do |id|
       Pet.find(id)

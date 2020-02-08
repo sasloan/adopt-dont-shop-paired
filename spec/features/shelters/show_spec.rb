@@ -89,6 +89,8 @@ describe 'As a Visitor' do
 		end
 		
 		it "I see a link next to each review to delete the review" do
+			visit "/shelters/#{@ddfl.id}"
+
 			within "#review-#{@review_1.id}" do
   			click_link 'Delete Review'
 			end
