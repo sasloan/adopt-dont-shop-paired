@@ -11,8 +11,12 @@
 	<%= shelter.city %>
 	<%= shelter.state %>
 	<%= shelter.zip %></p>
+	<% if shelter.pets_pending? == false %>
+		<p><%= link_to "Update Shelter", "/shelters/#{shelter.id}/edit" %></p>
+	<% else %>
 	<p><%= link_to "Update Shelter", "/shelters/#{shelter.id}/edit" %> |
 		 <%= link_to "Delete Shelter", "/shelters/#{shelter.id}", method: :delete %></p>
+	<% end %>
 
 </section>
 </div>

@@ -49,7 +49,7 @@ describe 'As a Visitor' do
 
 			click_on "Create Shelter"
 
-			expect(page).to have_content("Shelter not Created: Required information missing.")
+			expect(page).to have_content("You attempted to submit the form without completing required field(s): Name, Address, City, State, Zip\nCreate New Shelter\nName\nAddress\nCity\nState\nZip")
 		end
 	end
 end

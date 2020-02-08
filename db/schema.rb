@@ -45,9 +45,9 @@ ActiveRecord::Schema.define(version: 20200205060359) do
 
   create_table "reviews", force: :cascade do |t|
     t.string "title"
-    t.string "rating"
+    t.integer "rating"
     t.string "content"
-    t.string "image", default: "https://www.galadarigroup.com/wp-content/themes/Galadari_brothers/images/thumbnail-default.jpg"
+    t.string "image"
     t.bigint "shelter_id"
     t.index ["shelter_id"], name: "index_reviews_on_shelter_id"
   end
