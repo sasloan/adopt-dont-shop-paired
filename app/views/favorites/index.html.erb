@@ -2,6 +2,7 @@
 	<h2> You have no Favorites yet!! </h2>
 <% else !favorites.contents.empty? %>
 	<p><%= button_to "Remove All Pets", "/favorites", method: :delete %></p>
+	<p><%= link_to "Apply To Adopt", "/favorites/applications/new" %></p>
 <div class='fav'>
 	<% @pets.each do |pet| %>
 			<% if favorites.ids.include?(pet.id) %>
