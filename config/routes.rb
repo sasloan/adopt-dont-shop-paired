@@ -38,5 +38,5 @@ Rails.application.routes.draw do
 
 	#applications
 	get '/favorites/applications/new', to: 'applications#new'
-	post '/favorites/applications/:application_id', to: 'applications#create'
+	post '/favorites/applications', to: 'applications#create'
 end
