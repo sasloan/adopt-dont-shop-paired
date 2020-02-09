@@ -10,4 +10,10 @@ class Shelter < ApplicationRecord
 	def pets_pending?
 		pets.where(adoptable: false).none?
 	end
+
+	def application_count
+		pets.joins(:applications)
+			.select(:application_id)
+			.distinct.count
+	end
 end
