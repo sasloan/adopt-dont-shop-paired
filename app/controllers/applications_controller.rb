@@ -6,16 +6,23 @@ class ApplicationsController < ApplicationController
   def create
     pets_applied_for = []
     
-    params[:check_box].each do |pet_id|
-      pet = Pet.find(pet_id.to_i)
-      pet.applications.create(application_params)
-      pets_applied_for << pet.name
-      
-      favorites.contents.delete(pet_id)
+    if params[:check_box].nil? == false
+      params[:check_box].each do |pet_id|
+        @pet = Pet.find(pet_id.to_i)
+        @pet.applications.create(application_params)
+        pets_applied_for << @pet.name
+        
+        favorites.contents.delete(pet_id)
+      end
     end
     
-		redirect_to "/favorites"
-    flash[:notice] = "Application accepted for #{pets_applied_for.to_sentence}."
+    if pets_applied_for.count > 0 && @pet.save
+      redirect_to "/favorites"
+      flash[:notice] = "Application accepted for #{pets_applied_for.to_sentence}."
+    else
+      flash[:notice] = "Pet not created: Must fill out entire form."
+			redirect_to "/applications/new"
+    end
   end
   
   private

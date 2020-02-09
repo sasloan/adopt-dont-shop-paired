@@ -31,11 +31,11 @@ describe 'As a visitor' do
 			expect(page).to have_content("#{@athena.name} has been added to your favorites")
       
       visit "/favorites"
+      click_link "Apply To Adopt"
+      expect(current_path).to eq("/applications/new")
     end
     
     it "I can click a link for adopting favorited pets, and select which favorites I want, then apply for them" do
-      click_link "Apply To Adopt"
-      
       within "#favorite-#{@jona.id}" do
         check "check_box[]"
         expect(page).to have_checked_field("check_box[]")
@@ -46,7 +46,6 @@ describe 'As a visitor' do
         expect(page).to have_checked_field("check_box[]")
       end
       
-      expect(current_path).to eq("/favorites/applications/new")
       expect(page).to have_content("#{@jona.name}")
       expect(page).to have_content("#{@cricket.name}")
       expect(page).to have_content("#{@athena.name}")
@@ -74,6 +73,39 @@ describe 'As a visitor' do
       
       expect(page).not_to have_content("#pet-#{@jona.id}")
       expect(page).not_to have_content("#pet-#{@cricket.id}")
+    end
+    
+    it "When I fill out an incomplete application, I'm redirected back to the form with a flash message" do
+      expect(current_path).to eq("/applications/new")
+      
+      fill_in :name, with: "Ben Fox"
+      fill_in :address, with: "123 Cool St"
+      fill_in :city, with: "West Chester"
+      fill_in :state, with: "OK"
+      fill_in :zip, with: "11223"
+      fill_in :phone_number, with: "123-456-7890"
+      fill_in :description, with: "I love to spoil my pets"
+      
+      click_button "Create Application"
+      
+      expect(current_path).to eq("/applications/new")
+      expect(page).to have_content("Pet not created: Must fill out entire form.")
+      
+      within "#favorite-#{@jona.id}" do
+        check "check_box[]"
+        expect(page).to have_checked_field("check_box[]")
+      end
+      
+      within "#favorite-#{@cricket.id}" do
+        check "check_box[]"
+        expect(page).to have_checked_field("check_box[]")
+      end
+      fill_in :name, with: ""
+      
+      click_button "Create Application"
+      
+      expect(current_path).to eq("/applications/new")
+      expect(page).to have_content("Pet not created: Must fill out entire form.")
     end
   end
 end
