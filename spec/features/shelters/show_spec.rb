@@ -126,17 +126,13 @@ describe 'As a Visitor' do
 
 		it "I see a link next to each review to delete the review" do
 
-			content = "The people at this shelter were so kind and helpful."
-			image = "https://www.humanesociety.org/sites/default/files/styles/1240x698/public/2018/06/kittens-in-shelter-69469.jpg?h=ece64c50&itok=tOiKeqHY"
-
-			@review_1 = @ddfl.reviews.create!(title: "Wonderul experience", rating: "5", content: content, image: image)
-
 			visit "/shelters/#{@ddfl.id}"
 
 			within "#review-#{@review_1.id}" do
   			click_link 'Delete Review'
 			end
 
+			expect(current_path).to eq("/shelters/#{@ddfl.id}")
 			expect(page).not_to have_content(@review_1.title)
 			expect(page).not_to have_content(@review_1.content)
 			expect(page).not_to have_css("img[src*='#{@review_1.image}']")
