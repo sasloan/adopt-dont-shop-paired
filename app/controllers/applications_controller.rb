@@ -3,6 +3,10 @@ class ApplicationsController < ApplicationController
     @fav_pets = favorites.fav_pets
   end
   
+  def show
+    @application = Application.find(params[:application_id])
+  end
+  
   def create
     pets_applied_for = []
     
