@@ -15,4 +15,14 @@ class Pet < ApplicationRecord
 		pet_application = PetApplication.where(pet_id: self.id, approved: true).first
 		Application.find(pet_application.application_id).name
 	end
+	
+	def approved?
+		@approved = []
+		
+		self.pet_applications.each do |pet_application|
+			@approved << pet_application.approved
+		end
+		
+		@approved.include?(true)
+	end
 end

@@ -12,9 +12,9 @@
   <% @application.pets.each do |pet| %>
     <div id="pet-<%= pet.id %>">
       <p><%= link_to "#{pet.name}", "/pets/#{pet.id}" %> |
-      <% if pet.adoptable %>
+      <% if pet.adoptable && !pet.approved? %>
         <%= link_to "Approve", "/pets/#{pet.id}/applications/#{@application.id}", method: :patch %>
-      <% else %>
+      <% elsif !pet.approved? || PetApplication.exists?(pet_id: pet.id, application_id: @application.id, approved: true) %>
         <%= link_to "Unapprove", "/pets/#{pet.id}/applications/#{@application.id}", method: :patch %>
       <% end %>
     </div>
