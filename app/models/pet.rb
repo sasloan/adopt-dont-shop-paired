@@ -10,4 +10,9 @@ class Pet < ApplicationRecord
 	def self.pet_count
 		count
 	end
+	
+	def approved_application_name
+		pet_application = PetApplication.where(pet_id: self.id, approved: true).first
+		Application.find(pet_application.application_id).name
+	end
 end

@@ -23,4 +23,38 @@ describe "As a visitor" do
       click_link "#{@jona.name}"
       expect(current_path).to eq("/pets/#{@jona.id}")
     end
+    
+    it "I can approve an application for that pet" do
+      within "#pet-#{@jona.id}" do
+        click_link "Approve"
+      end
+      
+      expect(current_path).to eq("/pets/#{@jona.id}")
+      expect(page).to have_content("This pet is Pending")
+      expect(page).to have_content("on hold for #{@application.name}")
+    end
+    
+    it "I can upapprove an application for that pet" do
+      within "#pet-#{@jona.id}" do
+        click_link "Approve"
+      end
+      
+      visit "/applications/#{@application.id}"
+      
+      within "#pet-#{@jona.id}" do
+        expect(page).not_to have_link("Approve")
+        click_link "Unapprove"
+      end
+      
+      expect(current_path).to eq("/applications/#{@application.id}")
+      
+      within "#pet-#{@jona.id}" do
+        expect(page).not_to have_link("Unapprove")
+        expect(page).to have_link("Approve")
+      end
+      
+      visit "/pets/#{@jona.id}"
+      expect(page).to have_content("Status: Adoptable")
+      expect(page).not_to have_content("on hold for #{@application.name}")
+    end
 end

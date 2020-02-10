@@ -4,7 +4,7 @@
   <div id="applications">
     <h3>Applications for <%= @pet.name %>:</h3>
     <% @pet.applications.each do |application| %>
-      <p><%= link_to "#{application.name}", "/applications/#{application.id}" %></p>
+        <p><%= link_to "#{application.name}", "/applications/#{application.id}" %></p>
     <% end %>
   </div>
 <% end %>

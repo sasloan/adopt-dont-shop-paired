@@ -10,6 +10,13 @@
   
   <h3>Pets applied for:</h3>
   <% @application.pets.each do |pet| %>
-    <p><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
+    <div id="pet-<%= pet.id %>">
+      <p><%= link_to "#{pet.name}", "/pets/#{pet.id}" %> |
+      <% if pet.adoptable %>
+        <%= link_to "Approve", "/pets/#{pet.id}/applications/#{@application.id}", method: :patch %>
+      <% else %>
+        <%= link_to "Unapprove", "/pets/#{pet.id}/applications/#{@application.id}", method: :patch %>
+      <% end %>
+    </div>
   <% end %>
 </div>

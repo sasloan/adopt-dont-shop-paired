@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "As a visitor" do
-  describe "When I see a pets show page, I click a link to see all of their applications"
+  describe "When I see a pets show page, I click a link to see all of their applications" do
     before :each do
       @aps = Shelter.create!(name: "Arvada Pet Shelter", address: "9876 Lamar Blvd.", city: "Arvada", state: "Co.", zip: "80003")
       @jona = @aps.pets.create!(image: "https://www.allthingsdogs.com/wp-content/uploads/2018/08/How-to-Care-for-a-Black-German-Shepherd.jpg", name: "Jona Bark", description: "Black Shepard", age: 6, sex: "Female")
@@ -29,4 +29,5 @@ describe "As a visitor" do
       
       expect(page).to have_content("There are no applications for this pet yet.")
     end
+  end
 end

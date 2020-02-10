@@ -44,6 +44,26 @@ class PetsController < ApplicationController
 
 		redirect_to "/pets"
 	end
+	
+	def change_status
+		pet = Pet.find(params[:pet_id])
+		
+		if pet.adoptable
+			pet.update(adoptable: false)
+		else
+			pet.update(adoptable: true)
+		end
+		
+		pet_application = PetApplication.where(pet_id: pet.id, application_id: params[:application_id]).first
+		
+		if pet_application.approved
+			pet_application.update(approved: false)
+			redirect_to "/applications/#{pet_application[:application_id]}"
+		else
+			pet_application.update(approved: true)
+			redirect_to "/pets/#{pet.id}"
+		end
+	end
 
 	private
 

@@ -15,16 +15,18 @@ class ApplicationsController < ApplicationController
     pets_applied_for = []
     
     if params[:check_box].nil? == false
+      application = Application.create(application_params)
+      
       params[:check_box].each do |pet_id|
-        @pet = Pet.find(pet_id.to_i)
-        @pet.applications.create(application_params)
-        pets_applied_for << @pet.name
+        pet = Pet.find(pet_id.to_i)
+        pets_applied_for << pet.name
         
+        @pet_application = PetApplication.create(pet_id: pet_id, application_id: application.id)
         favorites.contents.delete(pet_id)
       end
     end
     
-    if pets_applied_for.count > 0 && @pet.save
+    if pets_applied_for.count > 0 && @pet_application.save
       redirect_to "/favorites"
       flash[:notice] = "Application accepted for #{pets_applied_for.to_sentence}."
     else
