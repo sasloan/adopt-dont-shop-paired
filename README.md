@@ -3,3 +3,11 @@
 </p>
 
 By: [Ben Fox](https://github.com/benfox1216) & [Sebastian Sloan](https://github.com/sasloan)
+
+<h3 align="left"> View Live </h3>
+
+  If you would like to view this website live as it exists on heroku. Please click here: [Adopt Don't Shop](https://adopt-dont-shop-paired-ss-bf.herokuapp.com/)
+  
+  This link hosts an unbondence of options please enjoy your access and any feedback is welcome!! 
+  
+  
