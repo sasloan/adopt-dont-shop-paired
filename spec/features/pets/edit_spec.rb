@@ -48,5 +48,28 @@ describe 'As a Visitor' do
 			expect(page).to have_content(9)
 			expect(page).to have_content("Status: Adoptable")
 		end
+		
+		it 'If I dont fill in the infromation then I see a flash message with what required info is missing and stay on the new form' do
+
+			visit "/pets/#{@jona.id}"
+
+			click_on "Update Pet"
+
+			expect(current_path).to eq("/pets/#{@jona.id}/edit")
+
+			expect(page).to have_content("Image")
+			expect(page).to have_content("Name")
+			expect(page).to have_content("Description")
+			expect(page).to have_content("Age")
+			expect(page).to have_content("Sex")
+			
+			fill_in :name, with: ""
+			fill_in :description, with: ""
+
+			click_on "Update Pet"
+
+			expect(current_path).to eq("/pets/#{@jona.id}/edit")
+			expect(page).to have_content("You attempted to submit the form without completing required field(s): Name, Description")
+		end
 	end
 end

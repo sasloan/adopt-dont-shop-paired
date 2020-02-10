@@ -181,5 +181,13 @@ describe 'As a Visitor' do
 				expect(page).to have_link("#{@cricket.name}")
 			end
 		end
+		
+		it "After I've deleted a pet, it's removed from favorites" do
+			visit "/pets/#{@ozzy.id}"
+			click_link "Delete Pet"
+			visit "/favorites"
+			
+			expect(page).not_to have_link(@ozzy.name)
+		end
 	end
 end

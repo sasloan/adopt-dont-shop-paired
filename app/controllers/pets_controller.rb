@@ -23,7 +23,7 @@ class PetsController < ApplicationController
 		if pet.save
 			redirect_to "/shelters/#{shelter.id}/pets"
 		else
-			flash[:notice] = "Pet not Created: Required information missing."
+			flash[:incomplete] = "You attempted to submit the form without completing required field(s): #{empty_params(required_params)}"
 			redirect_to "/shelters/#{shelter.id}/pets/new"
 		end
 	end
@@ -35,8 +35,12 @@ class PetsController < ApplicationController
 	def update
 		pet = Pet.find(params[:pet_id])
 		pet.update(pet_params)
-
-		redirect_to "/pets/#{pet.id}"
+		if pet.save
+			redirect_to "/pets/#{pet.id}"
+		else
+			flash[:incomplete] = "You attempted to submit the form without completing required field(s): #{empty_params(required_params)}"
+			redirect_to "/pets/#{pet.id}/edit"
+		end
 	end
 
 	def destroy
@@ -69,5 +73,9 @@ class PetsController < ApplicationController
 
 	def pet_params
 		params.permit(:image, :name, :description, :age, :sex)
+	end
+	
+	def required_params
+		params.permit(:name, :description, :age, :sex)
 	end
 end
