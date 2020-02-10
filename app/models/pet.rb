@@ -3,7 +3,7 @@ class Pet < ApplicationRecord
 												:description,
 												:age,
 												:sex
-	has_many :pet_applications
+	has_many :pet_applications, dependent: :destroy
 	has_many :applications, through: :pet_applications
 	belongs_to :shelter
 

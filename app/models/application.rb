@@ -7,6 +7,6 @@ class Application < ApplicationRecord
                         :phone_number,
                         :description
   
-  has_many :pet_applications
+  has_many :pet_applications, dependent: :destroy
   has_many :pets, through: :pet_applications
 end
