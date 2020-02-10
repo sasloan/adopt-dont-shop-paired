@@ -13,5 +13,9 @@ By: [Ben Fox](https://github.com/benfox1216) & [Sebastian Sloan](https://github.
 <h3 align="center"> View Code Locally </h3>
 
 <p> We know that many of you would like to veiw the code locally and we encourage this!! however please follow these easy instructions for setting up the local enviornment on your computer, thank you! </p>
+
+'''
+fork this repo
+'''
   
   
