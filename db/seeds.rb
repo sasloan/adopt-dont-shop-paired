@@ -5,7 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 Review.delete_all
+PetApplication.delete_all
 Application.delete_all
 Pet.delete_all
 Shelter.delete_all
@@ -36,3 +38,15 @@ Shelter.delete_all
 @review_3 = @acph.reviews.create!(title: "Horrible, Cold Puppies",rating: 1, content: "The poor animals where out in the snow!!", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRwTcGTpeMHLn2iEbHfMxo4zeTrTRWw7TlwoWABcxYFX3W4kDQY")
 @review_4 = @ddfl.reviews.create!(title: "Absolutley Filthy",rating: 1, content: "This place is the Deffinition of unsanitized", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQi0nRFEj6Lr0uFNzqwDzPp7I4GwBg9ARGvQxk2KSH8_NZA-paG")
 @review_5 = @ddfl.reviews.create!(title: "Wonderul experience", rating: "5/5 stars", content: "The people at this shelter were so kind and helpful. They asked specific questions to narrow down what kind of pet would be good for me." , image: "https://www.humanesociety.org/sites/default/files/styles/1240x698/public/2018/06/kittens-in-shelter-69469.jpg?h=ece64c50&itok=tOiKeqHY")
+
+# Applications
+
+@application_1 = Application.create!(name: "John Doe", address: "123 Arf St", city: "New York", state: "NY", zip: "38567", phone_number: "374-747-6543", description: "Good home")
+@application_2 = Application.create!(name: "Sebastian Sloan", address: "123 6th Ave", city: "Erie", state: "CO", zip: "76455", phone_number: "374-747-4536", description: "Loving home")
+
+@pet_application_1 = PetApplication.create!(pet_id: @athena.id, application_id: @application_1.id)
+@pet_application_2 = PetApplication.create!(pet_id: @odell.id, application_id: @application_1.id)
+@pet_application_3 = PetApplication.create!(pet_id: @jona.id, application_id: @application_1.id)
+@pet_application_4 = PetApplication.create!(pet_id: @athena.id, application_id: @application_2.id)
+@pet_application_5 = PetApplication.create!(pet_id: @odell.id, application_id: @application_2.id)
+@pet_application_6 = PetApplication.create!(pet_id: @jona.id, application_id: @application_2.id)

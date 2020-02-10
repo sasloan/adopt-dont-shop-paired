@@ -1,8 +1,28 @@
 <% if favorites.contents.empty? %>
-	<h2> You have no Favorites yet!! </h2>
+<div id="applied_for">
+	<h3>Pets with applications:</h3>
+	<% Pet.all.each do |pet| %>
+		<% if pet.applications.count > 0 %>
+			<p><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
+		<% end %>
+	<% end %>
+</div>
+
+	<h2> You have no favorites!! </h2>
+	
 <% else !favorites.contents.empty? %>
 	<p><%= button_to "Remove All Pets", "/favorites", method: :delete %></p>
-	<p><%= link_to "Apply To Adopt", "/favorites/applications/new" %></p>
+	<p><%= link_to "Apply To Adopt", "/applications/new" %></p>
+	
+	<div id="applied_for">
+		<h3>Pets with applications:</h3>
+		<% Pet.all.each do |pet| %>
+			<% if pet.applications.count > 0 %>
+				<p><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
+			<% end %>
+		<% end %>
+	</div>
+	
 <div class='fav'>
 	<% @pets.each do |pet| %>
 			<% if favorites.ids.include?(pet.id) %>

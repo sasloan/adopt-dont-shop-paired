@@ -43,7 +43,7 @@ describe 'As a Visitor' do
 			expect(page).to have_content("Male")
 		end
 
-		it 'If I dont fill in the infromation then I see a flash message and stay on the new form' do
+		it 'If I dont fill in the infromation then I see a flash message with what required info is missing and stay on the new form' do
 
 			visit "/shelters/#{@aps.id}/pets"
 
@@ -60,11 +60,14 @@ describe 'As a Visitor' do
 			expect(page).to have_content("Description")
 			expect(page).to have_content("Age")
 			expect(page).to have_content("Sex")
+			
+			fill_in :name, with: "Ollie"
+			fill_in :description, with: "Half Husky and half Collie"
 
 			click_on "Create Pet"
 
 			expect(current_path).to eq("/shelters/#{@aps.id}/pets/new")
-			expect(page).to have_content("Pet not Created: Required information missing.")
+			expect(page).to have_content("You attempted to submit the form without completing required field(s): Age, Sex")
 		end
 	end
 end

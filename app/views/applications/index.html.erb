@@ -1,0 +1,10 @@
+<% if @pet.applications == [] %>
+  <h1>There are no applications for this pet yet.</h1>
+<% else %>
+  <div id="applications">
+    <h3>Applications for <%= @pet.name %>:</h3>
+    <% @pet.applications.each do |application| %>
+        <p><%= link_to "#{application.name}", "/applications/#{application.id}" %></p>
+    <% end %>
+  </div>
+<% end %>
