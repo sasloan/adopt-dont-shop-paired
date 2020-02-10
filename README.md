@@ -10,4 +10,8 @@ By: [Ben Fox](https://github.com/benfox1216) & [Sebastian Sloan](https://github.
   
   This link hosts an unbondence of options please enjoy your access and any feedback is welcome!! 
   
+<h3 align="center"> View Code Locally </h3>
+
+<p> We know that many of you would like to veiw the code locally and we encourage this!! however please follow these easy instructions for setting up the local enviornment on your computer, thank you! </p>
+  
   
