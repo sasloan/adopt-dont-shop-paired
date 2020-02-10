@@ -109,7 +109,7 @@ describe 'As a Visitor' do
 			end
 
 			expect(current_path).to eq("/favorites")
-			expect(page).to have_content("You have no Favorites yet!!")
+			expect(page).to have_content("You have no favorites!")
 		end
 
 		it 'I have a button that I can push to erase all of the pets in my favorites' do
@@ -133,49 +133,61 @@ describe 'As a Visitor' do
 			expect(current_path).to eq("/favorites")
 			expect(page).to have_content("All pets have been removed from your favorites.")
 		end
-
-		it "I can click a link for adopting favorited pets, and select which favorites I want, then apply for them" do
+		
+		it "After I've created applications, I see a list of pets w/ at least one application" do
 			click_link "Apply To Adopt"
 			
 			within "#favorite-#{@jona.id}" do
-				check "check_box[]"
-				expect(page).to have_checked_field("check_box[]")
-			end
-			
-			within "#favorite-#{@cricket.id}" do
-				check "check_box[]"
-				expect(page).to have_checked_field("check_box[]")
-			end
-			
-			expect(current_path).to eq("/favorites/applications/new")
-			expect(page).to have_content("#{@jona.name}")
-			expect(page).to have_content("#{@cricket.name}")
-			expect(page).to have_content("#{@athena.name}")
-			expect(page).to have_content("#{@ozzy.name}")
-			
-			expect(page).to have_content("Name")
-			expect(page).to have_content("Address")
-			expect(page).to have_content("City")
-			expect(page).to have_content("State")
-			expect(page).to have_content("Zip")
-			expect(page).to have_content("Why my home would be great:")
+        check "check_box[]"
+      end
+      
+      within "#favorite-#{@cricket.id}" do
+        check "check_box[]"
+      end
 			
 			fill_in :name, with: "Ben Fox"
-			fill_in :address, with: "123 Cool St"
-			fill_in :city, with: "West Chester"
-			fill_in :state, with: "OK"
-			fill_in :zip, with: "11223"
-			fill_in :phone_number, with: "123-456-7890"
-			fill_in :description, with: "I love to spoil my pets"
-
+      fill_in :address, with: "123 Cool St"
+      fill_in :city, with: "West Chester"
+      fill_in :state, with: "OK"
+      fill_in :zip, with: "11223"
+      fill_in :phone_number, with: "123-456-7890"
+      fill_in :description, with: "I love to spoil my pets."
+			
+			click_button "Create Application"
+			
+			visit "/pets/#{@jona.id}"
+			click_on "Add Pet To Favorites"
+			visit "/favorites"
+			click_link "Apply To Adopt"
+			
+			within "#favorite-#{@jona.id}" do
+        check "check_box[]"
+      end
+			
+			fill_in :name, with: "Syd Barrett"
+      fill_in :address, with: "453 Loco St"
+      fill_in :city, with: "Norman"
+      fill_in :state, with: "OK"
+      fill_in :zip, with: "88334"
+      fill_in :phone_number, with: "987-654-3210"
+      fill_in :description, with: "Pets are a big responsibility that I take seriously."
+			
 			click_button "Create Application"
 			
 			expect(current_path).to eq("/favorites")
 			
-			expect(page).to have_content("Application accepted for Jona Bark and Cricket.")
+			within "#applied_for" do
+				expect(page).to have_link("#{@jona.name}", count: 1)
+				expect(page).to have_link("#{@cricket.name}")
+			end
+		end
+		
+		it "After I've deleted a pet, it's removed from favorites" do
+			visit "/pets/#{@ozzy.id}"
+			click_link "Delete Pet"
+			visit "/favorites"
 			
-			expect(page).not_to have_content("#pet-#{@jona.id}")
-			expect(page).not_to have_content("#pet-#{@cricket.id}")
+			expect(page).not_to have_link(@ozzy.name)
 		end
 	end
 end

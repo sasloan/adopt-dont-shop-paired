@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 	get '/pets/:pet_id/edit', to: 'pets#edit'
 	patch '/pets/:pet_id', to: 'pets#update'
 	delete '/pets/:pet_id', to: 'pets#destroy'
+	patch '/pets/:pet_id/applications/:application_id', to: 'pets#change_status'
 	
 	#shelter_reviews
 	get '/shelters/:shelter_id/reviews/new', to: 'shelter_reviews#new'
@@ -37,6 +38,8 @@ Rails.application.routes.draw do
 	delete '/favorites/', to: 'favorites#destroy_all'
 
 	#applications
-	get '/favorites/applications/new', to: 'applications#new'
-	post '/favorites/applications/:application_id', to: 'applications#create'
+	get '/pets/:pet_id/applications', to: 'applications#index'
+	get '/applications/new', to: 'applications#new'
+	post '/applications', to: 'applications#create'
+	get '/applications/:application_id', to: 'applications#show'
 end

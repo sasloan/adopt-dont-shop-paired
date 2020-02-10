@@ -6,18 +6,22 @@
 	<p> Description: <%= @pet.description %></p>
 	<p> Age: <%= @pet.age %></p>
 	<p> Sex: <%= @pet.sex %></p>
+	
 	<% if @pet.adoptable %>
 		<p>Status: Adoptable</p>
 	<% else %>
-		<p> This pet is Pending </p>
+		<p> This pet is Pending, on hold for <%= @pet.approved_application_name %> </p>
 	<% end %>
 	<% unless favorites.favorited?(@pet.id) %>
 		<p><%= button_to "Add Pet To Favorites", "/favorites/#{@pet.id}", method: :patch %></p>
-	<% else !favorites.favorited?(@pet.id) %> 
+	<% else !favorites.favorited?(@pet.id) %>
 		<p><%= button_to "Remove Pet From Favorites", "/favorites/#{@pet.id}", method: :delete %></p>
 	<% end %>
 
 
 	<p><%= link_to "Update Pet", "/pets/#{@pet.id}/edit" %> |
-	<%= link_to "Delete Pet", "/pets/#{@pet.id}", method: :delete %></p>
+	<% if @pet.adoptable %>
+		<%= link_to "Delete Pet", "/pets/#{@pet.id}", method: :delete %> |
+	<% end %>
+	<%= link_to "Applications", "/pets/#{@pet.id}/applications" %></p>
 </div>
