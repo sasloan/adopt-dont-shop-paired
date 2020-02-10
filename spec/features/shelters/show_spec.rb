@@ -11,10 +11,15 @@ describe 'As a Visitor' do
 			@aps = Shelter.create!(name: "Arvada Pet Shelter", address: "9876 Lamar Blvd.", city: "Arvada", state: "Co.", zip: "80003")
 			@acph = Shelter.create!(name: "Adams County Pet Hospital", address: "7834 Pecos St.", city: "Thornton", state: "Co.", zip: "80221")
 			@twitch = @acph.pets.create!(image: "https://i.pinimg.com/originals/6e/3c/c1/6e3cc15c678002f4ece659442ae9aefd.jpg", name: "Twitch", description: "Doxine Mini", age: 7, sex: "Male", adoptable: false)
+			@sebastian = Application.create!(name: "Sebastian", address: "123 Fake st.", city: "Denver", state: "Co", zip: "80230", phone_number: "720 555 7659", description: "I alreayd have two pets in perfect health and happiness at home")
+			@ben = Application.create!(name: "Ben", address: "456 Fake St.", city: "Denver", state: "Co.", zip: "80345", phone_number: "303 897 6754", description: "I would make  good pet owner because I care about my pets and feed them daily")
+
+			@freja.applications << @sebastian
+			@ciri.applications << @ben
 
 			content = "The people at this shelter were so kind and helpful."
 			image = "https://www.humanesociety.org/sites/default/files/styles/1240x698/public/2018/06/kittens-in-shelter-69469.jpg?h=ece64c50&itok=tOiKeqHY"
-			
+
 			@review_1 = @ddfl.reviews.create!(title: "Wonderul experience", rating: "5", content: content, image: image)
 
 			visit "/shelters/#{@ddfl.id}"
@@ -24,7 +29,7 @@ describe 'As a Visitor' do
 
 			expect(current_path).to eq("/shelters/#{@ddfl.id}")
 
-			expect(page).to have_content(@ddfl.name)
+			expect(page).to have_link(@ddfl.name)
 			expect(page).to have_content(@ddfl.address)
 			expect(page).to have_content(@ddfl.city)
 			expect(page).to have_content(@ddfl.state)
@@ -125,12 +130,14 @@ describe 'As a Visitor' do
 		end
 
 		it "I see a link next to each review to delete the review" do
+
 			visit "/shelters/#{@ddfl.id}"
 
 			within "#review-#{@review_1.id}" do
   			click_link 'Delete Review'
 			end
 
+			expect(current_path).to eq("/shelters/#{@ddfl.id}")
 			expect(page).not_to have_content(@review_1.title)
 			expect(page).not_to have_content(@review_1.content)
 			expect(page).not_to have_css("img[src*='#{@review_1.image}']")
@@ -150,28 +157,11 @@ describe 'As a Visitor' do
 			expect(page).to have_content("Average Rating: 4.3/5 stars")
 		end
 
-		# it 'I can see the number of Applications submited for pets in this shelter' do
-		#
-		# 	expect(current_path).to eq("/shelters/#{@ddfl.id}")
-		#
-		# 	expect(page).to have_content("Current Application Count: 2")
-		# end
+		it 'I can see the number of Applications submited for pets in this shelter' do
+
+			expect(current_path).to eq("/shelters/#{@ddfl.id}")
+
+			expect(page).to have_content("Current Application Count: 2")
+		end
 	end
 end
-
-# application_count spec
-
-#  it "#application.count" do
-#    expect(Application.application_count).to eq(2)
-#  end
-
-# application_count model method
-
-#  def self.application_count
-#    count
-#  end
-
-# show page view
-
-# <h3>Current Application Count: <%= @shelter.pets.each {|pet| pet.application_count } %></h3>
- 

@@ -25,11 +25,26 @@ describe Shelter, type: :model do
 			@ddfl = Shelter.create!(name: "Denver Dumb Friends League", address: "1267 Quebec Dr.", city: "Denver", state: "Co.", zip: "80230")
 			@freja = @ddfl.pets.create!(image: "https://thehappypuppysite.com/wp-content/uploads/2018/08/great-pyrenees-long.jpg", name: "Freja", description: "Great Perinnes", age: 3, sex: "Female")
 			@ciri = @ddfl.pets.create!(image: "https://www.thelabradordog.com/wp-content/uploads/2018/11/Albino-Labrador.png", name: "Ciri", description: "White Lab", age: 2, sex: "Female")
+			@sebastian = Application.create!(name: "Sebastian", address: "123 Fake st.", city: "Denver", state: "Co", zip: "80230", phone_number: "720 555 7659", description: "I alreayd have two pets in perfect health and happiness at home")
+			@ben = Application.create!(name: "Ben", address: "456 Fake St.", city: "Denver", state: "Co.", zip: "80345", phone_number: "303 897 6754", description: "I would make  good pet owner because I care about my pets and feed them daily")
+
+			@jona.applications << @sebastian
+
+			@twitch.applications << @sebastian
+			@twitch.applications << @ben
+
+			@freja.applications << @ben
 		end
 
 		it "#pet_pending?" do
 			expect(@aps.pets_pending?).to eq(false)
 			expect(@acph.pets_pending?).to eq(true)
 		end
+
+		it "#application_count" do
+			expect(@aps.application_count).to eq(1)
+			expect(@acph.application_count).to eq(2)
+			expect(@ddfl.application_count).to eq(1)
+		end	
 	end
 end
