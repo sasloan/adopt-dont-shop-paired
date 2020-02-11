@@ -21,7 +21,7 @@ fork this repo
 <img width="1389" alt="Screen Shot 2020-02-10 at 2 59 27 PM copy" src="https://user-images.githubusercontent.com/51456013/74194688-ffa1b280-4c16-11ea-8c89-d961b380c8a6.png">
 
 Then please click on the `clone or download` button and copy the link you see. After that is done then go into the local
-  repository that you choose to put this project in run. 
+  repository that you choose to put this project in, then run. 
 
 ```
 git clone 'your copy here' 
@@ -29,7 +29,7 @@ git clone 'your copy here'
 
 after words you will need to enter your new local repositroy by typing `cd adopt-dont-shop-paired` into your CLI. 
 
-once you are inside your new local repositroy please make sure that you currently have `ruby -v 2.5.7` installed on your device. if you do not then please follow this link to install it [Ruby Installation](https://github.com/rbenv/rbenv).
+once you are inside your new local repositroy please make sure that you currently have `ruby -v 2.5.7` installed on your device. if you do not then please follow this link to install it: [Ruby Installation](https://github.com/rbenv/rbenv).
 
 once you are in your local directory with your ruby version installed correctly, then please run these simple commands to get your enviornment set up!! 
 
@@ -43,7 +43,7 @@ If you run `rspec` you should see this if everything is set up correctly
 
 <img width="1440" alt="Screen Shot 2020-02-10 at 3 27 15 PM" src="https://user-images.githubusercontent.com/51456013/74196149-dfbfbe00-4c19-11ea-9e53-8fa8e6755b10.png">
 
-Awesome now we are going to make sure we can check everything out on our local device! 
+Awesome, now we are going to make sure we can check everything out on our local device! 
 
 please type `rails s` into your CLI then go to your desired browser, open a new tab and type in `localhost:3000` you should see this if done correctly. 
 
