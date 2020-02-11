@@ -68,14 +68,7 @@ describe 'As a visitor' do
       click_button "Create Application"
 
       expect(current_path).to eq("/favorites")
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> master
-=======
-
->>>>>>> master
       expect(page).to have_content("Application accepted for Jona Bark and Cricket.")
 
       expect(page).not_to have_content("#pet-#{@jona.id}")

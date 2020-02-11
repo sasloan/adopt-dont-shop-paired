@@ -21,7 +21,7 @@ class Pet < ApplicationRecord
 		@approved = []
 
 		self.pet_applications.each do |pet_application|
-			approved << pet_application.approved
+			@approved << pet_application.approved
 		end
 
 		@approved.include?(true)
