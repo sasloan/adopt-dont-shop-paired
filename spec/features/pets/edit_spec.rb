@@ -9,21 +9,17 @@ describe 'As a Visitor' do
 		end
 
 		it 'I am directed to a form to update my dogs infromation' do
-
 			visit "/pets/#{@jona.id}"
 
+			expect(current_path).to eq("/pets/#{@jona.id}")
 			expect(page).to have_css("img[src*='#{@jona.image}']")
 			expect(page).to have_content(@jona.name)
 			expect(page).to have_content(@jona.age)
 			expect(page).to have_content(@jona.sex)
 			expect(page).to have_content("Status: Adoptable")
-
-			expect(current_path).to eq("/pets/#{@jona.id}")
-
 			expect(page).to have_link("Update Pet")
 
-			click_on "Update Pet"
-
+			click_link "Update Pet"
 			expect(current_path).to eq("/pets/#{@jona.id}/edit")
 
 			expect(page).to have_content("Image")
@@ -38,8 +34,7 @@ describe 'As a Visitor' do
 			fill_in :age, with: 9
 			fill_in :sex, with: "Female"
 
-			click_on "Update Pet"
-
+			click_button "Update Pet"
 			expect(current_path).to eq("/pets/#{@jona.id}")
 
 			expect(page).to have_css("img[src*='https://www.allthingsdogs.com/wp-content/uploads/2018/08/Breed-Standard-for-a-Black-GSD.jpg']")
@@ -50,11 +45,8 @@ describe 'As a Visitor' do
 		end
 		
 		it 'If I dont fill in the infromation then I see a flash message with what required info is missing and stay on the new form' do
-
 			visit "/pets/#{@jona.id}"
-
-			click_on "Update Pet"
-
+			click_link "Update Pet"
 			expect(current_path).to eq("/pets/#{@jona.id}/edit")
 
 			expect(page).to have_content("Image")
@@ -66,7 +58,7 @@ describe 'As a Visitor' do
 			fill_in :name, with: ""
 			fill_in :description, with: ""
 
-			click_on "Update Pet"
+			click_button "Update Pet"
 
 			expect(current_path).to eq("/pets/#{@jona.id}/edit")
 			expect(page).to have_content("You attempted to submit the form without completing required field(s): Name, Description")

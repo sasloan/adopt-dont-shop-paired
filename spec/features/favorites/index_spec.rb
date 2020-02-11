@@ -41,7 +41,6 @@ describe 'As a Visitor' do
 		end
 
 		it "I should see a list of all the favorited pets and their information" do
-
 			expect(current_path).to eq("/favorites")
 
 			expect(page).to have_css("img[src*='#{@jona.image}']")
@@ -58,14 +57,12 @@ describe 'As a Visitor' do
 		end
 
 		it 'I should see a remove from favorites option within each pet' do
-
 			expect(current_path).to eq("/favorites")
 
 			within"#pet-#{@jona.id}" do
 				expect(page).to have_link("Remove Pet")
-
+				
 				click_on "Remove Pet"
-
 				expect(current_path).to eq("/favorites")
 			end
 
@@ -73,14 +70,12 @@ describe 'As a Visitor' do
 		end
 
 		it 'I see a message that I have no favorites if the favorites is empty' do
-
 			expect(current_path).to eq("/favorites")
 
 			within"#pet-#{@jona.id}" do
 				expect(page).to have_link("Remove Pet")
 
 				click_on "Remove Pet"
-
 				expect(current_path).to eq("/favorites")
 			end
 
@@ -88,7 +83,6 @@ describe 'As a Visitor' do
 				expect(page).to have_link("Remove Pet")
 
 				click_on "Remove Pet"
-
 				expect(current_path).to eq("/favorites")
 			end
 
@@ -96,7 +90,6 @@ describe 'As a Visitor' do
 				expect(page).to have_link("Remove Pet")
 
 				click_on "Remove Pet"
-
 				expect(current_path).to eq("/favorites")
 			end
 
@@ -104,7 +97,6 @@ describe 'As a Visitor' do
 				expect(page).to have_link("Remove Pet")
 
 				click_on "Remove Pet"
-
 				expect(current_path).to eq("/favorites")
 			end
 
@@ -113,7 +105,6 @@ describe 'As a Visitor' do
 		end
 
 		it 'I have a button that I can push to erase all of the pets in my favorites' do
-
 			expect(current_path).to eq("/favorites")
 
 			expect(page).to have_css("img[src*='#{@jona.image}']")
@@ -156,7 +147,7 @@ describe 'As a Visitor' do
 			click_button "Create Application"
 			
 			visit "/pets/#{@jona.id}"
-			click_on "Add Pet To Favorites"
+			click_button "Add Pet To Favorites"
 			visit "/favorites"
 			click_link "Apply To Adopt"
 			

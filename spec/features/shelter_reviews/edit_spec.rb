@@ -28,8 +28,8 @@ describe 'As a Visitor' do
 			fill_in :rating, with: "4"
 			fill_in :content, with: "This is a good shelter, kinda dirty"
 			fill_in :image, with: "https://www.austinpetsalive.org/uploads/banners/adopt_banner.jpg"
+			
 			click_button "Update Review"
-
 			expect(current_path).to eq("/shelters/#{@aps.id}")
 
 			expect(page).to have_content("Cool place")
@@ -52,7 +52,6 @@ describe 'As a Visitor' do
 			expect(page).to have_content("Image")
 			
 			fill_in :rating, with: ""
-			
       click_button 'Update Review'
 			
       expect(page).to have_content("Update review not saved: Must fill in title, rating and content.")

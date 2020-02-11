@@ -11,11 +11,8 @@ describe 'As a Visitor' do
 		end
 
 		it 'I should be able to click a link to go to the pets index page' do
-
 			visit "/shelters"
-
 			expect(current_path).to eq("/shelters")
-
 			expect(page).to have_link("Pets")
 
 			click_on "Pets"
@@ -24,11 +21,8 @@ describe 'As a Visitor' do
 		end
 
 		it 'I should be able to click a link to go to the shelters index page' do
-
 			visit "/pets"
-
 			expect(current_path).to eq("/pets")
-
 			expect(page).to have_link("Shelters")
 
 			click_on "Shelters"
@@ -37,11 +31,8 @@ describe 'As a Visitor' do
 		end
 
 		it 'I should be able to see a link to favorites and see how many pets are favorited' do
-
 			visit "/pets"
-
 			expect(current_path).to eq("/pets")
-
 			expect(page).to have_link("Favorites: 0")
 
 			click_on "Favorites: 0"
@@ -50,27 +41,21 @@ describe 'As a Visitor' do
 		end
 
 		it 'I can see the number of pets displayed on the nav bar' do
-
 			visit "/pets/#{@jona.id}"
-
 			expect(page).to have_content("Favorites: 0")
 
 			visit "/pets/#{@jona.id}"
-
 			click_button "Add Pet To Favorites"
 
 			expect(current_path).to eq("/pets/#{@jona.id}")
 			expect(page).to have_content("#{@jona.name} has been added to your favorites")
-			
 			expect(page).to have_content("Favorites: 1")
 
 			visit "/pets/#{@ozzy.id}"
-
 			click_button "Add Pet To Favorites"
 
 			expect(current_path).to eq("/pets/#{@ozzy.id}")
 			expect(page).to have_content("#{@ozzy.name} has been added to your favorites")
-
 			expect(page).to have_content("Favorites: 2")
 		end
 	end

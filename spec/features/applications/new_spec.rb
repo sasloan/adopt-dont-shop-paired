@@ -68,7 +68,6 @@ describe 'As a visitor' do
       click_button "Create Application"
       
       expect(current_path).to eq("/favorites")
-      
       expect(page).to have_content("Application accepted for Jona Bark and Cricket.")
       
       expect(page).not_to have_content("#pet-#{@jona.id}")
@@ -100,8 +99,8 @@ describe 'As a visitor' do
         check "check_box[]"
         expect(page).to have_checked_field("check_box[]")
       end
-      fill_in :name, with: ""
       
+      fill_in :name, with: ""
       click_button "Create Application"
       
       expect(current_path).to eq("/applications/new")

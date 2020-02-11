@@ -9,7 +9,7 @@ describe Favorite, type: :model do
 												'3' => true,
 												'4' => true
 											}
-
+			
 			@list_1 = Favorite.new(@favorite_hash)
 		end
 
@@ -22,7 +22,6 @@ describe Favorite, type: :model do
     end
 
     it "#add_pet" do
-
       @list_1.add_pet('5')
       @list_1.add_pet('6')
 
