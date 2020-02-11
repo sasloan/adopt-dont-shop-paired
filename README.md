@@ -50,7 +50,7 @@ please type `rails s` into your CLI then go to your desired browser, open a new 
 
 <img width="1346" alt="Screen Shot 2020-02-10 at 3 34 33 PM" src="https://user-images.githubusercontent.com/51456013/74196620-ddaa2f00-4c1a-11ea-94a7-68dc1b3149ce.png">
 
-Please enjoy our app and if there is anything you would like to add please leave it in the comments section below. thank you and have a nice day!! 
+Please enjoy our app thank you and have a nice day!! 
 
 
 
