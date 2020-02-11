@@ -2,6 +2,7 @@ class ShelterReviewsController < ApplicationController
 
 	def new
     @shelter = Shelter.find(params[:shelter_id])
+		@review = @shelter.reviews
 	end
 
   def create

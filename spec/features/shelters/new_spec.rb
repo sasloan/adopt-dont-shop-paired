@@ -34,7 +34,8 @@ describe 'As a Visitor' do
 
 		it 'I am sent to a new form and if I do not fill in required info I get a flash message' do
 			click_on "Create Shelter"
-			expect(page).to have_content("You attempted to submit the form without completing required field(s): Name, Address, City, State, Zip\nCreate New Shelter\nName\nAddress\nCity\nState\nZip")
+
+			expect(page).to have_content("Name can't be blank, Address can't be blank, City can't be blank, State can't be blank, and Zip can't be blank")
 		end
 	end
 end
