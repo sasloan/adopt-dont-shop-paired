@@ -4,17 +4,17 @@ describe 'As a Visitor' do
 	describe 'When I click on the New Shelter link in the shelters index page' do
 		before :each do
 			visit '/shelters'
-			
+
 			click_on 'New Shelter'
 			expect(current_path).to eq("/shelters/new")
-			
+
 			expect(page).to have_content("Name")
 			expect(page).to have_content("Address")
 			expect(page).to have_content("City")
 			expect(page).to have_content("State")
 			expect(page).to have_content("Zip")
 		end
-		
+
 		it 'I am taken to a form to fill in the infromation of a new pet shelter' do
 			fill_in :name, with: "Aurora Pet Clinic"
 			fill_in :address, with: "5478 Alameda ave."
@@ -24,7 +24,7 @@ describe 'As a Visitor' do
 
 			click_on 'Create Shelter'
 			expect(current_path).to eq("/shelters")
-			
+
 			expect(page).to have_content("Aurora Pet Clinic")
 			expect(page).to have_content("5478 Alameda ave.")
 			expect(page).to have_content("Aurora")
