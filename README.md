@@ -45,7 +45,7 @@ If you run `rspec` you should see this if everything is set up correctly
 
 Awesome now we are going to make sure we can check everything out on our local device! 
 
-please type `rails s` into your CLI then go to your desired browser, open a new tabe and type in `localhost:3000` you should see this if done correctly. 
+please type `rails s` into your CLI then go to your desired browser, open a new tab and type in `localhost:3000` you should see this if done correctly. 
 
 
 <img width="1346" alt="Screen Shot 2020-02-10 at 3 34 33 PM" src="https://user-images.githubusercontent.com/51456013/74196620-ddaa2f00-4c1a-11ea-94a7-68dc1b3149ce.png">
