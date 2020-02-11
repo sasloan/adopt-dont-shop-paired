@@ -71,4 +71,29 @@ describe "As a visitor" do
         expect(page).not_to have_link("Unapprove")
       end
     end
+    
+    it "You can approve more than one pet application per single application" do
+      odell = @aps.pets.create!(name: "Odell", description: "good dog", age: 4, sex: "male")
+      PetApplication.create!(pet_id: odell.id, application_id: @application.id)
+      
+      within "#pet-#{@jona.id}" do
+        click_link "Approve"
+      end
+      
+      visit "/applications/#{@application.id}"
+      
+      within "#pet-#{odell.id}" do
+        click_link "Approve"
+      end
+      
+      visit "/applications/#{@application.id}"
+      
+      within "#pet-#{@jona.id}" do
+        expect(page).to have_link("Unapprove")
+      end
+      
+      within "#pet-#{odell.id}" do
+        expect(page).to have_link("Unapprove")
+      end
+    end
 end
