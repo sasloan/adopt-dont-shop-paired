@@ -9,15 +9,12 @@ describe 'As a Visitor' do
 		end
 
 		it 'I see a way to fill in information' do
-
 			visit "/shelters/#{@aps.id}/pets"
 
 			expect(current_path).to eq("/shelters/#{@aps.id}/pets")
-
 			expect(page).to have_link("Create Pet")
 
-			click_on "Create Pet"
-
+			click_link "Create Pet"
 			expect(current_path).to eq("/shelters/#{@aps.id}/pets/new")
 
 			expect(page).to have_content("Image")
@@ -32,8 +29,7 @@ describe 'As a Visitor' do
 			fill_in :age, with: 8
 			fill_in :sex, with: "Male"
 
-			click_on "Create Pet"
-
+			click_button "Create Pet"
 			expect(current_path).to eq("/shelters/#{@aps.id}/pets")
 
 			expect(page).to have_css("img[src*= 'https://farm3.static.flickr.com/2114/1639103337_8e077a9dab_o.jpg']")
@@ -44,15 +40,12 @@ describe 'As a Visitor' do
 		end
 
 		it 'If I dont fill in the infromation then I see a flash message with what required info is missing and stay on the new form' do
-
 			visit "/shelters/#{@aps.id}/pets"
 
 			expect(current_path).to eq("/shelters/#{@aps.id}/pets")
-
 			expect(page).to have_link("Create Pet")
 
-			click_on "Create Pet"
-
+			click_link "Create Pet"
 			expect(current_path).to eq("/shelters/#{@aps.id}/pets/new")
 
 			expect(page).to have_content("Image")
@@ -64,7 +57,7 @@ describe 'As a Visitor' do
 			fill_in :name, with: "Ollie"
 			fill_in :description, with: "Half Husky and half Collie"
 
-			click_on "Create Pet"
+			click_button "Create Pet"
 
 			expect(current_path).to eq("/shelters/#{@aps.id}/pets/new")
 			expect(page).to have_content("Age can't be blank and Sex can't be blank")

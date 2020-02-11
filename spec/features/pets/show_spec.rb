@@ -11,7 +11,6 @@ describe 'As a Visitor' do
 		end
 
 		it 'I should see the pets name, image, age, sex and adoptable status' do
-
 			expect(current_path).to eq("/pets/#{@jona.id}")
 
 			expect(page).to have_css("img[src*='#{@jona.image}']")
@@ -22,24 +21,20 @@ describe 'As a Visitor' do
 		end
 
 		it 'I should see a link to edit the pets information' do
-
+			expect(current_path).to eq("/pets/#{@jona.id}")
+			
 			expect(page).to have_css("img[src*='#{@jona.image}']")
 			expect(page).to have_content(@jona.name)
 			expect(page).to have_content(@jona.age)
 			expect(page).to have_content(@jona.sex)
 			expect(page).to have_content("Status: Adoptable")
-
-			expect(current_path).to eq("/pets/#{@jona.id}")
-
 			expect(page).to have_link("Update Pet")
 
 			click_on "Update Pet"
-
 			expect(current_path).to eq("/pets/#{@jona.id}/edit")
 		end
 
 		it 'I can see a button to Delete this Pet' do
-
 			expect(current_path).to eq("/pets/#{@jona.id}")
 
 			expect(page).to have_css("img[src*='#{@jona.image}']")
@@ -47,11 +42,9 @@ describe 'As a Visitor' do
 			expect(page).to have_content(@jona.age)
 			expect(page).to have_content(@jona.sex)
 			expect(page).to have_content("Status: Adoptable")
-
 			expect(page).to have_link("Delete Pet")
 
 			click_on "Delete Pet"
-
 			expect(current_path).to eq("/pets")
 
 			expect(page).not_to have_css("img[src*='#{@jona.image}']")
@@ -59,7 +52,6 @@ describe 'As a Visitor' do
 		end
 
 		it "I see a button to add my pet to favorites and when I click it I see that it has been added in the nav bar." do
-
 		 click_button "Add Pet To Favorites"
 
 		 expect(current_path).to eq("/pets/#{@jona.id}")
@@ -67,14 +59,12 @@ describe 'As a Visitor' do
 	 	end
 
 		it "I see a button to remove my pet to favorites and when I click it I see that it has been removed in the nav bar." do
-
  		 	click_button "Add Pet To Favorites"
 
  		 	expect(current_path).to eq("/pets/#{@jona.id}")
  		 	expect(page).to have_content("#{@jona.name} has been added to your favorites")
 
 		 	visit "/pets/#{@jona.id}"
-
 		 	click_button "Remove Pet From Favorites"
 
 		 	expect(current_path).to eq("/pets/#{@jona.id}")
@@ -82,7 +72,6 @@ describe 'As a Visitor' do
 	 	end
 
 		it "I see the Add to favorites button if my pet is NOT in favorites" do
-
  		 	click_button "Add Pet To Favorites"
 
  		 	expect(current_path).to eq("/pets/#{@jona.id}")
@@ -91,7 +80,6 @@ describe 'As a Visitor' do
 		end
 
 		it "I see the Remove From Favorites button if my pet IS in favorites" do
-
  		 	click_button "Add Pet To Favorites"
 
  		 	expect(current_path).to eq("/pets/#{@jona.id}")

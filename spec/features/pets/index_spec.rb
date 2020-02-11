@@ -63,31 +63,25 @@ describe 'As a Visitor' do
 		end
 
 		it 'I see a Update option next to each of the pets' do
-
 			visit "/pets"
-
 			expect(current_path).to eq("/pets")
 
 			within "#pet-#{@jona.id}" do
 				expect(page).to have_link("Update Pet")
-
+				
 				click_on "Update Pet"
-
 				expect(current_path).to eq("/pets/#{@jona.id}/edit")
 			end
 		end
 
 		it 'I see a Delete option next to each of the pets' do
-
 			visit "/pets"
-
 			expect(current_path).to eq("/pets")
 
 			within "#pet-#{@jona.id}" do
 				expect(page).to have_link("Delete Pet")
 
 				click_on "Delete Pet"
-
 				expect(current_path).to eq("/pets")
 			end
 
@@ -96,27 +90,23 @@ describe 'As a Visitor' do
 		end
 
 		it 'I should see that the shelters name is a link to that shelters show page' do
-
 			expect(current_path).to eq("/pets")
 
 			within"#pet-#{@jona.id}" do
 				expect(page).to have_link(@aps.name)
 
 				click_on "#{@aps.name}"
-
 				expect(current_path).to eq("/shelters/#{@aps.id}")
 			end
 		end
 
 		it 'I should see that the pets name is a link to the pets show page' do
-
 			expect(current_path).to eq("/pets")
 
 			within "#pet-#{@jona.id}" do
 				expect(page).to have_link(@jona.name)
 
 				click_on "#{@jona.name}"
-
 				expect(current_path).to eq("/pets/#{@jona.id}")
 			end
 		end
