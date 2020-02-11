@@ -13,9 +13,7 @@ describe 'As a User' do
 		end
 
 		it 'I see a list of all the pets in this shelter only' do
-
 			visit "/shelters/#{@aps.id}/pets"
-
 			expect(current_path).to eq("/shelters/#{@aps.id}/pets")
 
 			within "#pet-#{@jona.id}" do
@@ -34,9 +32,7 @@ describe 'As a User' do
 		end
 
 		it 'I do not see any pets that do not belong in this shelter' do
-
 			visit "/shelters/#{@aps.id}/pets"
-
 			expect(current_path).to eq("/shelters/#{@aps.id}/pets")
 
 			within "#pet-#{@jona.id}" do
@@ -59,44 +55,35 @@ describe 'As a User' do
 		end
 
 		it 'I see a button to add a new pet to the shelter' do
-
 			visit "/shelters/#{@aps.id}/pets"
 
 			expect(current_path).to eq("/shelters/#{@aps.id}/pets")
-
 			expect(page).to have_link("Create Pet")
 
-			click_on "Create Pet"
-
+			click_link "Create Pet"
 			expect(current_path).to eq("/shelters/#{@aps.id}/pets/new")
 		end
 
 		it 'I see an Update Pet link next to each of my pets' do
-
 			visit "/shelters/#{@aps.id}/pets"
-
 			expect(current_path).to eq("/shelters/#{@aps.id}/pets")
 
 			within "#pet-#{@jona.id}" do
 				expect(page).to have_link("Update Pet")
 
-				click_on "Update Pet"
-
+				click_link "Update Pet"
 				expect(current_path).to eq("/pets/#{@jona.id}/edit")
 			end
 		end
 
 		it 'I see an Delete Pet link next to each of my pets' do
-
 			visit "/shelters/#{@aps.id}/pets"
-
 			expect(current_path).to eq("/shelters/#{@aps.id}/pets")
 
 			within "#pet-#{@jona.id}" do
 				expect(page).to have_link("Delete Pet")
 
-				click_on "Delete Pet"
-
+				click_link "Delete Pet"
 				expect(current_path).to eq("/pets")
 			end
 
@@ -105,33 +92,26 @@ describe 'As a User' do
 		end
 
 		it 'I can see the pets name is a link to that pets show page' do
-
 			visit "/shelters/#{@aps.id}/pets"
-
 			expect(current_path).to eq("/shelters/#{@aps.id}/pets")
 
 			within"#pet-#{@jona.id}" do
 				expect(page).to have_link(@jona.name)
 
-				click_on "#{@jona.name}"
-
+				click_link "#{@jona.name}"
 				expect(current_path).to eq("/pets/#{@jona.id}")
 			end
 		end
 
 		it 'I see the total number of pets in this shelter' do
-
 			visit "/shelters/#{@aps.id}/pets"
-
 			expect(current_path).to eq("/shelters/#{@aps.id}/pets")
 
 			expect(page).to have_content("Number of Pets: 4")
 		end
 
 		it 'I do not see the total number of pets in the whole website' do
-
 			visit "/shelters/#{@aps.id}/pets"
-
 			expect(current_path).to eq("/shelters/#{@aps.id}/pets")
 
 			expect(page).not_to have_content("Number of Pets: 5")
