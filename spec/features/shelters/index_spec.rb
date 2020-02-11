@@ -15,12 +15,10 @@ describe 'As a Visitor' do
 			@ciri = @ddfl.pets.create!(image: "https://www.thelabradordog.com/wp-content/uploads/2018/11/Albino-Labrador.png", name: "Ciri", description: "White Lab", age: 2, sex: "Female")
 
 			visit '/shelters'
+			expect(current_path).to eq("/shelters")
 		end
 
 		it "I can see the shelters name's and address's" do
-
-			expect(current_path).to eq('/shelters')
-
 			within "#shelter-#{@ddfl.id}" do
 				expect(page).to have_content(@ddfl.name)
 				expect(page).to have_content(@ddfl.address)
@@ -47,39 +45,27 @@ describe 'As a Visitor' do
 		end
 
 		it 'There is a link that I can click on to Create a new Shelter' do
-
-			expect(current_path).to eq("/shelters")
-
 			expect(page).to have_link("New Shelter")
 
 			click_on "New Shelter"
-
 			expect(current_path).to eq("/shelters/new")
 		end
 
 		it 'There is a link next to each shelter that allows me to update the shelters information' do
-
-			expect(current_path).to eq("/shelters")
-
 			within"#shelter-#{@ddfl.id}" do
-			expect(page).to have_link("Update Shelter")
+				expect(page).to have_link("Update Shelter")
 
-			click_on "Update Shelter"
-
-			expect(current_path).to eq("/shelters/#{@ddfl.id}/edit")
+				click_on "Update Shelter"
+				expect(current_path).to eq("/shelters/#{@ddfl.id}/edit")
 			end
 		end
 
 		it 'There is a link next to each shelter that allows me to delete the shelters information' do
-
-			expect(current_path).to eq("/shelters")
-
 			within"#shelter-#{@ddfl.id}" do
-			expect(page).to have_link("Delete Shelter")
+				expect(page).to have_link("Delete Shelter")
 
-			click_on "Delete Shelter"
-
-			expect(current_path).to eq("/shelters")
+				click_on "Delete Shelter"
+				expect(current_path).to eq("/shelters")
 			end
 
 			expect(page).not_to have_content(@ddfl.name)
@@ -87,19 +73,14 @@ describe 'As a Visitor' do
 		end
 
 		it 'I should NOT see a link to delete the shelter if any of its pets have a pending status' do
-
 			within "#shelter-#{@acph.id}" do
 				expect(page).not_to have_link("Delete Shelter")
 			end
 		end
 
 		it 'I should not see any pets in the shelter that I have deleted in the pets index page' do
-
-			expect(current_path).to eq("/shelters")
-
 			within "#shelter-#{@ddfl.id}" do
 				click_on "Delete Shelter"
-
 				expect(current_path).to eq("/shelters")
 			end
 
@@ -107,20 +88,15 @@ describe 'As a Visitor' do
 
 			expect(page).not_to have_css("img[src*='#{@freja.image}']")
 			expect(page).not_to have_content(@freja.name)
-
 			expect(page).not_to have_css("img[src*='#{@ciri.image}']")
 			expect(page).not_to have_content(@ciri.name)
 		end
 
 		it 'The name of the shelter is a link to its show page' do
-
-			expect(current_path).to eq("/shelters")
-
 			within"#shelter-#{@ddfl.id}" do
 				expect(page).to have_link(@ddfl.name)
 
 				click_on "#{@ddfl.name}"
-
 				expect(current_path).to eq("/shelters/#{@ddfl.id}")
 			end
 		end

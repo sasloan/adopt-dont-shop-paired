@@ -17,6 +17,7 @@ describe Pet, type: :model do
 	describe 'Methods' do
 		before :each do
 			@aps = Shelter.create!(name: "Arvada Pet Shelter", address: "9876 Lamar Blvd.", city: "Arvada", state: "Co.", zip: "80003")
+			
 			@jona = @aps.pets.create!(image: "https://www.allthingsdogs.com/wp-content/uploads/2018/08/How-to-Care-for-a-Black-German-Shepherd.jpg", name: "Jona Bark", description: "Black Shepard", age: 6, sex: "Female")
 			@cricket = @aps.pets.create!(image: "https://www.allthingsdogs.com/wp-content/uploads/2018/08/Breed-Standard-for-a-Black-GSD.jpg", name: "Cricket", description: "Best girl", age: 20, sex: "Female", adoptable: false)
 			@athena = @aps.pets.create!(name: "Athena", description: "Butthead", age: 1, sex: "female", adoptable: false)
@@ -25,6 +26,20 @@ describe Pet, type: :model do
 
 		it '#pet_count' do
 			expect(Pet.pet_count).to eq(4)
+		end
+		
+		it "#approved_application_name" do
+			application = Application.create!(name: "John Doe", address: "123 Arf St", city: "New York", state: "NY", zip: "38567", phone_number: "374-747-6543", description: "Good home")
+			pet_application  = PetApplication.create!(pet_id: @jona.id, application_id: application.id, approved: true)
+			
+			expect(@jona.approved_application_name).to eq("John Doe")
+		end
+		
+		it "#approved?" do
+			application = Application.create!(name: "John Doe", address: "123 Arf St", city: "New York", state: "NY", zip: "38567", phone_number: "374-747-6543", description: "Good home")
+			pet_application  = PetApplication.create!(pet_id: @jona.id, application_id: application.id, approved: true)
+			
+			expect(@jona.approved?).to eq(true)
 		end
 	end
 end

@@ -99,6 +99,7 @@ describe 'As a visitor' do
         check "check_box[]"
         expect(page).to have_checked_field("check_box[]")
       end
+
       fill_in :name, with: ""
 
       click_button "Create Application"
