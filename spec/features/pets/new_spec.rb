@@ -60,14 +60,14 @@ describe 'As a Visitor' do
 			expect(page).to have_content("Description")
 			expect(page).to have_content("Age")
 			expect(page).to have_content("Sex")
-			
+
 			fill_in :name, with: "Ollie"
 			fill_in :description, with: "Half Husky and half Collie"
 
 			click_on "Create Pet"
 
 			expect(current_path).to eq("/shelters/#{@aps.id}/pets/new")
-			expect(page).to have_content("You attempted to submit the form without completing required field(s): Age, Sex")
+			expect(page).to have_content("Age can't be blank and Sex can't be blank")
 		end
 	end
 end

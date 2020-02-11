@@ -23,7 +23,7 @@ class PetsController < ApplicationController
 		if pet.save
 			redirect_to "/shelters/#{shelter.id}/pets"
 		else
-			flash[:incomplete] = "You attempted to submit the form without completing required field(s): #{empty_params(required_params)}"
+			flash[:error] = pet.errors.full_messages.to_sentence
 			redirect_to "/shelters/#{shelter.id}/pets/new"
 		end
 	end
@@ -38,7 +38,7 @@ class PetsController < ApplicationController
 		if pet.save
 			redirect_to "/pets/#{pet.id}"
 		else
-			flash[:incomplete] = "You attempted to submit the form without completing required field(s): #{empty_params(required_params)}"
+			flash[:error] = pet.errors.full_messages.to_sentence
 			redirect_to "/pets/#{pet.id}/edit"
 		end
 	end
@@ -49,18 +49,18 @@ class PetsController < ApplicationController
 		session[:favorites] = favorites.contents
 		redirect_to "/pets"
 	end
-	
+
 	def change_status
 		pet = Pet.find(params[:pet_id])
-		
+
 		if pet.adoptable
 			pet.update(adoptable: false)
 		else
 			pet.update(adoptable: true)
 		end
-		
+
 		pet_application = PetApplication.where(pet_id: pet.id, application_id: params[:application_id]).first
-		
+
 		if pet_application.approved
 			pet_application.update(approved: false)
 			redirect_to "/applications/#{pet_application[:application_id]}"
@@ -75,7 +75,7 @@ class PetsController < ApplicationController
 	def pet_params
 		params.permit(:image, :name, :description, :age, :sex)
 	end
-	
+
 	def required_params
 		params.permit(:name, :description, :age, :sex)
 	end

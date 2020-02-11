@@ -16,7 +16,7 @@ class SheltersController < ApplicationController
 		if shelter.save
 			redirect_to "/shelters"
 		else
-			flash[:incomplete] = "You attempted to submit the form without completing required field(s): #{empty_params(shelter_params)}"
+			flash[:error] = shelter.errors.full_messages.to_sentence
 			render :new
 		end
 	end
@@ -31,7 +31,7 @@ class SheltersController < ApplicationController
 		if shelter.save
 			redirect_to "/shelters/#{shelter.id}"
 		else
-			flash[:incomplete] = "You attempted to submit the form without completing required field(s): #{empty_params(shelter_params)}"
+			flash[:error] = shelter.errors.full_messages.to_sentence
 			redirect_to "/shelters/#{shelter.id}/edit"
 		end
 	end

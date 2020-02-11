@@ -49,7 +49,7 @@ describe 'As a Visitor' do
 
 			click_on "Create Shelter"
 
-			expect(page).to have_content("You attempted to submit the form without completing required field(s): Name, Address, City, State, Zip\nCreate New Shelter\nName\nAddress\nCity\nState\nZip")
+			expect(page).to have_content("Name can't be blank, Address can't be blank, City can't be blank, State can't be blank, and Zip can't be blank")
 		end
 	end
 end
