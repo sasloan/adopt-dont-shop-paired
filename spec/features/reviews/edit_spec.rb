@@ -18,7 +18,7 @@ describe 'As a Visitor' do
 
 		it 'I can follow a link to edit a review, and submit it with the new info' do
 			expect(current_path).to eq("/shelters/#{@aps.id}/reviews/#{@review_1.id}/edit")
-
+save_and_open_page
 			expect(page).to have_content("Title")
 			expect(page).to have_content("Rating")
 			expect(page).to have_content("Content")
