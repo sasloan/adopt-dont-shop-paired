@@ -69,8 +69,12 @@ describe 'As a visitor' do
 
       expect(current_path).to eq("/favorites")
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
+>>>>>>> master
+=======
+
 >>>>>>> master
       expect(page).to have_content("Application accepted for Jona Bark and Cricket.")
 
@@ -104,6 +108,7 @@ describe 'As a visitor' do
       end
 
       fill_in :name, with: ""
+
       click_button "Create Application"
 
       expect(current_path).to eq("/applications/new")

@@ -18,12 +18,12 @@ class Pet < ApplicationRecord
 	end
 
 	def approved?
-		approved = []
+		@approved = []
 
 		self.pet_applications.each do |pet_application|
 			approved << pet_application.approved
 		end
 
-		approved.include?(true)
+		@approved.include?(true)
 	end
 end
