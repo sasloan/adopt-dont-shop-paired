@@ -20,6 +20,25 @@ describe Favorite, type: :model do
     it "#total_count" do
       expect(@list_1.total_count).to eq(4)
     end
+		
+		it "#fav_pets" do
+			@mikes = Shelter.create!(name: "Mike's Shelter", address: "1331 17th Street", city: "Denver", state: "CO", zip: "80202")
+			
+			@athena = @mikes.pets.create!(name: "Athena", description: "Butthead", age: 1, sex: "female")
+			@odell = @mikes.pets.create!(name: "Odell", description: "good dog", age: 4, sex: "male")
+			@jona = @mikes.pets.create!(name: "Jona Bark", description: "Black Shepard", age: 6, sex: "Female")
+			@cricket = @mikes.pets.create!(name: "Cricket", description: "Best girl", age: 20, sex: "Female")
+			
+			@favorite_hash = {"#{@athena.id}" => true,
+												"#{@odell.id}" => true,
+												"#{@jona.id}" => true,
+												"#{@cricket.id}" => true
+											}
+			
+			@list_1 = Favorite.new(@favorite_hash)
+			
+			expect(@list_1.fav_pets).to eq([@athena, @odell, @jona, @cricket])
+		end
 
     it "#add_pet" do
       @list_1.add_pet('5')
