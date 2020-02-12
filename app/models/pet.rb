@@ -18,12 +18,8 @@ class Pet < ApplicationRecord
 	end
 
 	def approved?
-		@approved = []
-
-		self.pet_applications.each do |pet_application|
-			@approved << pet_application.approved
-		end
-
-		@approved.include?(true)
+		approved_applications = PetApplication.select(:approved).where(pet_id: self.id, approved: true)
+		return true if approved_applications.count > 0
+		false
 	end
 end
