@@ -12,9 +12,9 @@ class Pet < ApplicationRecord
 		count
 	end
 
-	def approved_application_name
+	def approved_application
 		pet_application = PetApplication.where(pet_id: self.id, approved: true).first
-		Application.find(pet_application.application_id).name
+		Application.find(pet_application.application_id)
 	end
 
 	def approved?

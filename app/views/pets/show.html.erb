@@ -10,7 +10,7 @@
 	<% if @pet.adoptable %>
 		<p>Status: Adoptable</p>
 	<% else %>
-		<p> This pet is Pending, on hold for <%= @pet.approved_application_name %> </p>
+		<p> This pet is Pending, on hold for <%= @pet.approved_application.name %> </p>
 	<% end %>
 	<% unless favorites.favorited?(@pet.id) %>
 		<p><%= button_to "Add Pet To Favorites", "/favorites/#{@pet.id}", method: :patch %></p>

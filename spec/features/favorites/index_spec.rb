@@ -4,35 +4,36 @@ describe 'As a Visitor' do
 	describe 'After I have added pets to my favorites' do
 		before :each do
 			@aps = Shelter.create!(name: "Arvada Pet Shelter", address: "9876 Lamar Blvd.", city: "Arvada", state: "Co.", zip: "80003")
+			
 			@jona = @aps.pets.create!(image: "https://www.allthingsdogs.com/wp-content/uploads/2018/08/How-to-Care-for-a-Black-German-Shepherd.jpg", name: "Jona Bark", description: "Black Shepard", age: 6, sex: "Female")
 			@cricket = @aps.pets.create!(image: "https://www.allthingsdogs.com/wp-content/uploads/2018/08/Breed-Standard-for-a-Black-GSD.jpg", name: "Cricket", description: "Best girl", age: 20, sex: "Female", adoptable: true)
 			@athena = @aps.pets.create!(name: "Athena", description: "Butthead", age: 1, sex: "female", adoptable: true)
 			@ozzy = @aps.pets.create!(image: "https://www.insidedogsworld.com/wp-content/uploads/2017/06/German-Shepherd-Standard-Coat-GSC-1000x575-1-1-1-1.jpg", name: "Ozzy Paws Born", description: "German Shepard", age: 4, sex: "Male")
 
 			visit "/pets/#{@jona.id}"
-
 			expect(current_path).to eq("/pets/#{@jona.id}")
+			
 			click_on "Add Pet To Favorites"
 			expect(current_path).to eq("/pets/#{@jona.id}")
 			expect(page).to have_content("#{@jona.name} has been added to your favorites")
 
 			visit "/pets/#{@cricket.id}"
-
 			expect(current_path).to eq("/pets/#{@cricket.id}")
+			
 			click_on "Add Pet To Favorites"
 			expect(current_path).to eq("/pets/#{@cricket.id}")
 			expect(page).to have_content("#{@cricket.name} has been added to your favorites")
 
 			visit "/pets/#{@athena.id}"
-
 			expect(current_path).to eq("/pets/#{@athena.id}")
+			
 			click_on "Add Pet To Favorites"
 			expect(current_path).to eq("/pets/#{@athena.id}")
 			expect(page).to have_content("#{@athena.name} has been added to your favorites")
 
 			visit "/pets/#{@ozzy.id}"
-
 			expect(current_path).to eq("/pets/#{@ozzy.id}")
+			
 			click_on "Add Pet To Favorites"
 			expect(current_path).to eq("/pets/#{@ozzy.id}")
 			expect(page).to have_content("#{@ozzy.name} has been added to your favorites")
@@ -120,7 +121,6 @@ describe 'As a Visitor' do
 			expect(page).to have_link(@ozzy.name)
 
 			click_on "Remove All Pets"
-
 			expect(current_path).to eq("/favorites")
 			expect(page).to have_content("All pets have been removed from your favorites.")
 		end
@@ -145,7 +145,6 @@ describe 'As a Visitor' do
       fill_in :description, with: "I love to spoil my pets."
 			
 			click_button "Create Application"
-			
 			visit "/pets/#{@jona.id}"
 			click_button "Add Pet To Favorites"
 			visit "/favorites"
@@ -164,7 +163,6 @@ describe 'As a Visitor' do
       fill_in :description, with: "Pets are a big responsibility that I take seriously."
 			
 			click_button "Create Application"
-			
 			expect(current_path).to eq("/favorites")
 			
 			within "#applied_for" do
@@ -179,6 +177,26 @@ describe 'As a Visitor' do
 			visit "/favorites"
 			
 			expect(page).not_to have_link(@ozzy.name)
+		end
+		
+		it "I can see the list of approved applications on the favorites index page" do
+			application_1 = @jona.applications.create!(name: "John Doe", address: "123 Arf St", city: "New York", state: "NY", zip: "38567", phone_number: "374-747-6543", description: "Good home")
+			application_2 = @cricket.applications.create!(name: "Jane Doe", address: "123 Arf St", city: "New York", state: "NY", zip: "38567", phone_number: "374-747-6543", description: "Good home")
+			application_3 = @athena.applications.create!(name: "Jackson Doe", address: "123 Arf St", city: "New York", state: "NY", zip: "38567", phone_number: "374-747-6543", description: "Good home")
+			
+			pet_application = PetApplication.where(pet_id: @jona.id, application_id: application_1.id).first
+			pet_application.update(approved: true)
+			
+			pet_application = PetApplication.where(pet_id: @cricket.id, application_id: application_2.id).first
+			pet_application.update(approved: true)
+			
+			visit "/favorites"
+			
+			within "#approved" do
+				expect(page).to have_link(application_1.name)
+				expect(page).to have_link(application_2.name)
+				expect(page).not_to have_link(application_3.name)
+			end
 		end
 	end
 end
