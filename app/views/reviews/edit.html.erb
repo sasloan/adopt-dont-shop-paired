@@ -1,5 +1,9 @@
 <%= render partial: 'form', locals: {
                                       path: "/shelters/#{@review.shelter.id}/reviews/#{@review.id}",
                                       method: :patch,
-                                      button_text: 'Update Review'
+                                      button_text: 'Update Review',
+                                      title: "#{@review.title}",
+                                      rating: "#{@review.rating}",
+                                      content: "#{@review.content}",
+                                      image: "#{@review.image}"
                                     } %>

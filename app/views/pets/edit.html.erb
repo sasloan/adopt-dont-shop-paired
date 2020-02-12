@@ -1,5 +1,9 @@
-<%= render partial: 'form', locals: {
-                                      path: "/pets/#{@pet.id}",
-                                      method: :patch,
-                                      button_text: 'Update Pet'
+<%= render partial: 'form', locals: {path: "/pets/#{@pet.id}",
+                                     method: :patch,
+                                     button_text: 'Update Pet',
+                                     image: "#{@pet.image}",
+                                     name: "#{@pet.name}",
+                                     description: "#{@pet.description}",
+                                     age: "#{@pet.age}",
+                                     sex: "#{@pet.sex}"
                                     } %>

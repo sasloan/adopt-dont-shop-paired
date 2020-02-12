@@ -1,1 +1,9 @@
-<%= render partial: 'form', locals: {path: "/shelters/#{@shelter.id}/pets", method: :post, button_text: 'Create Pet'} %>
+<%= render partial: 'form', locals: {path: "/shelters/#{@shelter.id}/pets",
+                                     method: :post,
+                                     button_text: 'Create Pet',
+                                     image: nil,
+                                     name: nil,
+                                     description: nil,
+                                     age: nil,
+                                     sex: nil
+                                    } %>
