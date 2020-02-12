@@ -36,12 +36,12 @@ describe Shelter, type: :model do
 			@freja.applications << @ben
 		end
 
-		it "#pet_pending?" do
+		it ".pet_pending?" do
 			expect(@aps.pets_pending?).to eq(false)
 			expect(@acph.pets_pending?).to eq(true)
 		end
 
-		it "#application_count" do
+		it ".application_count" do
 			expect(@aps.application_count).to eq(1)
 			expect(@acph.application_count).to eq(2)
 			expect(@ddfl.application_count).to eq(1)

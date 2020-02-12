@@ -15,7 +15,7 @@ describe 'As a Visitor' do
 			expect(page).to have_content("Zip")
 		end
 
-		it 'I am taken to a form to fill in the infromation of a new pet shelter' do
+		it 'I am taken to a form to fill in the information of a new pet shelter' do
 			fill_in :name, with: "Aurora Pet Clinic"
 			fill_in :address, with: "5478 Alameda ave."
 			fill_in :city, with: "Aurora"

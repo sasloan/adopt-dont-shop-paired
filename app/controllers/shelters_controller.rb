@@ -13,6 +13,7 @@ class SheltersController < ApplicationController
 
 	def create
 		shelter = Shelter.new(shelter_params)
+		
 		if shelter.save
 			redirect_to "/shelters"
 		else
@@ -28,6 +29,7 @@ class SheltersController < ApplicationController
 	def update
 		shelter = Shelter.find(params[:shelter_id])
 		shelter.update(shelter_params)
+		
 		if shelter.save
 			redirect_to "/shelters/#{shelter.id}"
 		else
@@ -38,7 +40,6 @@ class SheltersController < ApplicationController
 
 	def destroy
 		Shelter.destroy(params[:shelter_id])
-
 		redirect_to "/shelters"
 	end
 

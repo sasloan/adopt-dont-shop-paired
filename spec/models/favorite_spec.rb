@@ -13,15 +13,15 @@ describe Favorite, type: :model do
 			@list_1 = Favorite.new(@favorite_hash)
 		end
 
-		it "ids" do
+		it ".ids" do
 			expect(@list_1.ids).to eq([1, 2, 3, 4])
 		end
 
-    it "#total_count" do
+    it ".total_count" do
       expect(@list_1.total_count).to eq(4)
     end
 		
-		it "#fav_pets" do
+		it ".fav_pets" do
 			@mikes = Shelter.create!(name: "Mike's Shelter", address: "1331 17th Street", city: "Denver", state: "CO", zip: "80202")
 			
 			@athena = @mikes.pets.create!(name: "Athena", description: "Butthead", age: 1, sex: "female")
@@ -55,17 +55,17 @@ describe Favorite, type: :model do
       expect(@list_1.contents).to eq(expected_hash)
     end
 
-	  it "#favorited?" do
+	  it ".favorited?" do
 			expect(@list_1.favorited?("1")).to eq(true)
       expect(@list_1.favorited?("5")).to eq(false)
 	  end
 
-		it '#delete' do
+		it '.delete' do
 			@list_1.delete("1")
       expected_hash = {"2" => true, "3" => true, "4" => true}
 		end
 
-		it '#delete_all' do
+		it '.delete_all' do
       @list_1.delete_all
       expect(@list_1.total_count).to eq(0)
     end
