@@ -49,11 +49,13 @@ describe 'As a Visitor' do
 			expect(page).to have_content("City")
 			expect(page).to have_content("State")
 			expect(page).to have_content("Zip")
+			
+			fill_in :name, with: ""
 
 			click_on "Update Shelter"
 			expect(current_path).to eq("/shelters/#{@acph.id}/edit")
 
-			expect(page).to have_content("Name can't be blank, Address can't be blank, City can't be blank, State can't be blank, and Zip can't be blank")
+			expect(page).to have_content("Name can't be blank")
 		end
 	end
 end

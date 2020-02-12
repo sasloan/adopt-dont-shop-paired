@@ -1,1 +1,8 @@
-<%= render partial: 'form', locals: {path: "/shelters/#{@shelter.id}/reviews", method: :post, button_text: 'Add Review'} %>
+<%= render partial: 'form', locals: {path: "/shelters/#{@shelter.id}/reviews",
+                                     method: :post,
+                                     button_text: 'Add Review',
+                                     title: nil,
+                                     rating: nil,
+                                     content: nil,
+                                     image: nil
+                                    } %>

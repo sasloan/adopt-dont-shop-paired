@@ -44,7 +44,7 @@ describe 'As a Visitor' do
 			expect(page).to have_content("Status: Adoptable")
 		end
 
-		it 'If I dont fill in the infromation then I see a flash message with what required info is missing and stay on the new form' do
+		it 'If I dont fill in the information then I see a flash message with what required info is missing and stay on the new form' do
 			visit "/pets/#{@jona.id}"
 			click_link "Update Pet"
 			expect(current_path).to eq("/pets/#{@jona.id}/edit")
@@ -61,7 +61,7 @@ describe 'As a Visitor' do
 			click_button "Update Pet"
 
 			expect(current_path).to eq("/pets/#{@jona.id}/edit")
-			expect(page).to have_content("Name can't be blank, Description can't be blank, Age can't be blank, and Sex can't be blank")
+			expect(page).to have_content("Name can't be blank and Description can't be blank")
 		end
 	end
 end
