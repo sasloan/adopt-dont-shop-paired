@@ -43,6 +43,9 @@ describe Pet, type: :model do
 			pet_application.update(approved: true)
 			
 			expect(@jona.approved?).to eq(true)
+			
+			pet_application.update(approved:false)
+			expect(@jona.approved?).to eq(false)
 		end
 	end
 end
