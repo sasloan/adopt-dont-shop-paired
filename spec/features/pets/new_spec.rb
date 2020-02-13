@@ -27,7 +27,10 @@ describe 'As a Visitor' do
 			fill_in :name, with: "Ollie"
 			fill_in :description, with: "Half Husky and half Collie"
 			fill_in :age, with: 8
-			fill_in :sex, with: "Male"
+			
+			within "#male" do
+				choose :sex
+			end
 
 			click_button "Create Pet"
 			expect(current_path).to eq("/shelters/#{@aps.id}/pets")

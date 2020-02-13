@@ -12,8 +12,11 @@
 		<p><%= label_tag :age %>
 		<%= number_field_tag :age, age %></p>
 
-		<p><%= label_tag :sex %>
-		<%= text_field_tag :sex, sex %></p>
+		<%= label_tag "Sex:" %>
+		<section id="male"><%= radio_button_tag(:sex, "Male") %></section>
+  	<%= label_tag("Male", "Male") %>
+		<section id="female"><%= radio_button_tag(:sex, "Female") %></section>
+  	<%= label_tag("Female", "Female") %><br>
 
 		<%= submit_tag button_text %>
 	<% end %>
