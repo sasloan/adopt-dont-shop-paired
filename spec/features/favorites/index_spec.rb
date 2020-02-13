@@ -193,9 +193,9 @@ describe 'As a Visitor' do
 			visit "/favorites"
 			
 			within "#approved" do
-				expect(page).to have_link(application_1.name)
-				expect(page).to have_link(application_2.name)
-				expect(page).not_to have_link(application_3.name)
+				expect(page).to have_link(@jona.name)
+				expect(page).to have_link(@cricket.name)
+				expect(page).not_to have_link(@athena.name)
 			end
 		end
 	end

@@ -1,10 +1,9 @@
-<%= render partial: 'form', locals: {
-                                      path: "/shelters/#{@shelter.id}",
-                                      method: :patch,
-                                      button_text: 'Update Shelter',
-                                      name: "#{@shelter.name}",
-                                      address: "#{@shelter.address}",
-                                      city: "#{@shelter.city}",
-                                      state: "#{@shelter.state}",
-                                      zip: "#{@shelter.zip}"
-                                    } %>
+<%= render partial: 'form', locals: {path: "/shelters/#{@shelter.id}",
+                                     method: :patch,
+                                     button_text: 'Update Shelter',
+                                     name: "#{@shelter.name}",
+                                     address: "#{@shelter.address}",
+                                     city: "#{@shelter.city}",
+                                     state: "#{@shelter.state}",
+                                     zip: "#{@shelter.zip}"
+                                     } %>
