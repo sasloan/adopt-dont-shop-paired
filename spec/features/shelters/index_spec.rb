@@ -15,10 +15,11 @@ describe 'As a Visitor' do
 			@ciri = @ddfl.pets.create!(image: "https://www.thelabradordog.com/wp-content/uploads/2018/11/Albino-Labrador.png", name: "Ciri", description: "White Lab", age: 2, sex: "Female")
 
 			visit '/shelters'
-			expect(current_path).to eq("/shelters")
 		end
 
 		it "I can see the shelters names and addresses" do
+			expect(current_path).to eq("/shelters")
+			
 			within "#shelter-#{@ddfl.id}" do
 				expect(page).to have_link(@ddfl.name)
 				expect(page).to have_content(@ddfl.address)

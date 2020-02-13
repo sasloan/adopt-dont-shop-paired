@@ -9,15 +9,16 @@ describe 'As a visitor' do
       
       visit "/shelters/#{@acph.id}"
       click_link 'Add Review'
+    end
+    
+    it "I'm taken to a new page to fill out a form with the info and can create a new review" do
       expect(current_path).to eq("/shelters/#{@acph.id}/reviews/new")
       
       expect(page).to have_content("Title")
 			expect(page).to have_content("Rating (1-5)")
 			expect(page).to have_content("Content")
 			expect(page).to have_content("Image")
-    end
-    
-    it "I'm taken to a new page to fill out a form with the info and can create a new review" do
+      
 			fill_in :title, with: "Wonderful experience"
 			fill_in :rating, with: "5"
 			fill_in :content, with: @content

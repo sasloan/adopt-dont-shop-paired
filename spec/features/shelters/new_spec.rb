@@ -6,6 +6,9 @@ describe 'As a Visitor' do
 			visit '/shelters'
 
 			click_on 'New Shelter'
+		end
+
+		it 'I am taken to a form to fill in the information of a new pet shelter' do
 			expect(current_path).to eq("/shelters/new")
 
 			expect(page).to have_content("Name")
@@ -13,9 +16,7 @@ describe 'As a Visitor' do
 			expect(page).to have_content("City")
 			expect(page).to have_content("State")
 			expect(page).to have_content("Zip")
-		end
-
-		it 'I am taken to a form to fill in the information of a new pet shelter' do
+			
 			fill_in :name, with: "Aurora Pet Clinic"
 			fill_in :address, with: "5478 Alameda ave."
 			fill_in :city, with: "Aurora"
