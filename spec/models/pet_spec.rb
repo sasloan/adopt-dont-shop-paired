@@ -28,14 +28,14 @@ describe Pet, type: :model do
 			expect(Pet.pet_count).to eq(4)
 		end
 		
-		it "#approved_application" do
+		it ".approved_application" do
 			application = Application.create!(name: "John Doe", address: "123 Arf St", city: "New York", state: "NY", zip: "38567", phone_number: "374-747-6543", description: "Good home")
 			pet_application  = PetApplication.create!(pet_id: @jona.id, application_id: application.id, approved: true)
 			
 			expect(@jona.approved_application).to eq(application)
 		end
 		
-		it "#approved?" do
+		it ".approved?" do
 			application_1 = @jona.applications.create!(name: "John Doe", address: "123 Arf St", city: "New York", state: "NY", zip: "38567", phone_number: "374-747-6543", description: "Good home")
 			application_2 = @cricket.applications.create!(name: "Jane Doe", address: "123 Arf St", city: "New York", state: "NY", zip: "38567", phone_number: "374-747-6543", description: "Good home")
 			

@@ -11,10 +11,10 @@ describe "As a visitor" do
       
       visit "/pets/#{@jona.id}"
       click_link "Applications"
-      expect(current_path).to eq("/pets/#{@jona.id}/applications")
     end
     
     it "I see a list of names for all the applicants for that pet, and those names are links to their application show page" do
+      expect(current_path).to eq("/pets/#{@jona.id}/applications")
       expect(page).to have_content("Applications for #{@jona.name}")
       expect(page).to have_link(@application_1.name)
       expect(page).to have_link(@application_2.name)

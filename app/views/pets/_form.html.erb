@@ -1,21 +1,23 @@
 <div class='form'>
-<%= form_tag path, method: method do %>
+	<%= form_tag path, method: method do %>
+		<p><%= label_tag :image %>
+		<%= text_field_tag :image, image %></p>
 
-	<p><%= label_tag :image %>
-	<%= text_field_tag :image, image %></p>
+		<p><%= label_tag :name %>
+		<%= text_field_tag :name, name %></p>
 
-	<p><%= label_tag :name %>
-	<%= text_field_tag :name, name %></p>
+		<p><%= label_tag :description %>
+		<%= text_field_tag :description, description %></p>
 
-	<p><%= label_tag :description %>
-	<%= text_field_tag :description, description %></p>
+		<p><%= label_tag :age %>
+		<%= number_field_tag :age, age %></p>
 
-	<p><%= label_tag :age %>
-	<%= number_field_tag :age, age %></p>
+		<%= label_tag "Sex:" %>
+		<section id="male"><%= radio_button_tag(:sex, "Male") %></section>
+  	<%= label_tag("Male", "Male") %>
+		<section id="female"><%= radio_button_tag(:sex, "Female") %></section>
+  	<%= label_tag("Female", "Female") %><br>
 
-	<p><%= label_tag :sex %>
-	<%= text_field_tag :sex, sex %></p>
-
-	<%= submit_tag button_text %>
-<% end %>
+		<%= submit_tag button_text %>
+	<% end %>
 </div>

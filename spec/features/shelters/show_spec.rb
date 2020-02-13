@@ -21,10 +21,10 @@ describe 'As a Visitor' do
 			@ciri.applications << @ben
 	
 			visit "/shelters/#{@ddfl.id}"
-			expect(current_path).to eq("/shelters/#{@ddfl.id}")
 		end
 
 		it 'I should see that Shelters name and adress' do
+			expect(current_path).to eq("/shelters/#{@ddfl.id}")
 			expect(page).to have_link(@ddfl.name)
 			expect(page).to have_content(@ddfl.address)
 			expect(page).to have_content(@ddfl.city)

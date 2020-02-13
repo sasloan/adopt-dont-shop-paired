@@ -4,10 +4,7 @@ describe 'As a Visitor' do
 	describe "When I visit a shelter's show page" do
 		before :each do
 			@aps = Shelter.create!(name: "Arvada Pet Shelter", address: "9876 Lamar Blvd.", city: "Arvada", state: "Co.", zip: "80003")
-      
-      @content = "The people at this shelter were so kind and helpful."
-			@image = "https://www.humanesociety.org/sites/default/files/styles/1240x698/public/2018/06/kittens-in-shelter-69469.jpg?h=ece64c50&itok=tOiKeqHY"
-			@review_1 = @aps.reviews.create!(title: "Wonderul experience", rating: "5", content: @content, image: @image)
+			@review_1 = @aps.reviews.create!(title: "Wonderul experience", rating: "5", content: "The people at this shelter were so kind and helpful.")
 			
 			visit "/shelters/#{@aps.id}"
       
@@ -39,8 +36,7 @@ describe 'As a Visitor' do
       
       expect(page).to_not have_content("Wonderul experience")
 			expect(page).to_not have_content("5/5 stars")
-			expect(page).to_not have_content(@content)
-			expect(page).to_not have_css("img[src*='#{@image}']")
+			expect(page).to_not have_content("The people at this shelter were so kind and helpful.")
 		end
 		
 		it "I can't edit a review if I don't fill out required info" do

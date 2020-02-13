@@ -11,31 +11,16 @@ describe 'As a Visitor' do
 			@ozzy = @aps.pets.create!(image: "https://www.insidedogsworld.com/wp-content/uploads/2017/06/German-Shepherd-Standard-Coat-GSC-1000x575-1-1-1-1.jpg", name: "Ozzy Paws Born", description: "German Shepard", age: 4, sex: "Male")
 
 			visit "/pets/#{@jona.id}"
-			expect(current_path).to eq("/pets/#{@jona.id}")
-			
 			click_on "Add Pet To Favorites"
-			expect(current_path).to eq("/pets/#{@jona.id}")
-			expect(page).to have_content("#{@jona.name} has been added to your favorites")
 
 			visit "/pets/#{@cricket.id}"
-			expect(current_path).to eq("/pets/#{@cricket.id}")
-			
 			click_on "Add Pet To Favorites"
-			expect(current_path).to eq("/pets/#{@cricket.id}")
-			expect(page).to have_content("#{@cricket.name} has been added to your favorites")
-
+			
 			visit "/pets/#{@athena.id}"
-			expect(current_path).to eq("/pets/#{@athena.id}")
-			
 			click_on "Add Pet To Favorites"
-			expect(current_path).to eq("/pets/#{@athena.id}")
-			expect(page).to have_content("#{@athena.name} has been added to your favorites")
-
+			
 			visit "/pets/#{@ozzy.id}"
-			expect(current_path).to eq("/pets/#{@ozzy.id}")
-			
 			click_on "Add Pet To Favorites"
-			expect(current_path).to eq("/pets/#{@ozzy.id}")
 			expect(page).to have_content("#{@ozzy.name} has been added to your favorites")
 
 			visit "/favorites"
@@ -193,9 +178,9 @@ describe 'As a Visitor' do
 			visit "/favorites"
 			
 			within "#approved" do
-				expect(page).to have_link(application_1.name)
-				expect(page).to have_link(application_2.name)
-				expect(page).not_to have_link(application_3.name)
+				expect(page).to have_link(@jona.name)
+				expect(page).to have_link(@cricket.name)
+				expect(page).not_to have_link(@athena.name)
 			end
 		end
 	end

@@ -1,23 +1,21 @@
 <h3>Number of Pets: <%= @shelter.pets.pet_count %></h3>
 <h3>Current Application Count: <%= @shelter.application_count %></h3>
 
-
 <div class='show'>
-<h2><%= link_to  "#{@shelter.name}", "/shelters/#{@shelter.id}" %></h2>
+	<h2><%= link_to  "#{@shelter.name}", "/shelters/#{@shelter.id}" %></h2>
 	<p><%= @shelter.address %>
 	<%= @shelter.city %>
 	<%= @shelter.state %>
 	<%= @shelter.zip %></p>
 
+	<p><%= link_to "Shelter Pets", "/shelters/#{@shelter.id}/pets" %></p>
 
-<p><%= link_to "Shelter Pets", "/shelters/#{@shelter.id}/pets" %></p>
-
-<% if @shelter.pets_pending? == false %>
-	<p><%= link_to "Update Shelter", "/shelters/#{@shelter.id}/edit" %></p>
-<% else %>
-	<p><%= link_to "Update Shelter", "/shelters/#{@shelter.id}/edit" %> |
-		<%= link_to "Delete Shelter", "/shelters/#{@shelter.id}", method: :delete %></p>
-<% end %>
+	<% if @shelter.pets_pending? == false %>
+		<p><%= link_to "Update Shelter", "/shelters/#{@shelter.id}/edit" %></p>
+	<% else %>
+		<p><%= link_to "Update Shelter", "/shelters/#{@shelter.id}/edit" %> |
+			<%= link_to "Delete Shelter", "/shelters/#{@shelter.id}", method: :delete %></p>
+	<% end %>
 </div>
 
 <h3>Average Rating: <%= @shelter.reviews.average_rating.round(1) %>/5 stars</h3>

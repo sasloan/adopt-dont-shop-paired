@@ -13,14 +13,14 @@
 	
 	<% @pets.all.each do |pet| %>
 		<% if pet.approved? %>
-			<p><%= link_to "#{pet.approved_application.name}", "/applications/#{pet.approved_application.id}" %></p>
+			<p><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></p>
 		<% end %>
 	<% end %>
 </div>
 
 <% if favorites.contents.empty? %>
 	<h2> You have no favorites!! </h2>
-<% else !favorites.contents.empty? %>
+<% else %>
 	<p><%= button_to "Remove All Pets", "/favorites", method: :delete %></p>
 	<p><%= link_to "Apply To Adopt", "/applications/new" %></p>
 

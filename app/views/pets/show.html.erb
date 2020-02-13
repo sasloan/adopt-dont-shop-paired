@@ -1,8 +1,7 @@
 <div class='show'>
-<h2>Name: <%= link_to "#{@pet.name}", "/pets/#{@pet.id}" %></h2>
-
-<%= image_tag "#{@pet.image}", width: 200, height:150 %>
-
+	<h2>Name: <%= link_to "#{@pet.name}", "/pets/#{@pet.id}" %></h2>
+	<%= image_tag "#{@pet.image}", width: 200, height:150 %>
+	
 	<p> Description: <%= @pet.description %></p>
 	<p> Age: <%= @pet.age %></p>
 	<p> Sex: <%= @pet.sex %></p>
@@ -12,16 +11,20 @@
 	<% else %>
 		<p> This pet is Pending, on hold for <%= @pet.approved_application.name %> </p>
 	<% end %>
+	
 	<% unless favorites.favorited?(@pet.id) %>
 		<p><%= button_to "Add Pet To Favorites", "/favorites/#{@pet.id}", method: :patch %></p>
 	<% else !favorites.favorited?(@pet.id) %>
 		<p><%= button_to "Remove Pet From Favorites", "/favorites/#{@pet.id}", method: :delete %></p>
 	<% end %>
 
-
-	<p><%= link_to "Update Pet", "/pets/#{@pet.id}/edit" %> |
-	<% if @pet.adoptable %>
-		<%= link_to "Delete Pet", "/pets/#{@pet.id}", method: :delete %> |
-	<% end %>
-	<%= link_to "Applications", "/pets/#{@pet.id}/applications" %></p>
+	<p>
+		<%= link_to "Update Pet", "/pets/#{@pet.id}/edit" %> |
+		
+		<% if @pet.adoptable %>
+			<%= link_to "Delete Pet", "/pets/#{@pet.id}", method: :delete %> |
+		<% end %>
+		
+		<%= link_to "Applications", "/pets/#{@pet.id}/applications" %>
+	</p>
 </div>

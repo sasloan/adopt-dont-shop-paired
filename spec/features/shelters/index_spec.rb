@@ -15,12 +15,13 @@ describe 'As a Visitor' do
 			@ciri = @ddfl.pets.create!(image: "https://www.thelabradordog.com/wp-content/uploads/2018/11/Albino-Labrador.png", name: "Ciri", description: "White Lab", age: 2, sex: "Female")
 
 			visit '/shelters'
-			expect(current_path).to eq("/shelters")
 		end
 
-		it "I can see the shelters name's and address's" do
+		it "I can see the shelters names and addresses" do
+			expect(current_path).to eq("/shelters")
+			
 			within "#shelter-#{@ddfl.id}" do
-				expect(page).to have_content(@ddfl.name)
+				expect(page).to have_link(@ddfl.name)
 				expect(page).to have_content(@ddfl.address)
 				expect(page).to have_content(@ddfl.city)
 				expect(page).to have_content(@ddfl.state)
@@ -28,7 +29,7 @@ describe 'As a Visitor' do
 			end
 
 			within "#shelter-#{@acph.id}" do
-				expect(page).to have_content(@acph.name)
+				expect(page).to have_link(@acph.name)
 				expect(page).to have_content(@acph.address)
 				expect(page).to have_content(@acph.city)
 				expect(page).to have_content(@acph.state)
@@ -36,7 +37,7 @@ describe 'As a Visitor' do
 			end
 
 			within "#shelter-#{@aps.id}" do
-				expect(page).to have_content(@aps.name)
+				expect(page).to have_link(@aps.name)
 				expect(page).to have_content(@aps.address)
 				expect(page).to have_content(@aps.city)
 				expect(page).to have_content(@aps.state)
@@ -68,7 +69,7 @@ describe 'As a Visitor' do
 				expect(current_path).to eq("/shelters")
 			end
 
-			expect(page).not_to have_content(@ddfl.name)
+			expect(page).not_to have_link(@ddfl.name)
 			expect(page).not_to have_content(@ddfl.address)
 		end
 
@@ -87,9 +88,9 @@ describe 'As a Visitor' do
 			visit "/pets"
 
 			expect(page).not_to have_css("img[src*='#{@freja.image}']")
-			expect(page).not_to have_content(@freja.name)
+			expect(page).not_to have_link(@freja.name)
 			expect(page).not_to have_css("img[src*='#{@ciri.image}']")
-			expect(page).not_to have_content(@ciri.name)
+			expect(page).not_to have_link(@ciri.name)
 		end
 
 		it 'The name of the shelter is a link to its show page' do

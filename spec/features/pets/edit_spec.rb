@@ -32,9 +32,13 @@ describe 'As a Visitor' do
 			fill_in :name, with: "New Jona"
 			fill_in :description, with: "Pretty Shepherd"
 			fill_in :age, with: 9
-			fill_in :sex, with: "Female"
+			
+			within "#female" do
+				choose :sex
+			end
 
 			click_button "Update Pet"
+			
 			expect(current_path).to eq("/pets/#{@jona.id}")
 
 			expect(page).to have_css("img[src*='https://www.allthingsdogs.com/wp-content/uploads/2018/08/Breed-Standard-for-a-Black-GSD.jpg']")

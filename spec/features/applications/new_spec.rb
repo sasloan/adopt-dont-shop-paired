@@ -10,32 +10,21 @@ describe 'As a visitor' do
 			@athena = @aps.pets.create!(name: "Athena", description: "Butthead", age: 1, sex: "female", adoptable: true)
 
       visit "/pets/#{@jona.id}"
-
-			expect(current_path).to eq("/pets/#{@jona.id}")
 			click_on "Add Pet To Favorites"
-			expect(current_path).to eq("/pets/#{@jona.id}")
-			expect(page).to have_content("#{@jona.name} has been added to your favorites")
 
 			visit "/pets/#{@cricket.id}"
-
-			expect(current_path).to eq("/pets/#{@cricket.id}")
 			click_on "Add Pet To Favorites"
-			expect(current_path).to eq("/pets/#{@cricket.id}")
-			expect(page).to have_content("#{@cricket.name} has been added to your favorites")
 
 			visit "/pets/#{@athena.id}"
-
-			expect(current_path).to eq("/pets/#{@athena.id}")
 			click_on "Add Pet To Favorites"
-			expect(current_path).to eq("/pets/#{@athena.id}")
-			expect(page).to have_content("#{@athena.name} has been added to your favorites")
 
       visit "/favorites"
       click_link "Apply To Adopt"
-      expect(current_path).to eq("/applications/new")
     end
 
     it "I can click a link for adopting favorited pets, and select which favorites I want, then apply for them" do
+      expect(current_path).to eq("/applications/new")
+      
       within "#favorite-#{@jona.id}" do
         check "check_box[]"
         expect(page).to have_checked_field("check_box[]")

@@ -9,10 +9,11 @@ describe "As a visitor" do
       @application_2 = @jona.applications.create!(name: "Sebastian Sloan", address: "123 6th Ave", city: "Erie", state: "CO", zip: "76455", phone_number: "374-747-4536", description: "Loving home")
       
       visit "/applications/#{@application.id}"
-      expect(current_path).to eq("/applications/#{@application.id}")
     end
     
     it "I see all the applicants info, plus the pets the application is for, which are links to their show page" do
+      expect(current_path).to eq("/applications/#{@application.id}")
+      
       expect(page).to have_content(@application.name)
       expect(page).to have_content(@application.address)
       expect(page).to have_content(@application.city)
